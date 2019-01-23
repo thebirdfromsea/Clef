@@ -1,3 +1,36 @@
+<style type="text/css">
+   body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
 secondpart{
     margin:100px;
 }
+/* body{
+    background-color: beige
+} */
+
+/* body {
+    width  : 400px;
+    height : 2.5em;
+    padding: 1em 1em 1em 1em;
+    border : 1px solid black;
+  } */
+  .col { overflow: auto;    }
+
+  body, html {
+    height: 100%;
+  }
+
+  .bg {
+    /* The image used */
+    background-image: url(LouisianaCap.jpg);
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
