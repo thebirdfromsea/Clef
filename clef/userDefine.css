@@ -1,6 +1,4 @@
-<style type="text/css">
-   body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
-</style>
+
 
 secondpart{
     margin:100px;
@@ -34,3 +32,11 @@ secondpart{
     background-size: cover;
 
   }
+  
+.myClef{
+  width: 90%;
+  padding: 20%;
+  border: 4px solid black;
+  margin: .5em auto;
+
+}
