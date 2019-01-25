@@ -1,2 +1,2 @@
 # Clef
-An musical web app
+A musical web app
