@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/userDefine.css">
     <meta http-equiv="Content-Type" content="text/html character=UTF-8">
-    <meta name="viewport" content="device-width,initial-scale=1">
     <title>clef-the-web-app</title>
-    <!-- <script type="text/javascript" src="//ra.revolvermaps.com/0/0/6.js?i=0qno8glghla&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80"  -->
-    <!-- async="async"></script> -->
     <style type="text/css">
-        body { background:rgb(82, 65, 65)!important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+        body { background:#333!important;
+            /* font-display:  */
+         } 
         .myClef {
                 width: 300px;
                 height: 100px;  
@@ -19,59 +17,42 @@
                 box-sizing: border-box;
         }
      </style>
-
+     <script src="assets/jquery-3.3.1.js"> </script>
+     <script src="/Users/Peng/Desktop/example/js/script.js"></script>
 </head>
-
 <body>
 
-    div class="bg"></div>
-    <div class="container text-primary"  > 
-        <p class="text-primary"></p>
+    <div class="container text-white"  > 
+        <!-- <p class="text-white"></p> -->
         <div class="row mt-5">
-            <div class="col">
-                <div id="myClef">
-                    <section>
-                        <div>
-                            <form class="form-inline active-cyan-4">
-                                <input class="form-control form-control-sm mr-3 w-45" type="text" placeholder="Search"
-                                    aria-label="Search">
-                                <i class="fas fa-search" aria-hidden="true"></i>
-                            </form>
-                            <button type="button" class="btn">   Go!</button>
-                            <h4>
-                                Songs search
-                            </h4>
-                            <p>
-                                this part for the song search
-                            </p>
-                        </div>
-                    </section>
-                </div>
+            <div class="col" id='songSearch'>
+                                <h4>
+                                    Songs search
+                                </h4>
+                                <p>
+                                    this part for the song search
+                                </p>
+                        
             </div>
 
             <div class="col">
                 <section>
-                    <div>
-                        <h4 class="text-primary bg-success">
-                            Artists bio info
-                        </h4>
-                        <p>
-                            this part is to display the information about the artist.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Mauris tempus turpis id ante mollis dignissim. Nam sed
-                            dolor non tortor lacinia lobortis id dapibus nunc. Praesent
-                            iaculis tincidunt augue. Integer efficitur sem eget risus
-                            cursus, ornare venenatis augue hendrerit. Praesent non elit
-                            metus. Morbi vel sodales ligula.
-                        </p>
-                        <p>
-                            this is part to display info from wikipedia
-                        </p>
+                        <img src="https://image.ibb.co/e6vOFQ/wikipedia.png" alt="Wikipedia Logo">
+                        <form class="form" action="javascript:void(0);">
+                            <div class="input-group">
+                              <input type="text" name="query" id="query" class="form-control input-lg" placeholder="Search">
+                              <br>
+                              <button type="button" type="submit" id="search">Go!</button>
+                              <button type="submit"onclick="window.location.href='http://en.wikipedia.org/wiki/Special:Random';">I'm feeling Lucky!</button>
+                            </div>
+                        </form>
+                       
+                        <div class="contentFromWiki  text-white" id="res">
+                        </div>
                     </div>
                 </section>
             </div>
         </div>
-
         <div class="row mt-10" id="secondPart">
             <div class="col">
                 <h4>
@@ -94,10 +75,7 @@
         </div>
     </div>
     </div>
-    
-    <script src="assets/jquery.slim.min.js"> </script>
-    <script src="assets/popper.min.js"></script>
     <script src="assets/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="assets/maptwo.js" async="async"></script> -->
 </body>
-
 </html>

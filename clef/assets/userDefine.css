@@ -1,0 +1,32 @@
+
+
+  secondpart{
+      margin:100px;
+  }
+
+    .col { overflow: auto;    }
+
+    body, html {
+      height: 100%;
+    }
+    
+  .myClef{
+    width: 90%;
+    padding: 20%;
+    border: 4px solid black;
+    margin: .5em auto;
+
+  }
+  .col{
+    font-family: "Arial", Times, serif;
+    color: white;
+  }
+  #resultdiv{
+    /* background-color:rgba(1, 152, 117,0.8); */
+    /* border-radius:5px; */
+    margin:5px;
+    padding:10px 20px;
+  }
+  #resultdiv a{
+    color:rgba(255,255,255,0.9);
+  }
