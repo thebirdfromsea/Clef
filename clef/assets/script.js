@@ -5,19 +5,21 @@
 
 
 $(document).ready(function() {
+  console.log("ready");
   $('.form').submit(function(){
     ('#res').html(" ");
     callInfoFromWiki();
     return false;
   });
 
-  $('#search').click(function(){
+  $('#wikisearch').click(function(){
     $('#res').html(" ");
     callInfoFromWiki();
   });
 
   function callInfoFromWiki(){
     var keyword = $('#query').val();
+    // var url = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + keyword + "&prop=info&inprop=url&utf8=&format=json"
     var url = "http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch="+keyword+"&callback=?"
     $.ajax({
       url:url,
@@ -25,7 +27,7 @@ $(document).ready(function() {
       dataType:'jsonp',
       success: function(result){
         var data = result.query.pages;
-        render(data);
+        display(data);
       },
       error:function(err){
         alert('Error occurs, please refresh the page');
@@ -33,11 +35,16 @@ $(document).ready(function() {
     });
   }
   
-  function render(data){
+  function display(data){
     var pageurl = "http://en.wikipedia.org/?curid=";
-    for(var i in data ){
-      $('#res').append("<div id='resultdiv'><a target='_blank' href='"+pageurl+data[i].pageid+"'><h3>"+data[i].title+"</h3><p>"+data[i].extract+"</p></a></div>");
-    }
+    // j = 0; 
+    // while(j < 5){
+      for(var i in data ){
+        $('#res').append("<div id='resultdiv'><a target='_blank' href='"+pageurl+data[i].pageid+"'><h3>"+data[i].title+"</h3><p>"+data[i].extract+"</p></a></div>");
+     
+      }
+    // }
+    
     }
 });
 
