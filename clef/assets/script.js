@@ -36,6 +36,10 @@ $(document).ready(function() {
   }
   
   function display(data){
+
+    // for (var i = 0; i <= 9; i++) {
+      // $("#res").append("<div class='result-list result-"   + i + "'>" + "<span class='result-title title-" + i + "'></span>" + "<br>" +"<span class='result-snippet snippet-" + i + "'></span>" + "<br>" + "<span class='result-metadata metadata-" + i + "'></span>" + "</div>" );
+    // }
     var pageurl = "http://en.wikipedia.org/?curid=";
     // j = 0; 
     // while(j < 5){
@@ -43,8 +47,8 @@ $(document).ready(function() {
         $('#res').append("<div id='resultdiv'><a target='_blank' href='"+pageurl+data[i].pageid+"'><h3>"+data[i].title+"</h3><p>"+data[i].extract+"</p></a></div>");
      
       }
-    // }
-    
     }
+  
+    // }
 });
 
