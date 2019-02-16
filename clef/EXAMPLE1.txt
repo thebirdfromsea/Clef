@@ -1,0 +1,8 @@
+Querying 'Audio Features' for a Track ID from Spotify API::
+
+
+Example 1:
+
+curl -X GET "https://api.spotify.com/v1/audio-features/?ids=4JpKVNYnVcJ8tuMKjAj50A,2NRANZE9UCmPAS5XVbXL40,24JygzOLM0EmRQeGtFcIcG" -H "Authorization: Bearer {your access token}"
+
+Output: output1.json
