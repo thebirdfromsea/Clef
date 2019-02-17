@@ -1,0 +1,24 @@
+How to query data from the Spotify API::
+
+First, we need to get a temporary Spotify access token.
+*(You can skip to #6 if you email me for our CODE).
+
+1. You will need our Spotify 'Client ID' and Client Secret ID 
+(email me or Christian, also text me at 985-991-4693).
+2. Go to https://www.base64encode.org/
+3. In the gray box at the top, enter 'client_id:client_secret'.
+4. Press the green 'ENCODE' button (CODE will pop up in the bottom gray box).
+5. You will now use this long code to query the access token from Spotify.
+
+*6. Select Window's Start menu and open 'Command Prompt'
+7. Type 'cd \windows\system32' (this will change your current directory). - If Mac, don't need to change 
+8. Copy and paste this command (with the CODE entered):
+curl -X "POST" -H "Authorization: Basic *CODE HERE*" -d grant_type=client_credentials https://accounts.spotify.com/api/token
+
+9. This will return the Access Token.
+10. Now you can make query commands by using the temporary access token.
+
+(TOKEN only lasts a few hours so you will have to run #8 every once in a while)(CODE never changes).
+
+
+

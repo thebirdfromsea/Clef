@@ -1,0 +1,34 @@
+If you need to configure anything on the database for some reason::
+
+Instructions for Amazon Relational Database (RDS):
+
+1. Sign into AWS (Amazon Web Services) under my email, timmysteudlein@gmail.com
+2. Email me for password (text me as well, 985-991-4693).
+3. At the top left, go to 'Services > Database > RDS'.
+4. On the left menu pane, select 'Databases'.
+5. Click on the name of our database, 'Clef-db'.
+
+
+DATABASE::
+
+Name:Clef-db
+Engine: MySQL
+**Endpoint: clef-db.ce2t4dtgkaam.us-east-2.rds.amazonaws.com
+**Port: 3306
+
+**These are what you need to connect to the database!
+
+
+Connecting to database through MySQL Workbench (in order to create tables and enter data)::
+
+1. Have MySQL Workbench downloade and open it.
+2. From the menu bar at the top, select 'Database > Manage Connections'.
+3. From the Manage Server Connections window, select 'New' in the bottom left corner.
+4. Name the 'Connection Name' whatever you feel like.
+5. Connection Method: Standard (TCP/IP).
+6. Hostname: clef-db.ce2t4dtgkaam.us-east-2.rds.amazonaws.com (database endpoint!)
+7. Username: tsteud1
+8. Password: Select 'Store in Vault'. Email me for password (text me as well, 985-991-4693).
+9. Press 'Test Connection' (should get a success message).
+10. Go back to the MySQL Workbench home screen and under 'MySQL Connections' you can just click on it to connect.
+
