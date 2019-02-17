@@ -7,13 +7,13 @@
 $(document).ready(function() {
   console.log("ready");
   $('.form').submit(function(){
-    ('#res').html(" ");
+    // ('#res').html(" ");
     callInfoFromWiki();
     return false;
   });
 
   $('#wikisearch').click(function(){
-    $('#res').html(" ");
+    // $('#res').html(" ");
     callInfoFromWiki();
   });
 
