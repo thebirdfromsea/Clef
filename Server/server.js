@@ -28,7 +28,7 @@ app.get('/callback', function(req, res) {
       grant_type: 'authorization_code'
     },
     headers: {
-      'Authorization': 'Basic ' + (new Buffer(
+      'Authorization': 'Basic ' + (Buffer.from(
         process.env.SPOTIFY_CLIENT_ID + ':' + process.env.SPOTIFY_CLIENT_SECRET
       ).toString('base64'))
     },
@@ -37,7 +37,7 @@ app.get('/callback', function(req, res) {
   request.post(authOptions, function(error, response, body) {
     var access_token = body.access_token
     let uri = process.env.FRONTEND_URI || 'http://localhost:3000'
-    res.redirect(uri + '?access_token=' + access_token)
+    res.redirect(uri + '/home' + '?access_token=' + access_token)
   })
 })
 
