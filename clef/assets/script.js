@@ -45,7 +45,6 @@ $(document).ready(function() {
     // while(j < 5){
       for(var i in data ){
         $('#res').append("<div id='resultdiv'><a target='_blank' href='"+pageurl+data[i].pageid+"'><h3>"+data[i].title+"</h3><p>"+data[i].extract+"</p></a></div>");
-     
       }
     }
   
