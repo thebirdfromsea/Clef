@@ -70,8 +70,8 @@
     }
 </style> 
 <body>
-    <div>
-    <h1 style="text-align: center; font-size: 500%; color: orange"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg" alt= "Clef Symbol" width="50" height="50"/> Clef <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg" alt="Clef Symbol" width="50" height="50"/></h1>
+    <div class="title">
+    <h1 style="text-align:center; font-size: 500%; color:orange"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg" alt= "Clef Symbol" width="50" height="50"/> Clef <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg" alt="Clef Symbol" width="50" height="50"/></h1>
     </div>
     <div class="container text-white"  > 
 
@@ -90,20 +90,19 @@
             <!-- <iframe style="background: transparent !important; position: absolute; left: 0px; top: 0px;" scrolling="no" frameborder="0" allowtransparency="true" width="100%" height="100%" src="//rf.revolvermaps.com/w/8/a/a2.php?i=5n0xniavbt0&amp;m=1&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=0"></iframe> -->
             <!-- <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5n0xniavbt0&amp;m=1&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=0" async="async"></script> -->
             <div class="col">
-                <section>
-                        <img src="https://image.ibb.co/e6vOFQ/wikipedia.png" alt="Wikipedia Logo">
-                        <form class="form" action="javascript:void(0);">
+                        
+                        <form class="form" id="searchBar" action="javascript:void(0);">
                             <div class="input-group">
                               <input type="text" name="query" id="query" class="form-control input-lg" placeholder="Search">
                               <!-- <br> -->
-                              <button type="submit" id="wikisearch">Go!</button>
-                              <button onclick="window.location.href='http://en.wikipedia.org/wiki/Special:Random';">I'm feeling Lucky!</button>
                             </div>
                         </form>
+                        <button type="submit" id="wikisearch">Go!</button>
+                        <img src="https://image.ibb.co/e6vOFQ/wikipedia.png" alt="Wikipedia Logo">
+                        <button onclick="window.location.href='http://en.wikipedia.org/wiki/Special:Random';">I'm feeling Lucky!</button>
                         <div class="contentFromWiki  text-white" id="res">
                         </div>
                     </div>
-                </section>
             </div>
         </div>
         <div class="row mt-10" id="secondPart">
