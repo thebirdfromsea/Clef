@@ -23,8 +23,52 @@
      <!-- <script src="/Users/Peng/Desktop/example/js/script.js"></script> -->
      <script src="assets/script.js"></script>
      <!-- <script src ="assets/Untitled-4.js"> </script> -->
+     <script>
+        function evalSlider(){
+            var sliderValue = document.getElementById('rating').value;
+            document.getElementById('sliderVal').innerHTML = sliderValue;
+        }
+     </script>
 
 </head>
+<style>
+    .button-play button {
+        width: 40px;
+        height: 40px;
+        border-style: solid;
+        border-width: 20px 0px 20px 40px;
+        box-sizing: border-box;
+        border-color: #333 #333 #333 #ffa500;  
+        background: #333 !important;
+        position: absolute;
+        left: 45%;
+        right: 45%;
+        bottom: 3%;
+    } 
+</style>  
+<style> 
+    .button-pause button{
+        width: 40px;
+        height: 40px;
+        border-style: double;
+        border-width: 0px 0px 0px 40px;
+        border-color: #ffa500;
+        background: #333 !important;
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        bottom: 3%; 
+    }
+</style> 
+<style>
+    .volume-slider{
+        position: absolute;
+        left: 30%;
+        right: 30%;
+        bottom: 3%;
+        color: #ffa500;
+    }
+</style> 
 <body>
 
     <div class="container text-white"  > 
@@ -82,6 +126,17 @@
     </div>
     <script src="assets/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="assets/maptwo.js" async="async"></script> -->
+    <div class = "button-play">
+        <button></button>
+    </div>
+    <div class ="button-pause">
+        <button></button>
+    </div>
+    <form action= "#" method="post" class= "volume-slider" >
+            Volume
+            <input type="range" id= "rating" min = "0" max = "100" onChange="evalSlider()"/>
+            <output id = "sliderVal" class="volume-slider"></output>
+    </form>
 
     
     
