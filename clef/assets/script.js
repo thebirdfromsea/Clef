@@ -7,13 +7,11 @@
 $(document).ready(function() {
   console.log("ready");
   $('.form').submit(function(){
-    // ('#res').html(" ");
     callInfoFromWiki();
     return false;
   });
 
   $('#wikisearch').click(function(){
-    // $('#res').html(" ");
     callInfoFromWiki();
   });
 
@@ -43,6 +41,5 @@ $(document).ready(function() {
         $('#res').append("<div id='resultdiv'><a href='"+urlForPage+dataFromWiki[i].pageid+"'><h3>"+dataFromWiki[i].title+"</h3><p>"+dataFromWiki[i].extract+"</p></a></div>");
       }
     }
-    // }
 });
 
