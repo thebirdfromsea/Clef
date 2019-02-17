@@ -26,8 +26,8 @@ $(document).ready(function() {
       type:'POST',
       dataType:'jsonp',
       success: function(result){
-        var data = result.query.pages;
-        display(data);
+        var dataFromWiki = result.query.pages;
+        display(dataFromWiki);
       },
       error:function(err){
         alert('Error occurs, please refresh the page');
@@ -35,19 +35,14 @@ $(document).ready(function() {
     });
   }
   
-  function display(data){
-
-    // for (var i = 0; i <= 9; i++) {
-      // $("#res").append("<div class='result-list result-"   + i + "'>" + "<span class='result-title title-" + i + "'></span>" + "<br>" +"<span class='result-snippet snippet-" + i + "'></span>" + "<br>" + "<span class='result-metadata metadata-" + i + "'></span>" + "</div>" );
-    // }
-    var pageurl = "http://en.wikipedia.org/?curid=";
+  function display(dataFromWiki){
+    var urlForPage = "http://en.wikipedia.org/?curid=";
     // j = 0; 
     // while(j < 5){
-      for(var i in data ){
-        $('#res').append("<div id='resultdiv'><a target='_blank' href='"+pageurl+data[i].pageid+"'><h3>"+data[i].title+"</h3><p>"+data[i].extract+"</p></a></div>");
+      for(var i in dataFromWiki){
+        $('#res').append("<div id='resultdiv'><a href='"+urlForPage+dataFromWiki[i].pageid+"'><h3>"+dataFromWiki[i].title+"</h3><p>"+dataFromWiki[i].extract+"</p></a></div>");
       }
     }
-  
     // }
 });
 
