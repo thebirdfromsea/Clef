@@ -8,7 +8,6 @@ $(document).ready(function() {
   console.log("ready");
   $('.form').submit(function(){
     callInfoFromWiki();
-    return false;
   });
 
   $('#wikisearch').click(function(){
