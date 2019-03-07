@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Title from './title';
 
 export default class Main extends Component {
     constructor() {
@@ -11,7 +12,7 @@ export default class Main extends Component {
     render() {
         return (
             <div className="App">
-             <h1> HELLO </h1>
+             <Title />
             </div>
         );
     }
