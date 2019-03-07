@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Title from './title';
+import Playbutton from './playbutton';
 
 export default class Main extends Component {
     constructor() {
@@ -13,6 +14,7 @@ export default class Main extends Component {
         return (
             <div className="App">
              <Title />
+             <Playbutton />
             </div>
         );
     }
