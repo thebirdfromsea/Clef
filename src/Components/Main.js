@@ -3,6 +3,7 @@ import Title from './title';
 import Playbutton from './playbutton';
 import Pausebutton from './pausebutton';
 import Songsearch from './songsearch';
+import Similarsongs from './similarsongs';
 
 export default class Main extends Component {
     constructor() {
@@ -15,10 +16,11 @@ export default class Main extends Component {
     render() {
         return (
             <div className="App">
-             <Title />
-             <Songsearch />
-             <Playbutton />
-             <Pausebutton />
+            <Title />
+            <Songsearch />
+            <Similarsongs/>
+            <Playbutton />
+            <Pausebutton />
             </div>
         );
     }
