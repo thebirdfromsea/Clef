@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Title from './title';
 import Playbutton from './playbutton';
+import Pausebutton from './pausebutton';
 
 export default class Main extends Component {
     constructor() {
@@ -15,6 +16,7 @@ export default class Main extends Component {
             <div className="App">
              <Title />
              <Playbutton />
+             <Pausebutton />
             </div>
         );
     }
