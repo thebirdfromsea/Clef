@@ -4,6 +4,7 @@ import Playbutton from './playbutton';
 import Pausebutton from './pausebutton';
 import Songsearch from './songsearch';
 import Similarsongs from './similarsongs';
+import Volumeslider from './volumeslider';
 
 export default class Main extends Component {
     constructor() {
@@ -19,6 +20,7 @@ export default class Main extends Component {
             <Title />
             <Songsearch />
             <Similarsongs/>
+            <Volumeslider />
             <Playbutton />
             <Pausebutton />
             </div>
