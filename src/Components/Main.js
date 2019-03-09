@@ -5,7 +5,7 @@ import Pausebutton from './pausebutton';
 import Songsearch from './songsearch';
 import Similarsongs from './similarsongs';
 import Volumeslider from './volumeslider';
-import Wiki from './Wiki';
+import Wiki from './wiki';
 export default class Main extends Component {
     constructor() {
         super();
