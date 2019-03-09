@@ -1,5 +1,24 @@
 import React, { Component } from 'react';
 
+const formatSimilar = {
+    fontSize: "30px",
+    textAlign: "left",
+    padding: "0",
+    marginTop: "50px",
+    marginLeft: "150px", 
+    color: "orange",
+}
+
+const formatMachineLearn = {
+    fontSize: "15px",
+    textAlign: "left",
+    marginBottom: "50px",
+    maginTop: "100px",
+    marginLeft: "130px",
+    color: "orange",
+}
+
+
 export default class Similarsongs extends Component {
     constructor() {
     super();
@@ -10,11 +29,11 @@ export default class Similarsongs extends Component {
 
     render() {
         return (
-            <div class="col">
-                <h4 align = "left">
+            <div>
+                <h4 style={formatSimilar}>
                     Similar songs
                 </h4>
-                <p align ="left">
+                <p style={formatMachineLearn}>
                     This part is for the machine learning
                 </p>
             </div>
