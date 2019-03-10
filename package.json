@@ -4,11 +4,15 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "create-react-app": "^2.1.8",
+    "material-ui-search-bar": "^1.0.0-beta.13",
     "query-string": "^6.2.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5"
+    "react-scripts": "^2.1.8",
+    "react-spotify-api": "^1.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
