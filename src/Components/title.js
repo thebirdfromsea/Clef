@@ -1,5 +1,26 @@
 import React, { Component } from 'react';
 
+const titleformat = {
+    textAlign: "center",
+    fontSize: "125px",
+    color: "orange",
+    borderColor: "orange",
+    marginTop: "0px",
+    marginBottom: "0px",
+    padding: "0px",
+}
+const hr = {
+    borderColor: "orange",
+    padding: "0px",
+    margin: "0px",
+}
+
+const clefimage = {
+    width: "50",
+    height: "50",
+    padding: "0",
+}
+
 export default class Title extends Component {
     constructor() {
     super();
@@ -11,10 +32,8 @@ export default class Title extends Component {
     render() {
         return (
         <div>
-            <div className="title">
-            <h1 style={{textAlign: 'center', fontSize: '500%', color: 'orange'}}><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg" alt="Clef Symbol" width={50} height={50} /> Clef <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg" alt="Clef Symbol" width={50} height={50} /></h1>
-            </div>
-            <hr style={{borderColor: 'orange'}} />
+            <h1 style={titleformat}><img src={"https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg"} alt="Clef Symbol" style={clefimage} /> Clef <img src={"https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg"} alt="Clef Symbol" style={clefimage} /></h1>
+            <hr style={hr} />
             </div>
             );
         }
