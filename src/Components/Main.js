@@ -6,6 +6,8 @@ import Songsearch from './songsearch';
 import Similarsongs from './similarsongs';
 import Volumeslider from './volumeslider';
 import Wiki from './wiki';
+// import backPic01 from './backPic01.png';
+// import background from './background';
 export default class Main extends Component {
     constructor() {
         super();
@@ -13,7 +15,13 @@ export default class Main extends Component {
     componentDidMount() {
 
     }
-
+    // let imgUrl = 'images/berlin.jpg'
+    // let styles = {
+    //     root: {
+    //         backgroundImage: 'url(' + imgUrl + ')',
+    //         backgroundSize: 'cover',
+    //         overflow: 'hidden',
+    //     },
     render() {
         return (
             <div className="App">
@@ -24,6 +32,7 @@ export default class Main extends Component {
             <Playbutton />
             <Pausebutton />
             <Wiki/>
+            {/* <background/> */}
             </div>
         );
     }
