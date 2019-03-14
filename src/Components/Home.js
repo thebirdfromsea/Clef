@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './header';
+import Usertopartists from './usertopartists';
 import ButtonTest from './buttontest';
 
 export default class Home extends Component {
@@ -14,7 +15,9 @@ export default class Home extends Component {
         return (
             <div className="App">
                 <Header />
-                <ButtonTest />
+               
+
+                <Usertopartists/>
             </div>
             );
     }

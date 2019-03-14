@@ -6,9 +6,6 @@ import { Artist } from 'react-spotify-api'
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-
-
-
 export default class Songsearch extends Component {
 
     constructor(props)
@@ -28,7 +25,8 @@ export default class Songsearch extends Component {
         this.setState({value: event.target.value,
                        display: 'defaultDisplay'
         }); 
-        console.log(this.state.value)
+       
+        console.log(this.state.value) ;
       }
 
     handleSubmit(event) {
@@ -62,13 +60,13 @@ export default class Songsearch extends Component {
               </label>
               <input type="submit" value="Submit" />
          </form>
-         <Search query= {this.state.value} album artist>
+         <Search query= {this.state.value} album artist track playlist>
             
             {(data, loading, error) =>
                  data ? (
                 <ul>
                     <li>Albums</li>
-                    <li>{this.state.value}</li>
+                   
                     <ul>
                         {data.albums.items.map(album => (
                             <li key={album.id}>{album.name}</li>
@@ -80,6 +78,13 @@ export default class Songsearch extends Component {
                             <li key={artist.id}>{artist.name}</li>
                         ))}
                     </ul>
+                    <li>Tracks</li>
+                    <ul>
+                        {data.tracks.items.map(track => (
+                            <li key={track.id}>{track.name}</li>
+                        ))}
+                    </ul>
+
                 </ul>
             ) : null
                 }
@@ -88,8 +93,6 @@ export default class Songsearch extends Component {
          
             </div>)
          
-            
-
 
         ); 
 
