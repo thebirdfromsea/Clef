@@ -5,6 +5,7 @@ import SearchBar from 'material-ui-search-bar';
 import { Artist } from 'react-spotify-api'
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { Grid } from '@material-ui/core';
 
 export default class Songsearch extends Component {
 
@@ -65,25 +66,55 @@ export default class Songsearch extends Component {
             {(data, loading, error) =>
                  data ? (
                 <ul>
-                    <li>Albums</li>
+                    <h1>Albums</h1>
                    
                     <ul>
                         {data.albums.items.map(album => (
-                            <li key={album.id}>{album.name}</li>
+                            <div>
+                            <h2 key={album.id}>
+                            
+                            <a href = {album.external_urls.spotify}>
+                                    <img src =  {album.images[2].url}/> 
+                                    {album.name}
+                            </a>
+                            </h2>
+                            
+                            </div>
                         ))}
+                        
                     </ul>
-                    <li>Artists</li>
+                    <h1>Artists</h1>
                     <ul>
                         {data.artists.items.map(artist => (
-                            <li key={artist.id}>{artist.name}</li>
+                            <div>
+                            <h2 key={artist.id}>
+                            
+                            <a href = {artist.external_urls.spotify}>
+                                    <img src =  {artist.images[2].url}/> 
+                                    {artist.name}
+                            </a>
+                            </h2>
+                            
+                            </div>
                         ))}
+                        
                     </ul>
-                    <li>Tracks</li>
+                    <h1>Tracks</h1>
                     <ul>
                         {data.tracks.items.map(track => (
-                            <li key={track.id}>{track.name}</li>
+                            <div>
+                            <h2 key={track.id}>
+                            
+                            <a href = {track.external_urls.spotify}>
+                                   
+                                    {track.name}
+                            </a>
+                            </h2>
+                            
+                            </div>
                         ))}
                     </ul>
+                   
 
                 </ul>
             ) : null
