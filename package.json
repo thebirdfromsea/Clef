@@ -14,7 +14,9 @@
     "react-form": "^3.5.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8",
-    "react-spotify-api": "^1.5.1"
+    "react-spotify-api": "^1.5.1",
+    "save": "^2.3.3",
+    "spotify-web-api-js": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
