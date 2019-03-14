@@ -14,6 +14,8 @@ export default class Utop extends React.Component{
                         <div>
                               <h1 key={artist.id}>{artist.name}</h1>
                               <img src =  {artist.images[1].url}/> 
+                              <p>Genres : {artist.genres[0]}, {artist.genres[1]} </p>
+                              <p>Popularity Rating: {artist.popularity}</p>
                         </div>
                     ))
                 ) : null
