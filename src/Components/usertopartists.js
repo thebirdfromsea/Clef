@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { UserTop } from 'react-spotify-api'
-
+import { ArtistRelated } from 'react-spotify-api'; 
+import { TrackAnalysis } from 'react-spotify-api'
 
 export default class Utop extends React.Component{
     render(){
@@ -22,7 +23,9 @@ export default class Utop extends React.Component{
                 ) : null
             }
         </UserTop>
-
+       
+      
+      
         </div>
     )
     }

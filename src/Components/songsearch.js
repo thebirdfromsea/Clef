@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Search } from 'react-spotify-api';
+import { ArtistRelated } from 'react-spotify-api'; 
 import { Form, Text, TextArea, Radio, RadioGroup, Select, Checkbox } from 'react-form';
 import SearchBar from 'material-ui-search-bar';
 import { Artist } from 'react-spotify-api'
@@ -95,7 +96,9 @@ export default class Songsearch extends Component {
                             <a href = {album.external_urls.spotify}>
                                     <img src =  {album.images[2] ? album.images[2].url: null}/> 
                                     {album.name}
+                                    
                             </a>
+                            
                             </h2>
                             </div>
                         ))}
@@ -110,7 +113,9 @@ export default class Songsearch extends Component {
                             <a href = {artist.external_urls.spotify}> 
                                     <img src = {artist.images[2] ? artist.images[2].url : null}/> 
                                     {artist.name}
+                                  
                             </a>
+                            
                             </h2>
                             </div>
                         ))}
@@ -123,13 +128,22 @@ export default class Songsearch extends Component {
                             <h2 key={track.id}>
                             
                             <a href = {track.external_urls.spotify}>
-                                   
-                                    {track.name}
-                                
-                                  
+                                      {track.name} 
                             </a>
                             </h2>
-                            
+                            <h2>Track Analysis:</h2> <TrackAnalysis id= {track.id}>
+                                    {(analysis, loading, error) => (
+                                        analysis ? (
+                                            <div>
+                                                <h3> Duration : {analysis.track.duration/60.00} minutes</h3>
+                                                <h3> Tempo : {analysis.track.tempo} </h3>
+                                                <h3> Loudness : {analysis.track.loudness} </h3>
+                                                <h3> Time Signature : {analysis.track.time_signature} </h3>
+                                                
+                                            </div>     
+                                        ) : null
+                                    )}
+                                </TrackAnalysis>
                             </div>
                         ))}
                     </ul>
