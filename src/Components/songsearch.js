@@ -6,6 +6,10 @@ import { Artist } from 'react-spotify-api'
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Grid } from '@material-ui/core';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import { TrackAnalysis } from 'react-spotify-api'
 
 export default class Songsearch extends Component {
 
@@ -13,9 +17,17 @@ export default class Songsearch extends Component {
     {
         super(props)
         this.state = {
-            value : '  ',
-            display : 'defaultDisplay'
+            value : '',
+            display : 'defaultDisplay',
+            searchProps : {
+                market: 'US' ,
+                limit : 5 ,
+                offset: 0 ,
+                include_external: ' '
+              
+            }
       };
+     
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -36,6 +48,7 @@ export default class Songsearch extends Component {
         console.log(this.state.display) ;
     }
     
+
  
     render() {
         return (
@@ -61,24 +74,29 @@ export default class Songsearch extends Component {
               </label>
               <input type="submit" value="Submit" />
          </form>
-         <Search query= {this.state.value} album artist track playlist>
+        
+         <Search query= {this.state.value} album artist track options= {this.state.searchProps}>
             
-            {(data, loading, error) =>
+            {
+               
+                (data, loading, error) =>
+                
                  data ? (
                 <ul>
                     <h1>Albums</h1>
                    
                     <ul>
-                        {data.albums.items.map(album => (
+
+                        {
+                            data.albums.items.map(album => (
                             <div>
                             <h2 key={album.id}>
                             
                             <a href = {album.external_urls.spotify}>
-                                    <img src =  {album.images[2].url}/> 
+                                    <img src =  {album.images[2] ? album.images[2].url: null}/> 
                                     {album.name}
                             </a>
                             </h2>
-                            
                             </div>
                         ))}
                         
@@ -89,12 +107,11 @@ export default class Songsearch extends Component {
                             <div>
                             <h2 key={artist.id}>
                             
-                            <a href = {artist.external_urls.spotify}>
-                                    <img src =  {artist.images[2].url}/> 
+                            <a href = {artist.external_urls.spotify}> 
+                                    <img src = {artist.images[2] ? artist.images[2].url : null}/> 
                                     {artist.name}
                             </a>
                             </h2>
-                            
                             </div>
                         ))}
                         
@@ -108,15 +125,18 @@ export default class Songsearch extends Component {
                             <a href = {track.external_urls.spotify}>
                                    
                                     {track.name}
+                                
+                                  
                             </a>
                             </h2>
                             
                             </div>
                         ))}
                     </ul>
-                   
-
+                  
                 </ul>
+
+                
             ) : null
                 }
             </Search> 
@@ -124,7 +144,7 @@ export default class Songsearch extends Component {
          
             </div>)
          
-
+            
         ); 
 
             
