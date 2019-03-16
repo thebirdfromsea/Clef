@@ -11,6 +11,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import { TrackAnalysis } from 'react-spotify-api'
+import { TrackFeatures} from 'react-spotify-api'
 
 export default class Songsearch extends Component {
 
@@ -125,13 +126,15 @@ export default class Songsearch extends Component {
                     <ul>
                         {data.tracks.items.map(track => (
                             <div>
+                            <div>
                             <h2 key={track.id}>
                             
                             <a href = {track.external_urls.spotify}>
                                       {track.name} 
                             </a>
                             </h2>
-                            <h2>Track Analysis:</h2> <TrackAnalysis id= {track.id}>
+                            <h2>Track Analysis:</h2> 
+                            <TrackAnalysis id= {track.id}>
                                     {(analysis, loading, error) => (
                                         analysis ? (
                                             <div>
@@ -143,7 +146,23 @@ export default class Songsearch extends Component {
                                             </div>     
                                         ) : null
                                     )}
-                                </TrackAnalysis>
+                            </TrackAnalysis>
+                            </div>
+                            <div>
+                                <h2>Track Features:</h2>
+                                 <TrackFeatures id= {track.id}>
+                                 {(features, loading, error) => (
+                                        features ? (
+                                            <div>
+                                                <h3> Acousticness : {features.acousticness} </h3>
+                                                <h3> Danceability : {features.danceability} </h3>
+                                                <h3> Energy : {features.energy} </h3>
+                                                <h3> Loudness : {features.loudness}</h3>
+                                            </div>     
+                                        ) : null
+                                    )}      
+                                    </TrackFeatures>    
+                            </div>
                             </div>
                         ))}
                     </ul>
