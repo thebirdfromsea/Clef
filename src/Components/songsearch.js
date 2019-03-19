@@ -12,9 +12,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import { TrackAnalysis } from 'react-spotify-api'
 import { TrackFeatures} from 'react-spotify-api'
+import { BrowseRecommendations } from 'react-spotify-api'
 
-
-function displayItem(item){
+function displayArtist(item){
     return( <div>
         <h2 key={item.id}>
         
@@ -25,8 +25,55 @@ function displayItem(item){
         </a>
         
         </h2>
-        </div>)
+
+        <div>
+            {displayRecommendations(item)}
+         </div>
+
+         </div>
+        )
 }
+
+function displayAlbum(item){
+    return( <div>
+        <h2 key={item.id}>
+        
+            <a href = {item.external_urls.spotify}> 
+                    <img src = {item.images[2] ? item.images[2].url : null}/> 
+                    {item.name}
+                
+            </a>
+        
+        </h2>
+
+         </div>
+        )
+}
+
+function displayRecommendations(item){
+    return(
+        <div>
+            <h2>Recommended songs : </h2>
+            <BrowseRecommendations options={{ seed_artists: item.id  ,
+                min_popularity: 50 , 
+                target_energy : .8, 
+                }}>
+                {
+                    (recommendations, loading, error) => (
+                    recommendations ? (
+                    recommendations.tracks.map(track => (
+                    <h3 key={track.id}>{track.name}</h3>
+                ))
+            ) : null
+            )
+            }</BrowseRecommendations>
+
+        </div>
+        
+        )
+    
+}
+
 
 function displayTrackFeatures(track){
     return( <div>
@@ -70,6 +117,8 @@ function displayTrackFeatures(track){
         </div>)
 
 }
+
+
 export default class Songsearch extends Component {
 
     constructor(props)
@@ -137,6 +186,7 @@ export default class Songsearch extends Component {
          <Search query= {this.state.value} album artist track options= {this.state.searchProps}>
             
             {
+                
                
                 (data, loading, error) =>
                 
@@ -146,15 +196,15 @@ export default class Songsearch extends Component {
                     <ul>
                         {
                             data.albums.items.map(album => (
-                                displayItem(album)
-                        ))}
+                                displayAlbum(album) 
+                            ))}
                         
                     </ul>
 
                     <h1>Artists</h1>
                     <ul>
                         {data.artists.items.map(artist => (
-                              displayItem(artist) 
+                              displayArtist(artist)
                         ))}
                         
                     </ul>
@@ -164,13 +214,16 @@ export default class Songsearch extends Component {
                            displayTrackFeatures(track)
                         ))}
                     </ul>
+             
+
+                    <ul>
+                        
+                    </ul>
                   
                 </ul>
             ) : null
                 }
             </Search> 
-
-         
             </div>)
          
             
