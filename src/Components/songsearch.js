@@ -13,6 +13,63 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import { TrackAnalysis } from 'react-spotify-api'
 import { TrackFeatures} from 'react-spotify-api'
 
+
+function displayItem(item){
+    return( <div>
+        <h2 key={item.id}>
+        
+        <a href = {item.external_urls.spotify}> 
+                <img src = {item.images[2] ? item.images[2].url : null}/> 
+                {item.name}
+              
+        </a>
+        
+        </h2>
+        </div>)
+}
+
+function displayTrackFeatures(track){
+    return( <div>
+        <div>
+        <h2 key={track.id}>
+        
+        <a href = {track.external_urls.spotify}>
+                  {track.name} 
+        </a>
+        </h2>
+        <h2>Track Analysis:</h2> 
+        <TrackAnalysis id= {track.id}>
+                {(analysis, loading, error) => (
+                    analysis ? (
+                        <div>
+                            <h3> Duration : {analysis.track.duration/60.00} minutes</h3>
+                            <h3> Tempo : {analysis.track.tempo} </h3>
+                            <h3> Loudness : {analysis.track.loudness} </h3>
+                            <h3> Time Signature : {analysis.track.time_signature} </h3>
+                            
+                        </div>     
+                    ) : null
+                )}
+        </TrackAnalysis>
+        </div>
+        <div>
+            <h2>Track Features:</h2>
+             <TrackFeatures id= {track.id}>
+             {(features, loading, error) => (
+                    features ? (
+                        <div>
+                            <h3> Acousticness : {features.acousticness} </h3>
+                            <h3> Danceability : {features.danceability} </h3>
+                            <h3> Energy : {features.energy} </h3>
+                            <h3> Loudness : {features.loudness}</h3>
+                        </div>     
+                    ) : null
+                )}      
+                </TrackFeatures>    
+        </div>
+        </div>)
+
+}
 export default class Songsearch extends Component {
 
     constructor(props)
@@ -86,90 +143,29 @@ export default class Songsearch extends Component {
                  data ? (
                 <ul>
                     <h1>Albums</h1>
-                   
                     <ul>
-
                         {
                             data.albums.items.map(album => (
-                            <div>
-                            <h2 key={album.id}>
-                            
-                            <a href = {album.external_urls.spotify}>
-                                    <img src =  {album.images[2] ? album.images[2].url: null}/> 
-                                    {album.name}
-                                    
-                            </a>
-                            
-                            </h2>
-                            </div>
+                                displayItem(album)
                         ))}
                         
                     </ul>
+
                     <h1>Artists</h1>
                     <ul>
                         {data.artists.items.map(artist => (
-                            <div>
-                            <h2 key={artist.id}>
-                            
-                            <a href = {artist.external_urls.spotify}> 
-                                    <img src = {artist.images[2] ? artist.images[2].url : null}/> 
-                                    {artist.name}
-                                  
-                            </a>
-                            
-                            </h2>
-                            </div>
+                              displayItem(artist) 
                         ))}
                         
                     </ul>
                     <h1>Tracks</h1>
                     <ul>
                         {data.tracks.items.map(track => (
-                            <div>
-                            <div>
-                            <h2 key={track.id}>
-                            
-                            <a href = {track.external_urls.spotify}>
-                                      {track.name} 
-                            </a>
-                            </h2>
-                            <h2>Track Analysis:</h2> 
-                            <TrackAnalysis id= {track.id}>
-                                    {(analysis, loading, error) => (
-                                        analysis ? (
-                                            <div>
-                                                <h3> Duration : {analysis.track.duration/60.00} minutes</h3>
-                                                <h3> Tempo : {analysis.track.tempo} </h3>
-                                                <h3> Loudness : {analysis.track.loudness} </h3>
-                                                <h3> Time Signature : {analysis.track.time_signature} </h3>
-                                                
-                                            </div>     
-                                        ) : null
-                                    )}
-                            </TrackAnalysis>
-                            </div>
-                            <div>
-                                <h2>Track Features:</h2>
-                                 <TrackFeatures id= {track.id}>
-                                 {(features, loading, error) => (
-                                        features ? (
-                                            <div>
-                                                <h3> Acousticness : {features.acousticness} </h3>
-                                                <h3> Danceability : {features.danceability} </h3>
-                                                <h3> Energy : {features.energy} </h3>
-                                                <h3> Loudness : {features.loudness}</h3>
-                                            </div>     
-                                        ) : null
-                                    )}      
-                                    </TrackFeatures>    
-                            </div>
-                            </div>
+                           displayTrackFeatures(track)
                         ))}
                     </ul>
                   
                 </ul>
-
-                
             ) : null
                 }
             </Search> 
