@@ -27,12 +27,12 @@ export default class Main extends Component {
             <div className="App">
             <Title />
             <Songsearch />
-            <Similarsongs/>
+            {/* <Similarsongs/>
             <Volumeslider />
             <Playbutton />
             <Pausebutton />
-            <Wiki/>
-            {/* <background/> */}
+            <Wiki/> */}
+          
             </div>
         );
     }

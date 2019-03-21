@@ -5,30 +5,43 @@ import { Form, Text, TextArea, Radio, RadioGroup, Select, Checkbox } from 'react
 import SearchBar from 'material-ui-search-bar';
 import { Artist } from 'react-spotify-api'
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { Grid } from '@material-ui/core';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+
 import { TrackAnalysis } from 'react-spotify-api'
 import { TrackFeatures} from 'react-spotify-api'
 import { BrowseRecommendations } from 'react-spotify-api'
+import { withStyles } from '@material-ui/core/styles';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import { ListItemAvatar, Typography } from '@material-ui/core';
+
 
 function displayArtist(item){
     return( <div>
-        <h2 key={item.id}>
+         <ListItem 
+         button 
+         divider
+         key={item.id}  
+         component = "a" 
+         href = {item.external_urls.spotify} target = "_blank"
         
-        <a href = {item.external_urls.spotify}> 
-                <img src = {item.images[2] ? item.images[2].url : null}/> 
+          >
+                <img src = {item.images[2] ? item.images[2].url : null}/>
+            
+            <Typography variant = "h5">
                 {item.name}
+            </Typography>
+                
               
-        </a>
-        
-        </h2>
+        </ListItem>
 
-        <div>
-            {displayRecommendations(item)}
-         </div>
+        <List>
+        {displayRecommendations(item)}
+        </List>
+            
+         
 
          </div>
         )
@@ -36,15 +49,13 @@ function displayArtist(item){
 
 function displayAlbum(item){
     return( <div>
-        <h2 key={item.id}>
-        
-            <a href = {item.external_urls.spotify}> 
-                    <img src = {item.images[2] ? item.images[2].url : null}/> 
-                    {item.name}
-                
-            </a>
-        
-        </h2>
+        <ListItem button divider key={item.id}  component = "a" href = {item.external_urls.spotify} target = "_blank">
+                    <img src = {item.images[2] ? item.images[2].url : null}/>
+                    <Typography variant = "h5">
+                        {item.name}
+                    </Typography>
+
+        </ListItem>
 
          </div>
         )
@@ -57,14 +68,17 @@ function displayRecommendations(item){
             <BrowseRecommendations options={{ seed_artists: item.id  ,
                 min_popularity: 50 , 
                 target_energy : .8, 
+                limit: 5
                 }}>
                 {
                     (recommendations, loading, error) => (
                     recommendations ? (
                     recommendations.tracks.map(track => (
-                    <h3 key={track.id}>{track.name}</h3>
+                    <ListItem button divider key={track.id}>
+                    <img src = {track.album.images[0] ? track.album.images[2].url : null}/>
+                    {track.name}</ListItem>
                 ))
-            ) : null
+            ) : <ListItem divider> None available</ListItem>
             )
             }</BrowseRecommendations>
 
@@ -136,58 +150,42 @@ export default class Songsearch extends Component {
             }
       };
      
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+
     }
   
- 
-    handleChange(event) {
-        event.preventDefault() ;
-        this.setState({value: event.target.value,
-                       display: 'defaultDisplay'
-        }); 
-       
-        console.log(this.state.value) ;
-      }
 
-    handleSubmit(event) {
-        event.preventDefault(); 
-        this.setState({display : 'loadDisplay'}) ; 
-        console.log(this.state.display) ;
-    }
-    
 
  
     render() {
         return (
             this.state.display == 'defaultDisplay'? (
             <div> 
-           <form onSubmit={this.handleSubmit}>
-                <label>
-                Name:
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-           </form>
-           
+             <SearchBar
+                onChange={(value)=> this.setState({value: value})}
+                onRequestSearch={()=> this.setState({display:'loadDisplay'})}
+                style={{
+                    margin: '0 auto',
+                    maxWidth: 600
+                }}
+             />
             </div>
          ) : 
 
          (
         <div> 
-         <form onSubmit={this.handleSubmit}>
-              <label>
-              Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-              </label>
-              <input type="submit" value="Submit" />
-         </form>
-        
+        <SearchBar
+            onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
+            onRequestSearch={()=> this.setState({display:'loadDisplay'})}
+            style={{
+                margin: '0 auto',
+                maxWidth: 600
+            }
+            }
+
+        />
          <Search query= {this.state.value} album artist track options= {this.state.searchProps}>
             
             {
-                
-               
                 (data, loading, error) =>
                 
                  data ? (
@@ -196,7 +194,7 @@ export default class Songsearch extends Component {
                     <ul>
                         {
                             data.albums.items.map(album => (
-                                displayAlbum(album) 
+                                 displayAlbum(album) 
                             ))}
                         
                     </ul>
@@ -206,8 +204,8 @@ export default class Songsearch extends Component {
                         {data.artists.items.map(artist => (
                               displayArtist(artist)
                         ))}
-                        
                     </ul>
+
                     <h1>Tracks</h1>
                     <ul>
                         {data.tracks.items.map(track => (
@@ -228,9 +226,7 @@ export default class Songsearch extends Component {
          
             
         ); 
-
-            
-   /*     <div className="col" id="songSearch">
+          /*     <div className="col" id="songSearch">
         <h4 style={formatSearch}>
             Songs search
             </h4>
@@ -240,5 +236,5 @@ export default class Songsearch extends Component {
                 </div>
             }
     */
-        }
+    }
  }
