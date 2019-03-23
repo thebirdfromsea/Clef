@@ -6,12 +6,16 @@ import Songsearch from './songsearch';
 import Similarsongs from './similarsongs';
 import Volumeslider from './volumeslider';
 import Wiki from './wiki';
+import  Chart from './chart' ; 
+
 // import backPic01 from './backPic01.png';
 // import background from './background';
+  
 export default class Main extends Component {
     constructor() {
         super();
     }
+    
     componentDidMount() {
 
     }
@@ -27,6 +31,7 @@ export default class Main extends Component {
             <div className="App">
             <Title />
             <Songsearch />
+          
             {/* <Similarsongs/>
             <Volumeslider />
             <Playbutton />
