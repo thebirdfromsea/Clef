@@ -14,10 +14,16 @@ import Slider from './Slider';
 // import backPic01 from './backPic01.png';
 // import background from './background';
 
+import  Chart from './chart' ; 
+
+// import backPic01 from './backPic01.png';
+// import background from './background';
+  
 export default class Main extends Component {
     constructor() {
         super();
     }
+    
     componentDidMount() {
 
     }
@@ -33,7 +39,8 @@ export default class Main extends Component {
             <div className="App">
             <Title />
             <Songsearch />
-            <Similarsongs/>
+          
+            {/* <Similarsongs/>
             <Volumeslider />
             <Playbutton />
             <Pausebutton />
@@ -42,6 +49,8 @@ export default class Main extends Component {
             {/* <VideoSlides/> */}
             <Slider/>
             {/* <background/> */}
+            <Wiki/> */}
+          
             </div>
         );
     }
