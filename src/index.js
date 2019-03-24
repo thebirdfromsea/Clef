@@ -6,6 +6,10 @@ import * as serviceWorker from './serviceWorker';
 import { SpotifyApiContext } from 'react-spotify-api';
 import queryString from 'query-string';
 
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
+
 let parsed = queryString.parse(window.location.search);
 let accessToken = parsed.access_token;
 

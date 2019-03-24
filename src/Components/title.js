@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import backPic01 from '../backPic01.png';
 import backPic02 from '../backPic02.jpg';
+
 const titleformat = {
     textAlign: "center",
     fontSize: "125px",

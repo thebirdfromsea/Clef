@@ -6,8 +6,14 @@ import Songsearch from './songsearch';
 import Similarsongs from './similarsongs';
 import Volumeslider from './volumeslider';
 import Wiki from './wiki';
+
+import Slidesshow from './slidesshow';
+import Slider from './Slider';
+// impoer P from './videoSlides';
+// import ImageSlides from './imageSlides';
 // import backPic01 from './backPic01.png';
 // import background from './background';
+
 export default class Main extends Component {
     constructor() {
         super();
@@ -32,6 +38,9 @@ export default class Main extends Component {
             <Playbutton />
             <Pausebutton />
             <Wiki/>
+            <Slidesshow/>
+            {/* <VideoSlides/> */}
+            <Slider/>
             {/* <background/> */}
             </div>
         );
