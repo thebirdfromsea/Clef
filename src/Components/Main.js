@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Title from './title';
-import Playbutton from './playbutton';
-import Pausebutton from './pausebutton';
+// import Playbutton from './playbutton';
+// import Pausebutton from './pausebutton';
 import Songsearch from './songsearch';
-import Similarsongs from './similarsongs';
-import Volumeslider from './volumeslider';
+// import Similarsongs from './similarsongs';
+// import Volumeslider from './volumeslider';
 import Wiki from './wiki';
 
 import Slidesshow from './slidesshow';
-import Slider from './Slider';
-// impoer P from './videoSlides';
+// import Slider from './Slider';
+// // impoer P from './videoSlides';
 // import ImageSlides from './imageSlides';
 // import backPic01 from './backPic01.png';
 // import background from './background';
@@ -39,18 +39,18 @@ export default class Main extends Component {
             <div className="App">
             <Title />
             <Songsearch />
-          
+            <Slidesshow/>
             {/* <Similarsongs/>
             <Volumeslider />
             <Playbutton />
             <Pausebutton />
             <Wiki/>
-            <Slidesshow/>
+           
             {/* <VideoSlides/> */}
-            <Slider/>
+            {/* <Slider/> */}
             {/* <background/> */}
             <Wiki/> */}
-          
+          <Chart/>
             </div>
         );
     }
