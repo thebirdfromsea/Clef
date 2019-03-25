@@ -18,12 +18,16 @@ import Divider from '@material-ui/core/Divider';
 import { ListItemAvatar, Typography } from '@material-ui/core';
 import { Avatar } from 'material-ui';
 import Chart from './chart'
+import ScatterPlot from './scatterChart'
+import fillGraphData from './graphdata'
 
 export default class Songsearch extends Component {
-
+    
+    
     constructor(props)
     {
         super(props)
+        var speed = 0
         this.state = {
             value : '',
             display : 'defaultDisplay',
@@ -38,7 +42,7 @@ export default class Songsearch extends Component {
      
 
     }
-  
+    
     displayArtist(item){
         return( <div>
              <ListItem 
@@ -92,7 +96,7 @@ export default class Songsearch extends Component {
                 <BrowseRecommendations options={{ seed_artists: item.id  ,
                     min_popularity: 50 , 
                     target_energy : .8, 
-                    limit: 5
+                    limit: 5,
                     }}>
                     {
                         (recommendations, loading, error) => (
@@ -111,15 +115,37 @@ export default class Songsearch extends Component {
         
     }
 
-    displayTrackFeatures(track){
+    // fillData(item){
+    //     var i = 0
+    //     while (item.bars.start <=30 && i < item.bars.length && i < item.beats.length)
+    //     {
+           
+    //         analysisGraphData[i] = {x: item.bars.start, y: item.track.duration / item.bars.length }
+    //         analysisGraphData2[i] = {x: item.beats.start, y: item.track.duration / item.bars.length}
 
+    //         i++
+    //     }
+    // }
+    
+    displayTrackFeatures(track){
+       
+        const ticks = [
+            5,10,15,20,25,30
+        ]
         const analysisGraphData = [
 
+        ]
+
+        const analysisGraphData2 = [
+
+        ]
+
+        const analysisGraphData3 = [
 
 
         ]
 
-
+       
         const featuresGraphData = [
             {
                 name: 'Acousticness', number : 0
@@ -131,11 +157,7 @@ export default class Songsearch extends Component {
                 name: 'Energy', number: 0
               },
               
-             
-            ]
-        
-
-
+        ]       
         return( 
         <div>
             <div>
@@ -147,19 +169,34 @@ export default class Songsearch extends Component {
             </h2>
             <h2>Track Analysis:</h2> 
             <TrackAnalysis id= {track.id}>
-                    {(analysis, loading, error) => (
-                        analysis ? (
 
-                            analysisGraphData[0] = 
-                           
+                    {
+                    (analysis, loading, error) => (
+                        analysis ? (
+                            fillGraphData(analysis.track.duration, analysis.bars.length , analysis.bars, analysisGraphData)
+                            ,   
+                            fillGraphData(analysis.track.duration, analysis.beats.length , analysis.beats, analysisGraphData2), 
+
+                            fillGraphData(analysis.track.duration, analysis.tatums.length , analysis.tatums, analysisGraphData3)
+                           ,
+
                             <div>
+                                <ScatterPlot data = {analysisGraphData} data2 = {analysisGraphData2} data3 = {analysisGraphData3} ticks = {ticks}/>
                                 <h3> Duration : {analysis.track.duration/60.00} minutes</h3>
                                 <h3> Tempo : {analysis.track.tempo} </h3>
-                                <h3> Loudness : {analysis.track.loudness} </h3>
-                                <h3> Time Signature : {analysis.track.time_signature} </h3>
+                                <h3> Start : {analysis.bars[0].start} </h3>
+                                <h3> Start of bar 2: {analysis.bars[1].start}</h3>
+                                <h3> Bars: {analysis.bars.length}</h3>
+                                <h3> Beats : {analysis.beats.length}</h3>
+                                <h3> Beats per Bar : {analysis.beats.length / analysis.bars.length}</h3>
+                                <h3> Sections : {analysis.sections.length}</h3>
+                                <h3> Segments : {analysis.segments.length} </h3>
+                                <h3> Tatums :    {analysis.tatums.length} </h3>
+                                <div>
+                             
+                            </div>   
                             </div>
-                               
-                        ) : null
+                                                    ) : null
                     )}
             </TrackAnalysis>
             </div>
