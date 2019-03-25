@@ -115,17 +115,6 @@ export default class Songsearch extends Component {
         
     }
 
-    // fillData(item){
-    //     var i = 0
-    //     while (item.bars.start <=30 && i < item.bars.length && i < item.beats.length)
-    //     {
-           
-    //         analysisGraphData[i] = {x: item.bars.start, y: item.track.duration / item.bars.length }
-    //         analysisGraphData2[i] = {x: item.beats.start, y: item.track.duration / item.bars.length}
-
-    //         i++
-    //     }
-    // }
     
     displayTrackFeatures(track){
        
