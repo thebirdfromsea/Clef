@@ -21,7 +21,7 @@ export default class ScatterPlot extends React.Component{
         
 
         <CartesianGrid />
-        <XAxis type="number" dataKey="x" name="time" unit="sec"  domain = {[0, 30]} ticks = {this.props.ticks}/>
+        <XAxis type="number" dataKey="x" name="time" unit="beats / sec"  domain = {[0, 30]} ticks = {this.props.ticks}/>
         <YAxis type="number" dataKey="y" name="speed" unit="sec" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
         <Scatter name="A school" data ={this.props.data} fill="#8884d8"/>
