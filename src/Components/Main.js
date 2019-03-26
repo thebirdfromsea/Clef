@@ -6,7 +6,6 @@ import Songsearch from './songsearch';
 // import Similarsongs from './similarsongs';
 // import Volumeslider from './volumeslider';
 import Wiki from './wiki';
-
 import Slidesshow from './slidesshow';
 // import Slider from './Slider';
 // // impoer P from './videoSlides';
@@ -15,7 +14,9 @@ import Slidesshow from './slidesshow';
 // import background from './background';
 
 import  Chart from './chart' ; 
-
+// import  Par from './par' ; 
+import  Ap from './par' ; 
+import EnergySlider from './energySlider';
 // import backPic01 from './backPic01.png';
 // import background from './background';
 
@@ -43,16 +44,20 @@ export default class Main extends Component {
 			<PlayBackWidget />
             <Songsearch />
             <Slidesshow/>
+            <Wiki /> 
+            <EnergySlider/>
+            <Chart/>
+            <Ap/>
+
             {/* <Similarsongs/>
             <Volumeslider />
             <Playbutton />
             <Pausebutton />
             <Wiki/>
-           
             {/* <VideoSlides/> */}
             {/* <Slider/> */}
             {/* <background/> */}
-            <Wiki/> */}
+            {/* <Par/> */}
             </div>
         );
     }
