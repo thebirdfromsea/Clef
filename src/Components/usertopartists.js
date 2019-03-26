@@ -19,7 +19,7 @@ export default class Utop extends React.Component{
                  artists ? (
                      artists.items.map(artist => (
                      <Card className="d-inline-block" style={{width: "20rem", height: "32rem", backgroundColor: "orange"}}>
-                     <CardActionArea>
+                        
                          <p><img src={artist.images[1].url} alt = {artist.name}/></p>
                          <CardContent>
                              <Typography>
@@ -30,7 +30,7 @@ export default class Utop extends React.Component{
                              Popularity Rating: {artist.popularity}
                              </Typography>
                         </CardContent>
-                    </CardActionArea>
+                    
                     </Card>
                     ))
                     ) : null
