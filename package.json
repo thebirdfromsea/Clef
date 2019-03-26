@@ -15,6 +15,7 @@
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.8.1",
     "react-form": "^3.5.7",
+    "react-particles-js": "^2.4.0",
     "react-responsive-carousel": "^3.1.47",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8",
