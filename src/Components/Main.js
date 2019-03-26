@@ -53,7 +53,6 @@ export default class Main extends Component {
             {/* <Slider/> */}
             {/* <background/> */}
             <Wiki/> */}
-          <Chart/>
             </div>
         );
     }
