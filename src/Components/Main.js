@@ -16,7 +16,7 @@ import Slidesshow from './slidesshow';
 import  Chart from './chart' ; 
 // import  Par from './par' ; 
 import  Ap from './par' ; 
-
+import EnergySlider from './energySlider';
 // import backPic01 from './backPic01.png';
 // import background from './background';
 
@@ -44,7 +44,8 @@ export default class Main extends Component {
 			<PlayBackWidget />
             <Songsearch />
             <Slidesshow/>
-            <Wiki/> */}
+            <Wiki /> 
+            <EnergySlider/>
             <Chart/>
             <Ap/>
 
