@@ -161,6 +161,8 @@ export default class Songsearch extends Component {
 
                     {
                     (analysis, loading, error) => (
+                        error?( null ):  
+                        loading?(<h1>Loading...</h1>) : 
                         analysis ? (
                             fillGraphData(analysis.track.duration, analysis.bars.length , analysis.bars, analysisGraphData)
                             ,   
@@ -242,6 +244,9 @@ export default class Songsearch extends Component {
             
             {
                 (data, loading, error) =>
+
+                error?( null ):  
+                loading?(<h1>Loading...</h1>) :
                 
                  data ? (
                 <ul>
