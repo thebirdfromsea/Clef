@@ -3,7 +3,7 @@ const divStyle = {
   width: '88%',
   height: '800px',
   backgroundImage: `url(${imgMyimageexample})`,
-  backgroundSize: 'cover'   <---- This is important
+  backgroundSize: 'cover'   // This is important
 };
 
 export default class background extends React.Component {
