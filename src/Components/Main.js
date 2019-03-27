@@ -20,7 +20,7 @@ import EnergySlider from './energySlider';
 // import backPic01 from './backPic01.png';
 // import background from './background';
 
-import PlayBackWidget from './PlayBackWidget';
+import SpotifyPlayerClef from './PlayBackWidget';
   
 export default class Main extends Component {
     constructor() {
@@ -41,7 +41,6 @@ export default class Main extends Component {
         return (
             <div className="App">
             <Title />
-			<PlayBackWidget />
             <Songsearch />
             <Slidesshow/>
             <Wiki /> 

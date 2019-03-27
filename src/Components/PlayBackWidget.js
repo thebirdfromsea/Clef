@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
+import SpotifyPlayer from 'react-spotify-player';
+export default class SpotifyPlayerClef extends Component {
 
-export default class PlayBackWidget extends Component {
-    constructor() {
-    super();
+constructor(props) {
+    super(props);
 }
-    componentDidMount() {
-
-    }
-    render() {
-        return(
-          <div>
-                <iframe src="https://open.spotify.com/embed/album/1gbgmfoERh4YxIVyyjS8Hp" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-          </div>
-      );
-    }
+	
+render(){
+const size = {
+  width: '50%',
+  height: 300
 }
+const view = 'list'; // or 'coverart'
+const theme = 'black'; // or 'white'
+ 
+return (
 
+<SpotifyPlayer
+  uri={this.props.uri}
+  size={size}
+  view={view}
+  theme={theme}
+/>
+);
+}
+}

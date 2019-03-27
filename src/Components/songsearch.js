@@ -20,6 +20,11 @@ import { Avatar } from 'material-ui';
 import Chart from './chart'
 import ScatterPlot from './scatterChart'
 import fillGraphData from './graphdata'
+import SpotifyPlayClef from './PlayBackWidget';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import PlayArrow from '@material-ui/icons/PlayArrow';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
 
 export default class Songsearch extends Component {
     
@@ -31,13 +36,15 @@ export default class Songsearch extends Component {
         this.state = {
             value : '',
             display : 'defaultDisplay',
+			playerURI : '',
+			displayPlayer : false,
             searchProps : {
                 market: 'US' ,
                 limit : 5 ,
                 offset: 0 ,
                 include_external: ' '
-              
-            }
+            },
+			URI : [ ]
       };
      
 
@@ -75,17 +82,27 @@ export default class Songsearch extends Component {
     displayAlbum(item){
         return( <div>
     
-            <ListItem button divider key={item.id}  component = "a" href = {item.external_urls.spotify} target = "_blank">
+            <ListItem divider key={item.id} >
                         <img src = {item.images[2] ? item.images[2].url : null} rounded/>
                         <Typography variant = "h5">
                             {item.name}
                         </Typography>
+
+						<IconButton onClick={this.PlayAlbum.bind(this, item.uri)}>
+						<PlayArrow/>
+						</IconButton>
+
     
             </ListItem>
     
              </div>
             )
     }
+
+	PlayAlbum(item){
+		this.setState({playerURI : item})
+		this.setState({displayPlayer : true})
+	}
 
 
     displayRecommendations(item){
@@ -231,6 +248,10 @@ export default class Songsearch extends Component {
 
          (
         <div> 
+		{this.state.displayPlayer ? (
+			<SpotifyPlayClef uri={this.state.playerURI} />
+			) : null}
+		
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
             onRequestSearch={()=> this.setState({display:'loadDisplay'})}
