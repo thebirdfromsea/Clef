@@ -20,7 +20,7 @@ import { Avatar } from 'material-ui';
 import Chart from './chart'
 import ScatterPlot from './scatterChart'
 import fillGraphData from './graphdata'
-import SpotifyPlayClef from './PlayBackWidget';
+import SpotifyPlayerClef from './PlayBackWidget';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Icon from '@material-ui/core/Icon';
@@ -88,7 +88,7 @@ export default class Songsearch extends Component {
                             {item.name}
                         </Typography>
 
-						<IconButton onClick={this.PlayAlbum.bind(this, item.uri)}>
+						<IconButton onClick={this.PlayAlbum.bind(this, item.id)}>
 						<PlayArrow/>
 						</IconButton>
 
@@ -249,7 +249,7 @@ export default class Songsearch extends Component {
          (
         <div> 
 		{this.state.displayPlayer ? (
-			<SpotifyPlayClef uri={this.state.playerURI} />
+			<SpotifyPlayerClef uri={this.state.playerURI} />
 			) : null}
 		
         <SearchBar
@@ -306,15 +306,6 @@ export default class Songsearch extends Component {
          
             
         ); 
-          /*     <div className="col" id="songSearch">
-        <h4 style={formatSearch}>
-            Songs search
-            </h4>
-            <p style={searchSection}>
-                This section of the page is for the song search.
-                </p>
-                </div>
-            }
-    */
+         
     }
  }
