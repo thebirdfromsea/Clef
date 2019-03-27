@@ -20,6 +20,11 @@ import { Avatar } from 'material-ui';
 import Chart from './chart'
 import ScatterPlot from './scatterChart'
 import fillGraphData from './graphdata'
+import SpotifyPlayerClef from './PlayBackWidget';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import PlayArrow from '@material-ui/icons/PlayArrow';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
 
 export default class Songsearch extends Component {
     
@@ -31,13 +36,15 @@ export default class Songsearch extends Component {
         this.state = {
             value : '',
             display : 'defaultDisplay',
+			playerURI : '',
+			displayPlayer : false,
             searchProps : {
                 market: 'US' ,
                 limit : 5 ,
                 offset: 0 ,
                 include_external: ' '
-              
-            }
+            },
+			URI : [ ]
       };
      
 
@@ -49,8 +56,6 @@ export default class Songsearch extends Component {
              button 
              divider
              key={item.id}  
-             component = "a" 
-             href = {item.external_urls.spotify} target = "_blank"
             
               >
                     <img src = {item.images[2] ? item.images[2].url : null} />
@@ -59,6 +64,9 @@ export default class Songsearch extends Component {
                 <Typography variant = "h5">
                     {item.name}
                 </Typography>
+				<IconButton onClick={this.PlayArtist.bind(this, item.id)}>
+						<PlayArrow/>
+						</IconButton>
                     
                   
             </ListItem>
@@ -72,20 +80,35 @@ export default class Songsearch extends Component {
             )
     }
 
+	PlayArtist(item){
+		this.setState({playerURI : "/artist/" + item})
+		this.setState({displayPlayer : true})
+	}
+
     displayAlbum(item){
         return( <div>
     
-            <ListItem button divider key={item.id}  component = "a" href = {item.external_urls.spotify} target = "_blank">
+            <ListItem divider key={item.id} >
                         <img src = {item.images[2] ? item.images[2].url : null} rounded/>
                         <Typography variant = "h5">
                             {item.name}
                         </Typography>
+
+						<IconButton onClick={this.PlayAlbum.bind(this, item.id)}>
+						<PlayArrow/>
+						</IconButton>
+
     
             </ListItem>
     
              </div>
             )
     }
+
+	PlayAlbum(item){
+		this.setState({playerURI : "/album/" + item})
+		this.setState({displayPlayer : true})
+	}
 
 
     displayRecommendations(item){
@@ -102,9 +125,13 @@ export default class Songsearch extends Component {
                         (recommendations, loading, error) => (
                         recommendations ? (
                         recommendations.tracks.map(track => (
-                        <ListItem button divider key={track.id}>
+                        <ListItem divider key={track.id}>
                         <img src = {track.album.images[0] ? track.album.images[2].url : null}/>
-                        {track.name}</ListItem>
+                        {track.name}
+						<IconButton onClick={this.PlayTrack.bind(this, track.id)}>
+						<PlayArrow/>
+						</IconButton>
+						</ListItem>
                     ))
                 ) : <ListItem divider> None available</ListItem>
                 )
@@ -114,6 +141,11 @@ export default class Songsearch extends Component {
             )
         
     }
+
+	PlayTrack(item){
+		this.setState({playerURI : "/track/" + item})
+		this.setState({displayPlayer : true})
+	}
 
     
     displayTrackFeatures(track){
@@ -231,6 +263,10 @@ export default class Songsearch extends Component {
 
          (
         <div> 
+		{this.state.displayPlayer ? (
+			<SpotifyPlayerClef uri={this.state.playerURI} />
+			) : null}
+		
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
             onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -285,15 +321,6 @@ export default class Songsearch extends Component {
          
             
         ); 
-          /*     <div className="col" id="songSearch">
-        <h4 style={formatSearch}>
-            Songs search
-            </h4>
-            <p style={searchSection}>
-                This section of the page is for the song search.
-                </p>
-                </div>
-            }
-    */
+         
     }
  }

@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 
-export default class PlayBackWidget extends Component {
-    constructor() {
-    super();
-}
-    componentDidMount() {
+export default class SpotifyPlayerClef extends Component {
 
-    }
-    render() {
-        return(
-          <div>
-                <iframe src="https://open.spotify.com/embed/album/1gbgmfoERh4YxIVyyjS8Hp" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-          </div>
-      );
-    }
+constructor(props) {
+    super(props);
 }
+	
+render(){
 
+return (
+    <div>
+        <iframe src={"https://open.spotify.com/embed" + this.props.uri} width="50%" height="350" frameBorder="0" allowtransparency="true" allow="encrypted-media" />
+        </div>
+);
+}
+}
