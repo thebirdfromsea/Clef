@@ -63,7 +63,7 @@ export default class Title extends Component {
                     </Grid>
                     <Grid item>
                     <MuiThemeProvider theme={orangeTheme}>
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" component={Link} to="/WhatsNew">
                     What's New?
                     </Button>
                     </MuiThemeProvider>
