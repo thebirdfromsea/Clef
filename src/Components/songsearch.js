@@ -248,8 +248,16 @@ export default class Songsearch extends Component {
  
     render() {
         return (
+         
+            
             this.state.display == 'defaultDisplay'? (
+
+               
+            
             <div> 
+                {this.state.displayPlayer ? (
+                <SpotifyPlayerClef uri={this.state.playerURI} />
+                ) : null},
              <SearchBar
                 onChange={(value)=> this.setState({value: value})}
                 onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -263,10 +271,10 @@ export default class Songsearch extends Component {
 
          (
         <div> 
-		{this.state.displayPlayer ? (
-			<SpotifyPlayerClef uri={this.state.playerURI} />
-			) : null}
-		
+	
+        {this.state.displayPlayer ? (
+                    <SpotifyPlayerClef uri={this.state.playerURI} />
+                    ) : null},
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
             onRequestSearch={()=> this.setState({display:'loadDisplay'})}
