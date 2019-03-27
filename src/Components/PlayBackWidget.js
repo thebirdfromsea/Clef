@@ -10,7 +10,7 @@ render(){
 
 return (
     <div>
-        <iframe src={"https://open.spotify.com/embed/album/" + this.props.uri} width="50%" height="350" frameBorder="0" allowtransparency="true" allow="encrypted-media" />
+        <iframe src={"https://open.spotify.com/embed" + this.props.uri} width="50%" height="350" frameBorder="0" allowtransparency="true" allow="encrypted-media" />
         </div>
 );
 }

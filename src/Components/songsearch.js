@@ -56,8 +56,6 @@ export default class Songsearch extends Component {
              button 
              divider
              key={item.id}  
-             component = "a" 
-             href = {item.external_urls.spotify} target = "_blank"
             
               >
                     <img src = {item.images[2] ? item.images[2].url : null} />
@@ -66,6 +64,9 @@ export default class Songsearch extends Component {
                 <Typography variant = "h5">
                     {item.name}
                 </Typography>
+				<IconButton onClick={this.PlayArtist.bind(this, item.id)}>
+						<PlayArrow/>
+						</IconButton>
                     
                   
             </ListItem>
@@ -78,6 +79,11 @@ export default class Songsearch extends Component {
             </div>
             )
     }
+
+	PlayArtist(item){
+		this.setState({playerURI : "/artist/" + item})
+		this.setState({displayPlayer : true})
+	}
 
     displayAlbum(item){
         return( <div>
@@ -100,7 +106,7 @@ export default class Songsearch extends Component {
     }
 
 	PlayAlbum(item){
-		this.setState({playerURI : item})
+		this.setState({playerURI : "/album/" + item})
 		this.setState({displayPlayer : true})
 	}
 
@@ -119,9 +125,13 @@ export default class Songsearch extends Component {
                         (recommendations, loading, error) => (
                         recommendations ? (
                         recommendations.tracks.map(track => (
-                        <ListItem button divider key={track.id}>
+                        <ListItem divider key={track.id}>
                         <img src = {track.album.images[0] ? track.album.images[2].url : null}/>
-                        {track.name}</ListItem>
+                        {track.name}
+						<IconButton onClick={this.PlayTrack.bind(this, track.id)}>
+						<PlayArrow/>
+						</IconButton>
+						</ListItem>
                     ))
                 ) : <ListItem divider> None available</ListItem>
                 )
@@ -131,6 +141,11 @@ export default class Songsearch extends Component {
             )
         
     }
+
+	PlayTrack(item){
+		this.setState({playerURI : "/track/" + item})
+		this.setState({displayPlayer : true})
+	}
 
     
     displayTrackFeatures(track){
