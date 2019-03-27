@@ -34,13 +34,7 @@ export default class Header extends Component {
                             <h1 style={headerStyle}>
                                 Welcome, {user.display_name}
                             </h1>
-                            <div>
-                                <MuiThemeProvider theme={orangeTheme}>
-                                    <Button variant="contained" color="primary" component={Link} to="/Main"> Click here to search for song information </Button>
-                                </MuiThemeProvider>
                             </div>
-
-                         </div>
                     ) : <button onClick={() => window.location = 'http://localhost:8888/login'}
                         style={defaultStyle}>Log in with Spotify</button>
                 }
