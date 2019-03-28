@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Home from './Components/Home';
 import Main from './Components/Main';
 import WhatsNew from './Components/WhatsNew';
+import Par from './Components/par';
+import { style } from 'react-toastify';
+
 
 class App extends Component {
 
@@ -15,15 +18,18 @@ class App extends Component {
     }
     render() {
         return (
-
+            <div >
+            <Par />
             <Router>
                 <Switch>
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/main" component={Main} />
-                    <Route exact path ="/whatsnew" component={WhatsNew}/>
+                    <Route exact path="/whatsnew" component={WhatsNew}/>
                 </Switch>  
             </Router>
-         
+            </div>
+        
+
         );
 }
 }

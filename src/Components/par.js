@@ -1,28 +1,47 @@
 // import React from "react";
 import Particles from 'react-particles-js';
 import React, {Component} from 'react';
-export default class Ap extends Component{
-  
+
+const style={
+	position: "fixed",
+	top: 0,
+	left: 0,
+	width: "100%",
+	height: "100%",
+	zIndex: -1,
+}
+const particleFormat = {
+    particles: {
+        number: {
+            value: 100
+        },
+        size: {
+            value: 50
+		}
+    },
+    interactivity: {
+        events: {
+            onhover: {
+                enable: true,
+                mode: "repulse"
+            }
+        }
+}
+}
+
+export default class Particle extends Component{
+
+
+
     render(){
         return (
-            <Particles
-    params={{
-	    "particles": {
-	        "number": {
-	            "value": 50
-	        },
-	        "size": {
-	            "value": 3
-	        }
-	    },
-	    "interactivity": {
-	        "events": {
-	            "onhover": {
-	                "enable": true,
-	                "mode": "repulse"
-	            }
-	        }
-	    }
+
+            <Particles style={style}
+    params={{ particleFormat }} />
+	);
+};
+}
+
 	// params={{
 	//     "fps_limit": 28,
 	//     "particles": {
@@ -83,10 +102,7 @@ export default class Ap extends Component{
 	//             }
 	//         }
 	//     }
-	}} />
-        );
-    };
-}
+
 
 // import Particles from 'react-particles-js';
 // export default class Par extends Component {
