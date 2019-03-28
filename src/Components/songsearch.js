@@ -160,6 +160,25 @@ export default class Songsearch extends Component {
 		this.setState({displayPlayer : true})
 	}
 
+	displayTrack(item){
+        return( <div>
+    
+            <ListItem divider key={item.id} >
+                        <img src = {item.album.images[0] ? item.album.images[2].url : null} rounded/>
+                        <Typography variant = "h5">
+                            {item.name}
+                        </Typography>
+
+						<IconButton onClick={this.PlayTrack.bind(this, item.id)}>
+						<PlayArrow/>
+						</IconButton>
+
+    
+            </ListItem>
+    
+             </div>
+            )
+    }
     
     displayTrackFeatures(track){
        
@@ -326,6 +345,11 @@ export default class Songsearch extends Component {
                     </ul>
 
                     <h1>Tracks</h1>
+					<ul>
+                        {data.tracks.items.map((track) => 
+                                    this.displayTrack(track) 
+                        )}
+                    </ul>
                     <ul>
                         {data.tracks.items.map((track) => 
                                     this.displayTrackFeatures(track) 
