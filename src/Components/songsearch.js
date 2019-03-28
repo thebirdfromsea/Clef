@@ -37,9 +37,10 @@ export default class Songsearch extends Component {
     {
         super(props)
         var speed = 0
-        this.handleEnergySlider = this.handleEnergySlider.bind(this);
+        
         this.state = {
-            value : '',
+            value: '',
+            trackChange : true,
             display : 'defaultDisplay',
 			playerURI : '',
 			displayPlayer : false,
@@ -119,9 +120,7 @@ export default class Songsearch extends Component {
 		this.setState({displayPlayer : true})
     }
 
-    handleEnergySlider(inputEnergy) {
-        this.setState({ seeds: { energy: inputEnergy } });
-    }
+    
 
 
     displayRecommendations(item){
@@ -131,7 +130,7 @@ export default class Songsearch extends Component {
                 <h2>Recommended songs : </h2>
                 <BrowseRecommendations options={{ seed_artists: item.id  ,
                     min_popularity: 50 , 
-                    target_energy: .5 , 
+                    target_energy: this.state.seeds.energy , 
                     limit: 5,
                     }}>
                     {
@@ -282,7 +281,7 @@ export default class Songsearch extends Component {
         return (
          
             
-            this.state.display == 'defaultDisplay'? (
+            this.state.display == 'defaultDisplay' && this.state.trackChange ? (
 
                
             
@@ -307,7 +306,8 @@ export default class Songsearch extends Component {
         {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                         ) : null}
-                        <EnergySlider inputenergy={() => this.handleEnergySlider()} />
+                        <EnergySlider inputenergy={(value) => {
+                            this.setState({ seeds: { energy: value } })}}/>
                         <Typography component="h2" variant="display1" gutterBottom> {this.state.seeds.energy} </Typography>
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}

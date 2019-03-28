@@ -8,8 +8,11 @@ export default class WhatsNew extends Component{
 
     render() {
         return (
+            <div>
+            <Title />
             <h2 >
-                What's New/></h2>
+                    What's New/></h2>
+                </div>
             );
     }
 }

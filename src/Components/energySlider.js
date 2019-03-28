@@ -17,14 +17,21 @@ class EnergySlider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value : .5
+            value: .5
         };
+        
     }
 
-  handleChange = (event, value) => {
-      this.setState({ value });
-      
-  };
+    handleChange = (event, value) => {
+        this.setState({ value });
+        //this.props.inputenergy(value);
+
+    };
+
+    handleDragEnd = (event) => {
+        this.props.inputenergy(this.state.value)
+    };
+        
 
   render() {
     const { classes } = this.props;
@@ -39,7 +46,7 @@ class EnergySlider extends React.Component {
                 value={value}
                 aria-labelledby="label"
                 onChange={this.handleChange}
-                onDragEnd={this.props.inputenergy.bind(this, this.state.value)}
+                onDragEnd={this.handleDragEnd}
                 min={0}
                 max={1}
         />
