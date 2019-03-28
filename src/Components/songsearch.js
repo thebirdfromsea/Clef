@@ -25,6 +25,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
+import EnergySlider from './energySlider';
+
+
+
 
 export default class Songsearch extends Component {
     
@@ -33,6 +37,7 @@ export default class Songsearch extends Component {
     {
         super(props)
         var speed = 0
+        this.handleEnergySlider = this.handleEnergySlider.bind(this);
         this.state = {
             value : '',
             display : 'defaultDisplay',
@@ -44,6 +49,10 @@ export default class Songsearch extends Component {
                 offset: 0 ,
                 include_external: ' '
             },
+            seeds: {
+                energy : 0.5
+            },
+            
 			URI : [ ]
       };
      
@@ -108,7 +117,11 @@ export default class Songsearch extends Component {
 	PlayAlbum(item){
 		this.setState({playerURI : "/album/" + item})
 		this.setState({displayPlayer : true})
-	}
+    }
+
+    handleEnergySlider(inputEnergy) {
+        this.setState({ seeds: { energy: inputEnergy } });
+    }
 
 
     displayRecommendations(item){
@@ -118,7 +131,7 @@ export default class Songsearch extends Component {
                 <h2>Recommended songs : </h2>
                 <BrowseRecommendations options={{ seed_artists: item.id  ,
                     min_popularity: 50 , 
-                    target_energy : .8, 
+                    target_energy: .5 , 
                     limit: 5,
                     }}>
                     {
@@ -274,7 +287,9 @@ export default class Songsearch extends Component {
 	
         {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
-                    ) : null},
+                        ) : null}
+                        <EnergySlider inputenergy={() => this.handleEnergySlider()} />
+                        <Typography component="h2" variant="display1" gutterBottom> {this.state.seeds.energy} </Typography>
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
             onRequestSearch={()=> this.setState({display:'loadDisplay'})}

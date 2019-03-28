@@ -14,26 +14,34 @@ const styles = {
 };
 
 class EnergySlider extends React.Component {
-  state = {
-    value: 50,
-  };
+    constructor(props) {
+        super(props);
+        this.state = {
+            value : .5
+        };
+    }
 
   handleChange = (event, value) => {
-    this.setState({ value });
+      this.setState({ value });
+      
   };
 
   render() {
     const { classes } = this.props;
-    const { value } = this.state;
+      const { value } = this.state;
+      
 
     return (
       <div className={classes.root}>
         <Typography id="label">Energy</Typography>
         <Slider
-          classes={{ container: classes.slider }}
-          value={value}
-          aria-labelledby="label"
-          onChange={this.handleChange}
+                classes={{ container: classes.slider }}
+                value={value}
+                aria-labelledby="label"
+                onChange={this.handleChange}
+                onDragEnd={this.props.inputenergy.bind(this, this.state.value)}
+                min={0}
+                max={1}
         />
       </div>
     );
