@@ -26,6 +26,11 @@ import PlayArrow from '@material-ui/icons/PlayArrow';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import EnergySlider from './energySlider';
+import DisplayArtist from './DisplayArtist';
+import DisplayAlbum from './DisplayAlbum';
+import DisplayTrack from './DisplayTrack';
+import DisplayTrackFeatures from './DisplayTrackFeatures';
+import DisplayRecommendations from './DisplayRecommendations';
 
 
 
@@ -37,7 +42,9 @@ export default class Songsearch extends Component {
     {
         super(props)
         var speed = 0
-        
+        this.PlayArtist = this.PlayArtist.bind(this);
+        this.PlayAlbum = this.PlayAlbum.bind(this);
+        this.PlayTrack = this.PlayTrack.bind(this);
         this.state = {
             value: '',
             trackChange : true,
@@ -50,9 +57,7 @@ export default class Songsearch extends Component {
                 offset: 0 ,
                 include_external: ' '
             },
-            seeds: {
-                energy : 0.5
-            },
+           
             
 			URI : [ ]
       };
@@ -60,60 +65,14 @@ export default class Songsearch extends Component {
 
     }
     
-    displayArtist(item){
-        return( <div>
-             <ListItem 
-             button 
-             divider
-             key={item.id}  
-            
-              >
-                    <img src = {item.images[2] ? item.images[2].url : null} />
-    
-                
-                <Typography variant = "h5">
-                    {item.name}
-                </Typography>
-				<IconButton onClick={this.PlayArtist.bind(this, item.id)}>
-						<PlayArrow/>
-						</IconButton>
-                    
-                  
-            </ListItem>
-    
-            <List>
-            {this.displayRecommendations(item)}
-            </List>
-            
-    
-            </div>
-            )
-    }
+
 
 	PlayArtist(item){
 		this.setState({playerURI : "/artist/" + item})
 		this.setState({displayPlayer : true})
 	}
 
-    displayAlbum(item){
-        return( <div>
-    
-            <ListItem divider key={item.id} >
-                        <img src = {item.images[2] ? item.images[2].url : null} rounded/>
-                        <Typography variant = "h5">
-                            {item.name}
-                        </Typography>
-
-						<IconButton onClick={this.PlayAlbum.bind(this, item.id)}>
-						<PlayArrow/>
-						</IconButton>
-
-    
-            </ListItem>
-    
-             </div>
-            )
-    }
+ 
 
 	PlayAlbum(item){
 		this.setState({playerURI : "/album/" + item})
@@ -123,7 +82,7 @@ export default class Songsearch extends Component {
     
 
 
-    displayRecommendations(item){
+   /* displayRecommendations(item){
         return(
     
             <div>
@@ -140,7 +99,7 @@ export default class Songsearch extends Component {
                         <ListItem divider key={track.id}>
                         <img src = {track.album.images[0] ? track.album.images[2].url : null}/>
                         {track.name}
-						<IconButton onClick={this.PlayTrack.bind(this, track.id)}>
+						<IconButton onClick={this.handleClick}>
 						<PlayArrow/>
 						</IconButton>
 						</ListItem>
@@ -152,128 +111,13 @@ export default class Songsearch extends Component {
     
             )
         
-    }
+    }*/
 
 	PlayTrack(item){
 		this.setState({playerURI : "/track/" + item})
 		this.setState({displayPlayer : true})
 	}
 
-	displayTrack(item){
-        return( <div>
-    
-            <ListItem divider key={item.id} >
-                        <img src = {item.album.images[0] ? item.album.images[2].url : null} rounded/>
-                        <Typography variant = "h5">
-                            {item.name}
-                        </Typography>
-
-						<IconButton onClick={this.PlayTrack.bind(this, item.id)}>
-						<PlayArrow/>
-						</IconButton>
-
-    
-            </ListItem>
-    
-             </div>
-            )
-    }
-    
-    displayTrackFeatures(track){
-       
-        const ticks = [
-            5,10,15,20,25,30
-        ]
-        const analysisGraphData = [
-
-        ]
-
-        const analysisGraphData2 = [
-
-        ]
-
-        const analysisGraphData3 = [
-
-
-        ]
-
-       
-        const featuresGraphData = [
-            {
-                name: 'Acousticness', number : 0
-              },
-              {
-                name: 'Danceability', number : 0
-              },
-              {
-                name: 'Energy', number: 0
-              },
-              
-        ]       
-        return( 
-        <div>
-            <div>
-            <h2 key={track.id}>
-            
-            <a href = {track.external_urls.spotify}>
-                      {track.name} 
-            </a>
-            </h2>
-            <h2>Track Analysis:</h2> 
-            <TrackAnalysis id= {track.id}>
-
-                    {
-                    (analysis, loading, error) => (
-                        error?( null ):  
-                        loading?(<h1>Loading...</h1>) : 
-                        analysis ? (
-                            fillGraphData(analysis.track.duration, analysis.bars.length , analysis.bars, analysisGraphData)
-                            ,   
-                            fillGraphData(analysis.track.duration, analysis.beats.length , analysis.beats, analysisGraphData2), 
-
-                            fillGraphData(analysis.track.duration, analysis.tatums.length , analysis.tatums, analysisGraphData3)
-                           ,
-
-                            <div>
-                                <ScatterPlot data = {analysisGraphData} data2 = {analysisGraphData2} data3 = {analysisGraphData3} ticks = {ticks}/>
-                                <h3> Duration : {analysis.track.duration/60.00} minutes</h3>
-                                <h3> Tempo : {analysis.track.tempo} </h3>
-                                <h3> Start : {analysis.bars[0].start} </h3>
-                                <h3> Start of bar 2: {analysis.bars[1].start}</h3>
-                                <h3> Bars: {analysis.bars.length}</h3>
-                                <h3> Beats : {analysis.beats.length}</h3>
-                                <h3> Beats per Bar : {analysis.beats.length / analysis.bars.length}</h3>
-                                <h3> Sections : {analysis.sections.length}</h3>
-                                <h3> Segments : {analysis.segments.length} </h3>
-                                <h3> Tatums :    {analysis.tatums.length} </h3>
-                                <div>
-                             
-                            </div>   
-                            </div>
-                                                    ) : null
-                    )}
-            </TrackAnalysis>
-            </div>
-            <div>
-                <h2>Track Features:</h2>
-                 <TrackFeatures id= {track.id}>
-                 {(features, loading, error) => (
-                        features ? 
-                        
-                        (
-                            featuresGraphData[0] = { name: 'Acousticness', number : features.acousticness},
-                            featuresGraphData[1] = { name: 'Danceability', number : features.danceability}, 
-                            featuresGraphData[2] ={  name: 'Energy', number : features.energy} , 
-                            <div>
-                                <center><Chart data = {featuresGraphData} /></center>
-                            </div>     
-                        ) : null
-                    )}      
-                    </TrackFeatures>    
-            </div>
-            </div>)
-    
-    }
     
 
  
@@ -308,7 +152,7 @@ export default class Songsearch extends Component {
                         ) : null}
                         <EnergySlider inputenergy={(value) => {
                             this.setState({ seeds: { energy: value } })}}/>
-                        <Typography component="h2" variant="display1" gutterBottom> {this.state.seeds.energy} </Typography>
+                        <Typography component="h2" variant="display1" gutterBottom> {0} </Typography>
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
             onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -327,38 +171,43 @@ export default class Songsearch extends Component {
                 loading?(<h1>Loading...</h1>) :
                 
                  data ? (
-                <ul>
-                    <h1>Albums</h1>
+                   <ul>
+                    <ul>
+                    <Typography variant="h2">Recommended songs : </Typography>
+
+                    {data.artists.items.map(artist => (
+                           <DisplayRecommendations item={artist} playtrack={this.PlayTrack} />
+                      ))}
+                     </ul>
+                    <Typography variant="h2">Albums</Typography>
                     <ul>
                         {
                             data.albums.items.map(album => (
-                                this.displayAlbum(album) 
+                               <DisplayAlbum item={album} playalbum={this.PlayAlbum}/>
                             ))}
                         
                     </ul>
 
-                    <h1>Artists</h1>
+                    <Typography variant="h2">Artists</Typography>
                     <ul>
                         {data.artists.items.map(artist => (
-                                this.displayArtist(artist) 
+                              <DisplayArtist item={artist} playartist={this.PlayArtist} />
                         ))}
                     </ul>
 
-                    <h1>Tracks</h1>
+                    <Typography variant="h2">Tracks</Typography>
 					<ul>
                         {data.tracks.items.map((track) => 
-                                    this.displayTrack(track) 
+                                <DisplayTrack item={track} playtrack={this.PlayTrack} />
                         )}
                     </ul>
                     <ul>
-                        {data.tracks.items.map((track) => 
-                                    this.displayTrackFeatures(track) 
+                         {data.tracks.items.map((track) =>
+                                <DisplayTrackFeatures track={track}/>
                         )}
                     </ul>
 
-                    <ul>
-                        
-                    </ul>
+                    
                   
                 </ul>
             ) : null
