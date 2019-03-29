@@ -1,30 +1,8 @@
 import React, { Component } from 'react';
 import { Search } from 'react-spotify-api';
-import { ArtistRelated } from 'react-spotify-api'; 
-import { Form, Text, TextArea, Radio, RadioGroup, Select, Checkbox } from 'react-form';
 import SearchBar from 'material-ui-search-bar';
-import { Artist } from 'react-spotify-api'
-import TextField from "@material-ui/core/TextField";
-
-import { TrackAnalysis } from 'react-spotify-api'
-import { TrackFeatures} from 'react-spotify-api'
-import { BrowseRecommendations } from 'react-spotify-api'
-import { withStyles } from '@material-ui/core/styles';
-
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
 import { ListItemAvatar, Typography } from '@material-ui/core';
-import { Avatar } from 'material-ui';
-import Chart from './chart'
-import ScatterPlot from './scatterChart'
-import fillGraphData from './graphdata'
 import SpotifyPlayerClef from './PlayBackWidget';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import PlayArrow from '@material-ui/icons/PlayArrow';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
 import EnergySlider from './energySlider';
 import DisplayArtist from './DisplayArtist';
 import DisplayAlbum from './DisplayAlbum';
@@ -171,47 +149,48 @@ export default class Songsearch extends Component {
                 loading?(<h1>Loading...</h1>) :
                 
                  data ? (
-                   <ul>
-                    <ul>
-                    <Typography variant="h2">Recommended songs : </Typography>
+                   <div> 
+                   <div className="d-table"> 
+                        <div className="d-table-row"> 
+                            <div className="d-table-cell">
+                                <Typography variant="h2">Recommended songs </Typography>
 
-                    {data.artists.items.map(artist => (
-                           <DisplayRecommendations item={artist} playtrack={this.PlayTrack} />
-                      ))}
-                     </ul>
-                    <Typography variant="h2">Albums</Typography>
-                    <ul>
-                        {
-                            data.albums.items.map(album => (
-                               <DisplayAlbum item={album} playalbum={this.PlayAlbum}/>
-                            ))}
-                        
-                    </ul>
-
-                    <Typography variant="h2">Artists</Typography>
-                    <ul>
-                        {data.artists.items.map(artist => (
-                              <DisplayArtist item={artist} playartist={this.PlayArtist} />
-                        ))}
-                    </ul>
-
-                    <Typography variant="h2">Tracks</Typography>
-					<ul>
-                        {data.tracks.items.map((track) => 
-                                <DisplayTrack item={track} playtrack={this.PlayTrack} />
-                        )}
-                    </ul>
-                    <ul>
-                         {data.tracks.items.map((track) =>
-                                <DisplayTrackFeatures track={track}/>
-                        )}
-                    </ul>
-
+                                {data.artists.items.map(artist => (
+                                <DisplayRecommendations item={artist} playtrack={this.PlayTrack} />
+                                ))}
+                            </div>
+                            <div className="d-table-cell">
+                                <Typography variant="h2">Albums</Typography>
                     
-                  
-                </ul>
-            ) : null
-                }
+                            
+                                {data.albums.items.map(album => (
+                               <DisplayAlbum item={album} playalbum={this.PlayAlbum}/>))}
+                            </div>  
+                        </div>
+                        <div className="d-table-row">
+                            <div className="d-table-cell">
+                                <Typography variant="h2">Artists</Typography>
+                                
+                                {data.artists.items.map(artist => (
+                                <DisplayArtist item={artist} playartist={this.PlayArtist} />))}
+                            </div>
+                        
+                            <div className ="d-table-cell">
+                                <Typography variant="h2">Tracks</Typography>
+                                
+                                {data.tracks.items.map((track) => 
+                                <DisplayTrack item={track} playtrack={this.PlayTrack} />)}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                    {data.tracks.items.map((track) =>
+                           <DisplayTrackFeatures track={track}/>
+                    )}
+                    </div>
+                    </div>) : null
+                            
+            }
             </Search> 
             </div>)
          
