@@ -13,31 +13,32 @@ const styles = {
   },
 };
 
+
+
 class EnergySlider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             value: .5
-        };
+        }
         
     }
 
     handleChange = (event, value) => {
         this.setState({ value });
-        //this.props.inputenergy(value);
+      //  this.props.change(value);
 
     };
 
     handleDragEnd = (event) => {
         this.props.inputenergy(this.state.value)
-    };
         
+    };
+      
 
   render() {
     const { classes } = this.props;
       const { value } = this.state;
-      
-
     return (
       <div className={classes.root}>
         <Typography id="label">Energy</Typography>

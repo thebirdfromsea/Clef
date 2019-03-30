@@ -12,11 +12,11 @@ import Slidesshow from './slidesshow';
 // import ImageSlides from './imageSlides';
 // import backPic01 from './backPic01.png';
 // import background from './background';
-
+import EnergySlider from './energySlider';
 import  Chart from './chart' ; 
 // import  Par from './par' ; 
 import  Ap from './par' ; 
-
+import { Typography } from '@material-ui/core';
 // import backPic01 from './backPic01.png';
 // import background from './background';
 
@@ -25,24 +25,26 @@ import SpotifyPlayerClef from './PlayBackWidget';
 export default class Main extends Component {
     constructor() {
         super();
+        this.state = {
+            seeds: {
+                energy: 0.5,
+            }
+        }
     }
     
     componentDidMount() {
 
     }
-    // let imgUrl = 'images/berlin.jpg'
-    // let styles = {
-    //     root: {
-    //         backgroundImage: 'url(' + imgUrl + ')',
-    //         backgroundSize: 'cover',
-    //         overflow: 'hidden',
-    //     },
+
     render() {
         return (
             <div className="App">
-            <Title />
-            <Songsearch />
-                
+                <Title />
+                <EnergySlider inputenergy={(value) => {
+                    this.setState({ seeds: { energy: value } })}}/>
+                <Typography component="h2" variant="display1" gutterBottom> {this.state.seeds.energy} </Typography>
+                <Songsearch seed={this.state.seeds}/>
+             
             <Slidesshow/>
             <Wiki /> 
             

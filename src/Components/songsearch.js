@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Search } from 'react-spotify-api';
 import SearchBar from 'material-ui-search-bar';
-import { ListItemAvatar, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import SpotifyPlayerClef from './PlayBackWidget';
-import EnergySlider from './energySlider';
 import DisplayArtist from './DisplayArtist';
 import DisplayAlbum from './DisplayAlbum';
 import DisplayTrack from './DisplayTrack';
@@ -23,26 +22,31 @@ export default class Songsearch extends Component {
         this.PlayArtist = this.PlayArtist.bind(this);
         this.PlayAlbum = this.PlayAlbum.bind(this);
         this.PlayTrack = this.PlayTrack.bind(this);
+
         this.state = {
             value: '',
             trackChange : true,
             display : 'defaultDisplay',
 			playerURI : '',
-			displayPlayer : false,
+            displayPlayer: false,
+            artist: [],
+            refresher: true,
             searchProps : {
                 market: 'US' ,
                 limit : 5 ,
                 offset: 0 ,
                 include_external: ' '
             },
-           
-            
 			URI : [ ]
       };
      
 
     }
-    
+
+    componentDidUpdate(prevState) {
+        if (this.state.refresher !== true)
+            this.setState({refresher: true})
+    }
 
 
 	PlayArtist(item){
@@ -50,46 +54,18 @@ export default class Songsearch extends Component {
 		this.setState({displayPlayer : true})
 	}
 
- 
+   /* setFalse() {
+        this.setState({ refresher: false })
+        this.setTrue();
+    }
+    setTrue() {
+        this.setState({ refresher: true })
+    }*/
 
 	PlayAlbum(item){
 		this.setState({playerURI : "/album/" + item})
 		this.setState({displayPlayer : true})
     }
-
-    
-
-
-   /* displayRecommendations(item){
-        return(
-    
-            <div>
-                <h2>Recommended songs : </h2>
-                <BrowseRecommendations options={{ seed_artists: item.id  ,
-                    min_popularity: 50 , 
-                    target_energy: this.state.seeds.energy , 
-                    limit: 5,
-                    }}>
-                    {
-                        (recommendations, loading, error) => (
-                        recommendations ? (
-                        recommendations.tracks.map(track => (
-                        <ListItem divider key={track.id}>
-                        <img src = {track.album.images[0] ? track.album.images[2].url : null}/>
-                        {track.name}
-						<IconButton onClick={this.handleClick}>
-						<PlayArrow/>
-						</IconButton>
-						</ListItem>
-                    ))
-                ) : <ListItem divider> None available</ListItem>
-                )
-                }</BrowseRecommendations>
-            </div>
-    
-            )
-        
-    }*/
 
 	PlayTrack(item){
 		this.setState({playerURI : "/track/" + item})
@@ -103,14 +79,14 @@ export default class Songsearch extends Component {
         return (
          
             
-            this.state.display == 'defaultDisplay' && this.state.trackChange ? (
+            this.state.display == 'defaultDisplay' ? (
 
                
             
             <div> 
                 {this.state.displayPlayer ? (
                 <SpotifyPlayerClef uri={this.state.playerURI} />
-                ) : null},
+                ) : null}
              <SearchBar
                 onChange={(value)=> this.setState({value: value})}
                 onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -128,9 +104,7 @@ export default class Songsearch extends Component {
         {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                         ) : null}
-                        <EnergySlider inputenergy={(value) => {
-                            this.setState({ seeds: { energy: value } })}}/>
-                        <Typography component="h2" variant="display1" gutterBottom> {0} </Typography>
+        
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
             onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -152,13 +126,15 @@ export default class Songsearch extends Component {
                    <div> 
                    <div className="d-table"> 
                         <div className="d-table-row"> 
-                            <div className="d-table-cell">
-                                <Typography variant="h2">Recommended songs </Typography>
-
-                                {data.artists.items.map(artist => (
-                                <DisplayRecommendations item={artist} playtrack={this.PlayTrack} />
-                                ))}
-                            </div>
+                           {this.state.refresher? (<div className="d-table-cell">
+                                               
+                                 {
+                                  data.artists.items.map(artist => (
+                                       <DisplayRecommendations refresh={(value) => {
+                                        this.setState({ refresher: false })}} 
+                                        item={artist} playtrack={this.PlayTrack} seed={this.props.seed} />))
+                                 }
+                            </div>):<h2>Refeshing..</h2>}
                             <div className="d-table-cell">
                                 <Typography variant="h2">Albums</Typography>
                     
