@@ -15,7 +15,7 @@ export default class DisplayRecommendations extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.prop !== prevProps)
+        if (this.props !== prevProps)
             this.handleRefresh();
     }
 
@@ -35,20 +35,19 @@ export default class DisplayRecommendations extends Component {
 
         return (
             <div>
-                {/*  <EnergySlider inputenergy={(value) => {
-                    this.setState({ seeds: { energy: value } })}}/>
-                <Typography component="h2" variant="display1" gutterBottom> {this.state.seeds.energy} </Typography>*/}
+                
                                         
-                <Typography variant="h2">Recommended songs </Typography>
+                
             
             
                 <BrowseRecommendations options={{
                     seed_artists: this.props.item.id,
                     min_popularity: 50,
-                    target_energy: this.props.seed.energy,
+                    target_energy: this.props.energy,
+                    target_danceability: this.props.danceability,
                     limit: 5,}}>
                             {
-                              (recommendations, loading, error) => (
+                        (recommendations, loading, error) => (
                                 recommendations ? (
                                     recommendations.tracks.map(track => (
                                           <ListItem divider key={track.id}>

@@ -32,7 +32,6 @@ export default class Songsearch extends Component {
             artist: [],
             refresher: true,
             searchProps : {
-                market: 'US' ,
                 limit : 5 ,
                 offset: 0 ,
                 include_external: ' '
@@ -127,12 +126,13 @@ export default class Songsearch extends Component {
                    <div className="d-table"> 
                         <div className="d-table-row"> 
                            {this.state.refresher? (<div className="d-table-cell">
-                                               
+                                 <Typography variant="h2">Recommended songs </Typography>
                                  {
-                                  data.artists.items.map(artist => (
-                                       <DisplayRecommendations refresh={(value) => {
-                                        this.setState({ refresher: false })}} 
-                                        item={artist} playtrack={this.PlayTrack} seed={this.props.seed} />))
+                                                    data.artists.items.map(artist => (
+                                                        <DisplayRecommendations refresh={(value) => {
+                                                            this.setState({ refresher: false })}}
+                                                            item={artist} playtrack={this.PlayTrack} energy={this.props.energy}
+                                                            danceability={this.props.danceability} />))
                                  }
                             </div>):<h2>Refeshing..</h2>}
                             <div className="d-table-cell">

@@ -13,6 +13,7 @@ import Slidesshow from './slidesshow';
 // import backPic01 from './backPic01.png';
 // import background from './background';
 import EnergySlider from './energySlider';
+import DanceabilitySlider from './DanceabilitySlider';
 import  Chart from './chart' ; 
 // import  Par from './par' ; 
 import  Ap from './par' ; 
@@ -26,11 +27,11 @@ export default class Main extends Component {
     constructor() {
         super();
         this.state = {
-            seeds: {
-                energy: 0.5,
-            }
+            energy: 0.5,
+            danceability: 0.5
         }
     }
+
     
     componentDidMount() {
 
@@ -40,10 +41,15 @@ export default class Main extends Component {
         return (
             <div className="App">
                 <Title />
+                
+                <DanceabilitySlider inputenergy={(value) => {
+                    this.setState({ danceability: value })}} />
+                <Typography component="h2" variant="display1"> {this.state.danceability} </Typography>
                 <EnergySlider inputenergy={(value) => {
-                    this.setState({ seeds: { energy: value } })}}/>
-                <Typography component="h2" variant="display1" gutterBottom> {this.state.seeds.energy} </Typography>
-                <Songsearch seed={this.state.seeds}/>
+                    this.setState({ energy: value  })
+                }} />
+                <Typography component="h2" variant="display1"> {this.state.energy} </Typography>
+                <Songsearch energy={this.state.energy} danceability={this.state.danceability}/>
              
             <Slidesshow/>
             <Wiki /> 
