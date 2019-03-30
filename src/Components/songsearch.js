@@ -18,7 +18,6 @@ export default class Songsearch extends Component {
     constructor(props)
     {
         super(props)
-        var speed = 0
         this.PlayArtist = this.PlayArtist.bind(this);
         this.PlayAlbum = this.PlayAlbum.bind(this);
         this.PlayTrack = this.PlayTrack.bind(this);
@@ -29,7 +28,6 @@ export default class Songsearch extends Component {
             display : 'defaultDisplay',
 			playerURI : '',
             displayPlayer: false,
-            artist: [],
             refresher: true,
             searchProps: {
                 market: 'US',
@@ -53,14 +51,6 @@ export default class Songsearch extends Component {
 		this.setState({playerURI : "/artist/" + item})
 		this.setState({displayPlayer : true})
 	}
-
-   /* setFalse() {
-        this.setState({ refresher: false })
-        this.setTrue();
-    }
-    setTrue() {
-        this.setState({ refresher: true })
-    }*/
 
 	PlayAlbum(item){
 		this.setState({playerURI : "/album/" + item})
@@ -127,13 +117,16 @@ export default class Songsearch extends Component {
                    <div className="d-table"> 
                         <div className="d-table-row"> 
                            {this.state.refresher? (<div className="d-table-cell">
-                                 <Typography variant="h2">Recommended songs </Typography>
+                                 <Typography variant="h3">Recommended songs </Typography>
                                  {
                                                     data.artists.items.map(artist => (
                                                         <DisplayRecommendations refresh={(value) => {
-                                                            this.setState({ refresher: false })}}
+                                                            this.setState({ refresher: false })
+                                                        }}
                                                             item={artist} playtrack={this.PlayTrack} energy={this.props.energy}
-                                                            danceability={this.props.danceability} />))
+                                                            danceability={this.props.danceability}
+                                                            instrumentalness={this.props.instrumentalness}
+                                                            speechiness={this.props.speechiness}/>))
                                  }
                             </div>):<h2>Refeshing..</h2>}
                             <div className="d-table-cell">
@@ -146,14 +139,14 @@ export default class Songsearch extends Component {
                         </div>
                         <div className="d-table-row">
                             <div className="d-table-cell">
-                                <Typography variant="h2">Artists</Typography>
+                                <Typography variant="h3">Artists</Typography>
                                 
                                 {data.artists.items.map(artist => (
                                 <DisplayArtist item={artist} playartist={this.PlayArtist} />))}
                             </div>
                         
                             <div className ="d-table-cell">
-                                <Typography variant="h2">Tracks</Typography>
+                                <Typography variant="h3">Tracks</Typography>
                                 
                                 {data.tracks.items.map((track) => 
                                 <DisplayTrack item={track} playtrack={this.PlayTrack} />)}

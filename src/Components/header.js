@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import queryString from 'query-string';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
-import { orange } from '@material-ui/core/colors';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { User } from 'react-spotify-api';
-import { Search } from 'react-spotify-api';
 
 let textColor = 'orange'
 let defaultStyle = {
     color: textColor
 };
 
-const orangeTheme = createMuiTheme({ palette: { primary: orange}})
 
 export default class Header extends Component {
     constructor() {

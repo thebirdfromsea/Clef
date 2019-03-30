@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ListItem from '@material-ui/core/ListItem';
-import { Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import { BrowseRecommendations } from 'react-spotify-api'
@@ -42,9 +41,11 @@ export default class DisplayRecommendations extends Component {
             
                 <BrowseRecommendations options={{
                     seed_artists: this.props.item.id,
-                    min_popularity: 50,
+                    min_popularity: 0,
                     target_energy: this.props.energy,
                     target_danceability: this.props.danceability,
+                    target_instrumentalness: this.props.instrumentalness,
+                    target_speechiness: this.props.speechiness,
                     limit: 5,}}>
                             {
                         (recommendations, loading, error) => (

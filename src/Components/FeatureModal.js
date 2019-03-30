@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import DisplayTrackFeatures from './DisplayTrackFeatures';
 

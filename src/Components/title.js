@@ -87,14 +87,4 @@ export default class Title extends Component {
         
         
         
-        
-        
-    //     <div>
-    //         <h1 style={titleformat}><img src={"https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg"} alt="Clef Symbol" style={clefimage} /> Clef <img src={"https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg"} alt="Clef Symbol" style={clefimage} /></h1>
-    //         <hr style={hr} />
-           
-    //         </div>
-    //         );
-    //     }
-    // }
-    
+      
