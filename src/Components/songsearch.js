@@ -31,7 +31,8 @@ export default class Songsearch extends Component {
             displayPlayer: false,
             artist: [],
             refresher: true,
-            searchProps : {
+            searchProps: {
+                market: 'US',
                 limit : 5 ,
                 offset: 0 ,
                 include_external: ' '
