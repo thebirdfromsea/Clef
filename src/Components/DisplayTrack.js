@@ -3,18 +3,31 @@ import ListItem from '@material-ui/core/ListItem';
 import { Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrow from '@material-ui/icons/PlayArrow';
+import PieChart from '@material-ui/icons/PieChart';
+import FeatureModal from './FeatureModal';
 
 export default class DisplayTrack extends Component {
     constructor(props) {
         super(props);
         this.state = {
+		open: false
 
         }
+		this.handleClose = this.handleClose.bind(this);
     }
+
+	handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
 
     handleClick = (event) => {
         this.props.playtrack(this.props.item.id)
     };
+
 
     render() {
 
@@ -29,6 +42,10 @@ export default class DisplayTrack extends Component {
                     <IconButton onClick={this.handleClick}>
                         <PlayArrow />
                     </IconButton>
+					<IconButton onClick={this.handleOpen}>
+                        <PieChart />
+                    </IconButton>
+					 <FeatureModal open={this.state.open} handleClose={this.handleClose} analysis={this.props.item}/>
                 </ListItem>
 
             </div>

@@ -60,16 +60,6 @@ export default class DisplayTrackFeatures extends Component {
 
                                             <div>
                                                 <ScatterPlot data={analysisGraphData} data2={analysisGraphData2} data3={analysisGraphData3} ticks={ticks} />
-                                                <h3> Duration : {analysis.track.duration / 60.00} minutes</h3>
-                                                <h3> Tempo : {analysis.track.tempo} </h3>
-                                                <h3> Start : {analysis.bars[0].start} </h3>
-                                                <h3> Start of bar 2: {analysis.bars[1].start}</h3>
-                                                <h3> Bars: {analysis.bars.length}</h3>
-                                                <h3> Beats : {analysis.beats.length}</h3>
-                                                <h3> Beats per Bar : {analysis.beats.length / analysis.bars.length}</h3>
-                                                <h3> Sections : {analysis.sections.length}</h3>
-                                                <h3> Segments : {analysis.segments.length} </h3>
-                                                <h3> Tatums :    {analysis.tatums.length} </h3>
                                                 <div>
 
                                                 </div>
@@ -100,3 +90,14 @@ export default class DisplayTrackFeatures extends Component {
         );
     }
 }
+
+												/*<h3> Duration : {analysis.track.duration / 60.00} minutes</h3>
+                                                <h3> Tempo : {analysis.track.tempo} </h3>
+                                                <h3> Start : {analysis.bars[0].start} </h3>
+                                                <h3> Start of bar 2: {analysis.bars[1].start}</h3>
+                                                <h3> Bars: {analysis.bars.length}</h3>
+                                                <h3> Beats : {analysis.beats.length}</h3>
+                                                <h3> Beats per Bar : {analysis.beats.length / analysis.bars.length}</h3>
+                                                <h3> Sections : {analysis.sections.length}</h3>
+                                                <h3> Segments : {analysis.segments.length} </h3>
+                                                <h3> Tatums :    {analysis.tatums.length} </h3> */
