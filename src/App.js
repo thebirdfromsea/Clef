@@ -22,8 +22,16 @@ class App extends Component {
             <Par />
             <Router>
                 <Switch>
-                    <Route exact path="/home" component={Home} />
-                    <Route exact path="/main" component={Main} />
+                <Route
+                    path='/main'
+                    render={(props) => <Main accessToken = {this.props.value}
+                                        />}
+                    />
+                  
+                    <Route 
+                    path='/home'
+                    render={(props) => <Home accessToken = {this.props.value} />}
+                    />
                     <Route exact path="/whatsnew" component={WhatsNew}/>
                 </Switch>  
             </Router>

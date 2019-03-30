@@ -8,6 +8,7 @@ import DisplayAlbum from './DisplayAlbum';
 import DisplayTrack from './DisplayTrack';
 import DisplayTrackFeatures from './DisplayTrackFeatures';
 import DisplayRecommendations from './DisplayRecommendations';
+import CreatePlaylistWithUser from './CreatePlaylistWithUser'
 
 
 
@@ -62,7 +63,9 @@ export default class Songsearch extends Component {
 		this.setState({displayPlayer : true})
 	}
 
-    
+    CreatePlaylist(){
+        this.setState({needsPlaylist : true})
+    }
 
  
     render() {
@@ -77,6 +80,9 @@ export default class Songsearch extends Component {
                 {this.state.displayPlayer ? (
                 <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}
+                 {this.state.needsPlaylist ? (
+                     <CreatePlaylistWithUser accessToken = {this.props.accessToken}/>
+                        ) : null}
              <SearchBar
                 onChange={(value)=> this.setState({value: value})}
                 onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -85,6 +91,7 @@ export default class Songsearch extends Component {
                     maxWidth: 600
                 }}
              />
+               <button onClick = {()=> this.CreatePlaylist()}>Click to create a playlist</button>
             </div>
          ) : 
 
@@ -93,6 +100,9 @@ export default class Songsearch extends Component {
 	
         {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
+                        ) : null}
+         {this.state.needsPlaylist ? (
+                     <CreatePlaylistWithUser accessToken = {this.props.accessToken}/>
                         ) : null}
         
         <SearchBar

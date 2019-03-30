@@ -17,7 +17,7 @@ export default class Home extends Component {
             <div className="App">
             <div>
                 <Title />
-                <Header />
+                <Header accessToken = {this.props.accessToken}/>
             </div>
                 
                 <Usertopartists/>

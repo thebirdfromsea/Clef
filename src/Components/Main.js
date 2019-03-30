@@ -57,7 +57,7 @@ export default class Main extends Component {
                         </div>
                     </div>
              </div>
-             <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness}/>
+             <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} accessToken = {this.props.accessToken}/>
             <Slidesshow/>
             <Wiki /> 
             <Chart/>

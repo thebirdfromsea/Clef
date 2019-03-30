@@ -16,7 +16,7 @@ let accessToken = parsed.access_token;
 
 ReactDOM.render(
     <SpotifyApiContext.Provider value={accessToken}>
-        <App />
+         <App value = {accessToken}/>
     </SpotifyApiContext.Provider>, document.getElementById('root'), );
 
 // If you want your app to work offline and load faster, you can change
