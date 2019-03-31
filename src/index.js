@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -12,9 +12,26 @@ import "mdbreact/dist/css/mdb.css";
 
 let parsed = queryString.parse(window.location.search);
 let accessToken = parsed.access_token;
+//
 
+function removeParams(sParam) {
+    var url = window.location.href.split('?')[0] + '?';
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] != sParam) {
+            url = url + sParameterName[0] + '=' + sParameterName[1] + '&'
+        }
+    }
+    return url.substring(0, url.length - 1);
+}
 
 ReactDOM.render(
+    
     <SpotifyApiContext.Provider value={accessToken}>
          <App value = {accessToken}/>
     </SpotifyApiContext.Provider>, document.getElementById('root'), );

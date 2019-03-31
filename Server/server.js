@@ -37,7 +37,7 @@ app.get('/callback', function(req, res) {
   request.post(authOptions, function(error, response, body) {
     var access_token = body.access_token
     let uri = process.env.FRONTEND_URI || 'http://localhost:3000'
-    res.redirect(uri + '/home' + '?access_token=' + access_token)
+    res.redirect(uri +  '?access_token=' + access_token)
   })
 })
 

@@ -14,7 +14,8 @@ class App extends Component {
         super();
     }
     componentDidMount() {
-      
+        if (!this.props.value)
+            window.location = "http://localhost:8888/login";
     }
     render() {
         return (
@@ -28,7 +29,8 @@ class App extends Component {
                     />
                   
                     <Route 
-                    path='/home'
+                    exact
+                    path='/'
                     render={(props) => <Home accessToken = {this.props.value} />}
                     />
                     <Route exact path="/whatsnew" component={WhatsNew}/>

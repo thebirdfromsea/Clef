@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-
-
 import { User } from 'react-spotify-api';
-
 import CreatePlaylist from './CreatePlaylist'
 
 export default class CreatePlaylistWithUser extends Component {

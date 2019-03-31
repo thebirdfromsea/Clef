@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Server",
     "\\src",
     "\\src\\Components"
   ],
-  "SelectedNode": "\\src\\Components\\Home.js",
+  "SelectedNode": "\\src\\Components\\SliderSwitch.js",
   "PreviewInSolutionExplorer": false
 }

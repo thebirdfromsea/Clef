@@ -56,7 +56,7 @@ export default class Title extends Component {
                     <Grid container spacing={16} justify="center">
                     <Grid item>
                     <MuiThemeProvider theme={orangeTheme}>
-                    <Button variant="contained" color="primary" component={Link} to="/Home">
+                    <Button variant="contained" color="primary" component={Link} to="/">
                     Home
                     </Button>
                     </MuiThemeProvider>
