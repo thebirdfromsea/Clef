@@ -56,17 +56,17 @@ export default class Main extends Component {
     render() {
         return (
             <div className="App">
-            <Title />
-            <SliderSwitch toggle={this.toggleSliders} />
-            {this.state.showSlider ? (
+                <Title />
+                <SliderSwitch toggle={this.toggleSliders} />
+                {this.state.showSlider ? (
                     <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
-            ) : null}
-            <PlaylistDialog accessToken={this.props.accessToken}/>
-            <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} />
-            <Slidesshow/>
-            <Wiki /> 
+                ) : null}
+                <PlaylistDialog accessToken={this.props.accessToken} />
+                <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} />
+                <Slidesshow />
+                <Wiki />
 
-            <Ap/>
+                <Ap />
             </div>
         );
     }
