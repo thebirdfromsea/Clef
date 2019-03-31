@@ -70,8 +70,8 @@ export default class Title extends Component {
                     </Grid>
                     <Grid item>
                     <MuiThemeProvider theme={orangeTheme}>
-                                    <Button variant="contained" color="primary" component={Link} to="/Main"> Search for song information </Button>
-                                </MuiThemeProvider>
+                        <Button variant="contained" color="primary" component={Link} to="/Main"> Search for song information </Button>
+                    </MuiThemeProvider>
                     </Grid>
                     </Grid>
                     <hr style={hr} />

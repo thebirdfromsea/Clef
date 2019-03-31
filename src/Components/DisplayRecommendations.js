@@ -34,11 +34,6 @@ export default class DisplayRecommendations extends Component {
 
         return (
             <div>
-                
-                                        
-                
-            
-            
                 <BrowseRecommendations options={{
                     seed_artists: this.props.item.id,
                     min_popularity: 0,

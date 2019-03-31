@@ -10,6 +10,9 @@ import SpeechinessSlider from './SpeechinessSlider';
 import  Chart from './chart' ; 
 import  Ap from './par' ; 
 import { Typography } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import PlaylistDialog from './PlaylistDialog';
+
   
 export default class Main extends Component {
     constructor() {
@@ -56,8 +59,10 @@ export default class Main extends Component {
                             <Typography component="h2" variant="display1"> {this.state.speechiness} </Typography>
                         </div>
                     </div>
-             </div>
-             <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} accessToken = {this.props.accessToken}/>
+                </div>
+                <PlaylistDialog accessToken={this.props.accessToken}/>
+
+            <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} />
             <Slidesshow/>
             <Wiki /> 
             <Chart/>

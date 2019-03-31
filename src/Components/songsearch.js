@@ -91,7 +91,7 @@ export default class Songsearch extends Component {
                     maxWidth: 600
                 }}
              />
-               <button onClick = {()=> this.CreatePlaylist()}>Click to create a playlist</button>
+                    {/*<button onClick = {()=> this.CreatePlaylist()}>Click to create a playlist</button>*/}
             </div>
          ) : 
 
