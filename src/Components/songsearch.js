@@ -91,7 +91,7 @@ export default class Songsearch extends Component {
                     maxWidth: 600
                 }}
              />
-                    {/*<button onClick = {()=> this.CreatePlaylist()}>Click to create a playlist</button>*/}
+                    
             </div>
          ) : 
 
@@ -101,9 +101,7 @@ export default class Songsearch extends Component {
         {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                         ) : null}
-         {this.state.needsPlaylist ? (
-                     <CreatePlaylistWithUser accessToken = {this.props.accessToken}/>
-                        ) : null}
+                        
         
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}

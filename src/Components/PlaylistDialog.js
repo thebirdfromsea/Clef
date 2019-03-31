@@ -10,6 +10,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
 import Snackbar from '@material-ui/core/Snackbar';
 import CreatePlaylist from './CreatePlaylist';
+import CreatePlaylistWithUser from './CreatePlaylistWithUser';
 
 const orangeTheme = createMuiTheme({ palette: { primary: orange } })
 
@@ -20,6 +21,7 @@ export default class FormDialog extends React.Component {
         name: "",
         desc: "",
         openSnack: false,
+        createPlaylist: false,
     };
 
     handleClickOpen = () => {
@@ -28,8 +30,8 @@ export default class FormDialog extends React.Component {
 
     handleClose = () => {
         this.setState({ open: false });
-        CreatePlaylist(this.props.accessToken, this.state.name, this.state.desc);
         this.setState({ openSnack: true });
+        this.setState({ createPlaylist: true });
     };
 
     handleNameChange = name => event => {
@@ -46,6 +48,9 @@ export default class FormDialog extends React.Component {
         this.setState({ openSnack: false });
     };
 
+    handleCloseNoCreate = () => {
+        this.setState({ open: false });
+    };
         
 
     
@@ -89,11 +94,14 @@ export default class FormDialog extends React.Component {
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.handleCloseNoCreate} color="primary">
                             Cancel
                         </Button>
+                        {console.log(this.props.accessToken)}
                         <Button onClick={this.handleClose} color="primary">Create</Button>
-                        
+                        {this.state.createPlaylist ? (
+                            <CreatePlaylistWithUser accessToken={this.props.accessToken} name={this.state.name} desc={this.state.desc}/>
+                        ) : null}
                     </DialogActions>
                 </Dialog>
                 <Snackbar

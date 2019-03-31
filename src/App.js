@@ -24,8 +24,7 @@ class App extends Component {
                 <Switch>
                 <Route
                     path='/main'
-                    render={(props) => <Main accessToken = {this.props.value}
-                                        />}
+                    render={(props) => <Main accessToken = {this.props.value}/>}
                     />
                   
                     <Route 
