@@ -31,7 +31,7 @@ class SliderSwitch extends React.Component {
 
   handleChange = name => event => {
       this.setState({ [name]: event.target.checked });
-      this.props.turnOn();
+      this.props.toggle();
   };
 
   render() {

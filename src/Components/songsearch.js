@@ -8,7 +8,7 @@ import DisplayAlbum from './DisplayAlbum';
 import DisplayTrack from './DisplayTrack';
 import DisplayTrackFeatures from './DisplayTrackFeatures';
 import DisplayRecommendations from './DisplayRecommendations';
-import CreatePlaylistWithUser from './CreatePlaylistWithUser'
+import CreatePlaylistWithUser from './CreatePlaylistWithUser';
 
 
 
@@ -88,7 +88,8 @@ export default class Songsearch extends Component {
                 onRequestSearch={()=> this.setState({display:'loadDisplay'})}
                 style={{
                     margin: '0 auto',
-                    maxWidth: 600
+                    maxWidth: 600,
+                    
                 }}
              />
                     
@@ -124,7 +125,8 @@ export default class Songsearch extends Component {
                    <div> 
                    <div className="d-table"> 
                         <div className="d-table-row"> 
-                           {this.state.refresher? (<div className="d-table-cell">
+                           {this.state.refresher? ( 
+                            <div className="d-table-cell">
                                  <Typography variant="h3">Recommended songs </Typography>
                                  {
                                                     data.artists.items.map(artist => (

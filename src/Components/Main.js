@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import Title from './title';
 import Songsearch from './songsearch';
 import Wiki from './wiki';
-import Slidesshow from './slidesshow';
-import EnergySlider from './energySlider';
-import DanceabilitySlider from './DanceabilitySlider';
-import InstrumentalnessSlider from './InstrumentalnessSlider';
-import SpeechinessSlider from './SpeechinessSlider';
-import  Chart from './chart' ; 
+import Slidesshow from './slidesshow'; 
 import  Ap from './par' ; 
-import { Typography } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import PlaylistDialog from './PlaylistDialog';
+import SliderSwitch from './SliderSwitch';
+import Sliders from './Sliders';
 
-  
 export default class Main extends Component {
     constructor() {
         super();
+        this.toggleSliders = this.toggleSliders.bind(this);
+        this.setSpeechiness = this.setSpeechiness.bind(this);
+        this.setInstrumentalness = this.setInstrumentalness.bind(this);
+        this.setEnergy = this.setEnergy.bind(this);
+        this.setDanceability = this.setDanceability.bind(this);
         this.state = {
+            showSlider: false,
             energy: 0.5,
             danceability: 0.5,
             instrumentalness: 0.5,
@@ -25,7 +26,29 @@ export default class Main extends Component {
         }
     }
 
-    
+    toggleSliders = () => {
+        if (this.state.showSlider === false) {
+            this.setState({ showSlider: true })
+        } else {
+            this.setState({ showSlider: false })
+        }
+    }
+
+    setDanceability = (value) => {
+        this.setState({ danceability: value });
+    }
+
+    setEnergy = (value) => {
+        this.setState({ energy: value });
+    }
+
+    setInstrumentalness = (value) => {
+        this.setState({ instrumentalness: value });
+    }
+
+    setSpeechiness = (value) => {
+        this.setState({ speechiness: value });
+    }
     componentDidMount() {
 
     }
@@ -34,34 +57,11 @@ export default class Main extends Component {
         return (
             <div className="App">
             <Title />
-                <div className="d-table">
-                    <div className="d-table-row">
-                        <div className="d-table-cell">
-                            <DanceabilitySlider inputenergy={(value) => {
-                                this.setState({ danceability: value })}} />
-                            <Typography component="h2" variant="display1"> {this.state.danceability} </Typography>
-                        </div>
-                        <div className="d-table-cell">
-                            <EnergySlider inputenergy={(value) => {
-                                this.setState({ energy: value  })}} />
-                            <Typography component="h2" variant="display1"> {this.state.energy} </Typography>
-                        </div>
-                    </div>
-                    <div className="d-table-row">
-                        <div className="d-table-cell">
-                            <InstrumentalnessSlider inputenergy={(value) => {
-                                this.setState({ instrumentalness: value })}} />
-                            <Typography component="h2" variant="display1"> {this.state.instrumentalness} </Typography>
-                        </div>
-                        <div className="d-table-cell">
-                            <SpeechinessSlider inputenergy={(value) => {
-                                this.setState({ speechiness: value })}} />
-                            <Typography component="h2" variant="display1"> {this.state.speechiness} </Typography>
-                        </div>
-                    </div>
-                </div>
-                <PlaylistDialog accessToken={this.props.accessToken}/>
-
+            <SliderSwitch toggle={this.toggleSliders} />
+            {this.state.showSlider ? (
+                    <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
+            ) : null}
+            <PlaylistDialog accessToken={this.props.accessToken}/>
             <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} />
             <Slidesshow/>
             <Wiki /> 
