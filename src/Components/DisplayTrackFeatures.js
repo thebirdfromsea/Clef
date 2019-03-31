@@ -43,30 +43,7 @@ export default class DisplayTrackFeatures extends Component {
                             {this.props.track.name}
                         </a>
                     </h2>
-                    <h2>Track Analysis:</h2>
-                    <TrackAnalysis id={this.props.track.id}>
-
-                        {
-                            (analysis, loading, error) => (
-                                error ? (null) :
-                                    loading ? (<h1>Loading...</h1>) :
-                                        analysis ? (
-                                            fillGraphData(analysis.track.duration, analysis.bars.length, analysis.bars, analysisGraphData)
-                                            ,
-                                            fillGraphData(analysis.track.duration, analysis.beats.length, analysis.beats, analysisGraphData2),
-
-                                            fillGraphData(analysis.track.duration, analysis.tatums.length, analysis.tatums, analysisGraphData3)
-                                            ,
-
-                                            <div>
-                                                <ScatterPlot data={analysisGraphData} data2={analysisGraphData2} data3={analysisGraphData3} ticks={ticks} />
-                                                <div>
-
-                                                </div>
-                                            </div>
-                                        ) : null
-                            )}
-                    </TrackAnalysis>
+                    
                 </div>
                 <div>
                     <h2>Track Features:</h2>
@@ -100,4 +77,28 @@ export default class DisplayTrackFeatures extends Component {
                                                 <h3> Beats per Bar : {analysis.beats.length / analysis.bars.length}</h3>
                                                 <h3> Sections : {analysis.sections.length}</h3>
                                                 <h3> Segments : {analysis.segments.length} </h3>
-                                                <h3> Tatums :    {analysis.tatums.length} </h3> */
+                                                <h3> Tatums :    {analysis.tatums.length} </h3> 
+												
+												<TrackAnalysis id={this.props.track.id}>
+
+                        {
+                            (analysis, loading, error) => (
+                                error ? (null) :
+                                    loading ? (<h1>Loading...</h1>) :
+                                        analysis ? (
+                                            fillGraphData(analysis.track.duration, analysis.bars.length, analysis.bars, analysisGraphData)
+                                            ,
+                                            fillGraphData(analysis.track.duration, analysis.beats.length, analysis.beats, analysisGraphData2),
+
+                                            fillGraphData(analysis.track.duration, analysis.tatums.length, analysis.tatums, analysisGraphData3)
+                                            ,
+
+                                            <div>
+                                                <ScatterPlot data={analysisGraphData} data2={analysisGraphData2} data3={analysisGraphData3} ticks={ticks} />
+                                                <div>
+
+                                                </div>
+                                            </div>
+                                        ) : null
+                            )}
+                    </TrackAnalysis> */

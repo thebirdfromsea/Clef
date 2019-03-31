@@ -65,7 +65,7 @@ export default class Main extends Component {
             <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} />
             <Slidesshow/>
             <Wiki /> 
-            <Chart/>
+
             <Ap/>
             </div>
         );
