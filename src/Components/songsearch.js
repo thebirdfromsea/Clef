@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Search } from 'react-spotify-api';
 import SearchBar from 'material-ui-search-bar';
 import { Typography } from '@material-ui/core';
-import SpotifyPlayerClef from './PlayBackWidget';
 import DisplayArtist from './DisplayArtist';
 import DisplayAlbum from './DisplayAlbum';
 import DisplayTrack from './DisplayTrack';
@@ -19,16 +18,12 @@ export default class Songsearch extends Component {
     constructor(props)
     {
         super(props)
-        this.PlayArtist = this.PlayArtist.bind(this);
-        this.PlayAlbum = this.PlayAlbum.bind(this);
-        this.PlayTrack = this.PlayTrack.bind(this);
+
 
         this.state = {
             value: '',
             trackChange : true,
             display : 'defaultDisplay',
-			playerURI : '',
-            displayPlayer: false,
             refresher: true,
             searchProps: {
                 market: 'US',
@@ -48,20 +43,7 @@ export default class Songsearch extends Component {
     }
 
 
-	PlayArtist(item){
-		this.setState({playerURI : "/artist/" + item})
-		this.setState({displayPlayer : true})
-	}
 
-	PlayAlbum(item){
-		this.setState({playerURI : "/album/" + item})
-		this.setState({displayPlayer : true})
-    }
-
-	PlayTrack(item){
-		this.setState({playerURI : "/track/" + item})
-		this.setState({displayPlayer : true})
-	}
 
     CreatePlaylist(){
         this.setState({needsPlaylist : true})
@@ -77,9 +59,7 @@ export default class Songsearch extends Component {
                
             
             <div> 
-                {this.state.displayPlayer ? (
-                <SpotifyPlayerClef uri={this.state.playerURI} />
-                ) : null}
+
                  {this.state.needsPlaylist ? (
                      <CreatePlaylistWithUser accessToken = {this.props.accessToken}/>
                         ) : null}
@@ -99,9 +79,6 @@ export default class Songsearch extends Component {
          (
         <div> 
 	
-        {this.state.displayPlayer ? (
-                    <SpotifyPlayerClef uri={this.state.playerURI} />
-                        ) : null}
                         
         
         <SearchBar
@@ -133,7 +110,7 @@ export default class Songsearch extends Component {
                                                         <DisplayRecommendations refresh={(value) => {
                                                             this.setState({ refresher: false })
                                                         }}
-                                                            item={artist} playtrack={this.PlayTrack} energy={this.props.energy}
+                                                            item={artist} playtrack={this.props.PlayTrack} energy={this.props.energy}
                                                             danceability={this.props.danceability}
                                                             instrumentalness={this.props.instrumentalness}
                                                             speechiness={this.props.speechiness}/>))
@@ -144,7 +121,7 @@ export default class Songsearch extends Component {
                     
                             
                                 {data.albums.items.map(album => (
-                               <DisplayAlbum item={album} playalbum={this.PlayAlbum}/>))}
+                               <DisplayAlbum item={album} playalbum={this.props.PlayAlbum}/>))}
                             </div>  
                         </div>
                         <div className="d-table-row">
@@ -152,14 +129,14 @@ export default class Songsearch extends Component {
                                 <Typography variant="h3">Artists</Typography>
                                 
                                 {data.artists.items.map(artist => (
-                                <DisplayArtist item={artist} playartist={this.PlayArtist} />))}
+                                <DisplayArtist item={artist} playartist={this.props.PlayArtist} />))}
                             </div>
                         
                             <div className ="d-table-cell">
                                 <Typography variant="h3">Tracks</Typography>
                                 
                                 {data.tracks.items.map((track) => 
-                                <DisplayTrack item={track} playtrack={this.PlayTrack} />)}
+                                <DisplayTrack item={track} playtrack={this.props.PlayTrack} />)}
                             </div>
                         </div>
                     </div>

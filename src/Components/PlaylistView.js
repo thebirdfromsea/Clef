@@ -15,7 +15,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { orange } from '@material-ui/core/colors';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import {UserPlaylists} from 'react-spotify-api';
+import { UserPlaylists } from 'react-spotify-api';
+import PlayArrow from '@material-ui/icons/PlayArrow';
 
 const orangeTheme = createMuiTheme({ palette: { primary: orange } });
 
@@ -43,7 +44,12 @@ class PlaylistView extends React.Component {
 
   handleClose = () => {
     this.setState({ open: false });
-  };
+    };
+
+    handlePlay = (event, playlist) => {
+        this.setState({ open: false });
+        this.props.PlayPlaylist(playlist.id);
+    };
 
   render() {
     const { classes } = this.props;
@@ -77,7 +83,13 @@ class PlaylistView extends React.Component {
             {(playlists, loading, error) =>
                 playlists ? (
                     playlists.items.map(playlist => (
-                        <h1 key={playlist.id}><img src = {playlist.images[1] ? (playlist.images[1].url) : null}/>{playlist.name}</h1>
+                                <ListItem divider key={playlist.id}>
+                                    <img src={playlist.images[1] ? (playlist.images[1].url) : null} />
+                                    <Typography variant="h4">{playlist.name}</Typography>
+                                    <IconButton onClick={this.handlePlay.bind(this,playlist)}>
+                                        <PlayArrow />
+                                    </IconButton>
+                                </ListItem>
                     ))
                 ) : null
             }

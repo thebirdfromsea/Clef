@@ -9,6 +9,7 @@ import PlaylistDialog from './PlaylistDialog';
 import SliderSwitch from './SliderSwitch';
 import Sliders from './Sliders';
 import PlaylistView from './PlaylistView';
+import SpotifyPlayerClef from './PlayBackWidget';
 
 export default class Main extends Component {
     constructor() {
@@ -18,8 +19,14 @@ export default class Main extends Component {
         this.setInstrumentalness = this.setInstrumentalness.bind(this);
         this.setEnergy = this.setEnergy.bind(this);
         this.setDanceability = this.setDanceability.bind(this);
+        this.PlayArtist = this.PlayArtist.bind(this);
+        this.PlayAlbum = this.PlayAlbum.bind(this);
+        this.PlayTrack = this.PlayTrack.bind(this);
+        this.PlayPlaylist = this.PlayPlaylist.bind(this);
         this.state = {
             showSlider: false,
+            displayPlayer: false,
+            playerURI: '',
             energy: 0.5,
             danceability: 0.5,
             instrumentalness: 0.5,
@@ -50,6 +57,24 @@ export default class Main extends Component {
     setSpeechiness = (value) => {
         this.setState({ speechiness: value });
     }
+    PlayArtist(item) {
+        this.setState({ playerURI: "/artist/" + item })
+        this.setState({ displayPlayer: true })
+    }
+
+    PlayAlbum(item) {
+        this.setState({ playerURI: "/album/" + item })
+        this.setState({ displayPlayer: true })
+    }
+
+    PlayTrack(item) {
+        this.setState({ playerURI: "/track/" + item })
+        this.setState({ displayPlayer: true })
+    }
+    PlayPlaylist(item) {
+        this.setState({ playerURI: "/playlist/" + item })
+        this.setState({ displayPlayer: true })
+    }
     componentDidMount() {
 
     }
@@ -63,8 +88,12 @@ export default class Main extends Component {
                     <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
                 ) : null}
                 <PlaylistDialog accessToken={this.props.accessToken} />
-                <PlaylistView />
-                <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} />
+                <PlaylistView PlayPlaylist={this.PlayPlaylist} />
+                {this.state.displayPlayer ? (
+                    <SpotifyPlayerClef uri={this.state.playerURI} />
+                ) : null}
+                <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness}
+                    PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum}/>
                 <Slidesshow />
                 <Wiki />
 
