@@ -74,9 +74,6 @@ class PlaylistView extends React.Component {
               <Typography variant="h6" color="inherit" className={classes.flex}>
                 Sound
               </Typography>
-              <Button color="inherit" onClick={this.handleClose}>
-                save
-              </Button>
             </Toolbar>
           </AppBar>
           <UserPlaylists>
