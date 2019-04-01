@@ -2,11 +2,22 @@ import React from "react";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
 "mdbreact";
 
+const style={
+  position: "absolute",
+  zIndex: -2,
+  top: 0,
+  left:0,
+  height: "100px",
+  width: "450px"
+
+}
 const CarouselPage = () => {
   return (
     <MDBContainer>
-      <h4 className="mt-5 mb-2">We love music</h4>
-      <MDBCarousel activeItem={1} length={4} showControls={true} showIndicators={true} className="z-depth-1">
+      
+      {/* <h4 className="mt-5 mb-2">We love music</h4> */}
+      
+      <MDBCarousel activeItem={1} length={4} showControls={true} showIndicators={true} className="z-depth-1" data-interval=" 34" class="carousel slide carousel-fade"  style ={style}>
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">
             <MDBView>
@@ -14,8 +25,8 @@ const CarouselPage = () => {
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">Light mask</h3>
-              <p>First text</p>
+              {/* <h3 className="h3-responsive">Light mask</h3> */}
+              {/* <p>First text</p> */}
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="2">
@@ -24,8 +35,8 @@ const CarouselPage = () => {
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">Strong mask</h3>
-              <p>Second text</p>
+              {/* <h3 className="h3-responsive">Strong mask</h3> */}
+              {/* <p>Second text</p> */}
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="3">
@@ -34,8 +45,8 @@ const CarouselPage = () => {
               <MDBMask overlay="black-slight" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">Slight mask</h3>
-              <p>Third text</p>
+              {/* <h3 className="h3-responsive">Slight mask</h3> */}
+              {/* <p>Third text</p> */}
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="4">
@@ -44,8 +55,8 @@ const CarouselPage = () => {
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">Sopot Beach</h3>
-              <p>Forth text</p>
+              {/* <h3 className="h3-responsive">Sopot Beach</h3> */}
+              {/* <p>Forth text</p> */}
             </MDBCarouselCaption>
           </MDBCarouselItem>
         </MDBCarouselInner>
