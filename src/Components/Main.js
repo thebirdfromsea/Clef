@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Title from './title';
 import Songsearch from './songsearch';
-import Wiki from './wiki';
+// import Wiki from './wiki';
 import Slidesshow from './slidesshow'; 
 import  Ap from './par' ; 
 import Grid from '@material-ui/core/Grid';
@@ -95,7 +95,7 @@ export default class Main extends Component {
                 <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness}
                     PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum}/>
                 <Slidesshow />
-                <Wiki />
+                {/* <Wiki /> */}
 
                 <Ap />
             </div>

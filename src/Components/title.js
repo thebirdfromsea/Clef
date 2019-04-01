@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { orange } from '@material-ui/core/colors';
+import Slidesshow from './slidesshow';
 
 const titleformat = {
     textAlign: "center",
@@ -44,14 +45,20 @@ export default class Title extends Component {
             <div>
               <div>
                 <div>
+                    <Slidesshow/>
+
+                    {/* </slidesshow> */}
                   <Typography component="h1" variant="h2" style={titleformat} gutterBottom>
                   <img src={"https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg"} alt="Clef Symbol" style={clefimage} />
                   Clef
                   <img src={"https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg"} alt="Clef Symbol" style={clefimage} />
+                  
                   </Typography>
-                  <Typography variant="h6" align="center" color="textPrimary" paragraph>
+                  <MuiThemeProvider theme={orangeTheme}>
+                  <Typography variant="h6" align="center" color="primary" paragraph>
                   The Musical Web App
                   </Typography>
+                  </MuiThemeProvider>
                   <div>
                     <Grid container spacing={16} justify="center">
                     <Grid item>

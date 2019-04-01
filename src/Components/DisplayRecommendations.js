@@ -3,12 +3,18 @@ import ListItem from '@material-ui/core/ListItem';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import { BrowseRecommendations } from 'react-spotify-api'
+import PlaylistAddRounded from '@material-ui/icons/PlaylistAddRounded'
+import FeatureModal from './FeatureModal'
+import PieChart from '@material-ui/icons/PieChart';
 
 
 export default class DisplayRecommendations extends Component {
     constructor(props) {
         super(props);
-
+        this.closeModal = this.closeModal.bind(this);
+        this.state = {
+            openModal: false,
+        }
 
         
     }
@@ -25,7 +31,12 @@ export default class DisplayRecommendations extends Component {
     handleClick(item){
         this.props.playtrack(item)
     };
-
+    closeModal = () => {
+        this.setState({ openModal: false });
+    }
+    openModal = () => {
+    this.setState({ openModal: true });
+}
 
 
 
@@ -52,6 +63,14 @@ export default class DisplayRecommendations extends Component {
                                               <IconButton onClick={this.handleClick.bind(this, track.id)}>
                                                   <PlayArrow />
                                               </IconButton>
+                                              <IconButton>
+                                                <PlaylistAddRounded/>
+                                              </IconButton>
+                                              <IconButton onClick={this.openModal}>
+                                                <PieChart />
+                                              </IconButton>
+                                              <FeatureModal open={this.state.openModal} handleClose={this.closeModal} analysis={track} />
+                                               
                                           </ListItem>
                                       ))
                                   ) : <ListItem divider> None available</ListItem>
