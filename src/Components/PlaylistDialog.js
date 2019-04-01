@@ -97,7 +97,6 @@ export default class FormDialog extends React.Component {
                         <Button onClick={this.handleCloseNoCreate} color="primary">
                             Cancel
                         </Button>
-                        {console.log(this.props.accessToken)}
                         <Button onClick={this.handleClose} color="primary">Create</Button>
                         {this.state.createPlaylist ? (
                             <CreatePlaylistWithUser accessToken={this.props.accessToken} name={this.state.name} desc={this.state.desc}/>
