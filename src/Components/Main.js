@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import PlaylistDialog from './PlaylistDialog';
 import SliderSwitch from './SliderSwitch';
 import Sliders from './Sliders';
+import PlaylistView from './PlaylistView';
 
 export default class Main extends Component {
     constructor() {
@@ -62,6 +63,7 @@ export default class Main extends Component {
                     <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
                 ) : null}
                 <PlaylistDialog accessToken={this.props.accessToken} />
+                <PlaylistView />
                 <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness} />
                 <Slidesshow />
                 <Wiki />

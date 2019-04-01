@@ -5,7 +5,6 @@ import Home from './Components/Home';
 import Main from './Components/Main';
 import WhatsNew from './Components/WhatsNew';
 import Par from './Components/par';
-import { style } from 'react-toastify';
 
 
 class App extends Component {
