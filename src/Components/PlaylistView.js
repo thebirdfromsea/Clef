@@ -15,6 +15,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { orange } from '@material-ui/core/colors';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {UserPlaylists} from 'react-spotify-api';
 
 const orangeTheme = createMuiTheme({ palette: { primary: orange } });
 
@@ -72,7 +73,15 @@ class PlaylistView extends React.Component {
               </Button>
             </Toolbar>
           </AppBar>
-                {/*User's playlists needs to go here*/}
+          <UserPlaylists>
+            {(playlists, loading, error) =>
+                playlists ? (
+                    playlists.items.map(playlist => (
+                        <h1 key={playlist.id}>{playlist.name}</h1>
+                    ))
+                ) : null
+            }
+        </UserPlaylists>
         </Dialog>
       </div>
     );
