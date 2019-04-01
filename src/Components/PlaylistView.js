@@ -46,9 +46,9 @@ class PlaylistView extends React.Component {
     this.setState({ open: false });
     };
 
-    handlePlay = (event, playlist) => {
+    handlePlay(playlistID) {
         this.setState({ open: false });
-        this.props.PlayPlaylist(playlist.id);
+        this.props.PlayPlaylist(playlistID);
     };
 
   render() {
@@ -86,7 +86,7 @@ class PlaylistView extends React.Component {
                                 <ListItem divider key={playlist.id}>
                                     <img src={playlist.images[1] ? (playlist.images[1].url) : null} />
                                     <Typography variant="h4">{playlist.name}</Typography>
-                                    <IconButton onClick={this.handlePlay.bind(this,playlist)}>
+                                    <IconButton onClick={() => this.handlePlay(playlist.id)}>
                                         <PlayArrow />
                                     </IconButton>
                                 </ListItem>
