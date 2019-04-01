@@ -77,7 +77,7 @@ class PlaylistView extends React.Component {
             {(playlists, loading, error) =>
                 playlists ? (
                     playlists.items.map(playlist => (
-                        <h1 key={playlist.id}>{playlist.name}</h1>
+                        <h1 key={playlist.id}><img src = {playlist.images[1] ? (playlist.images[1].url) : null}/>{playlist.name}</h1>
                     ))
                 ) : null
             }
