@@ -36,11 +36,10 @@ export default class Utop extends React.Component{
                  artists ? (
                      artists.items.map(artist => (
                      <Card className="d-inline-block" style={{width: "20rem", height: "32rem", backgroundColor: "orange"}}>
-                     <CardActionArea>
                          <p><img src={artist.images[1].url} alt = {artist.name}/></p>
                          <CardContent>
                              <Typography>
-                             <h3 key = {artist.id}>{artist.name}</h3>
+                             <h4 key = {artist.id}>{artist.name}</h4>
                              <p>Genres : {artist.genres[0]}, {artist.genres[1]}</p>
                              </Typography>
                              <Typography component="p">
@@ -53,7 +52,6 @@ export default class Utop extends React.Component{
                             
                             <ArtistAlbumModal open={this.state.open} handleClose={this.handleClose} item={artist}/>
                         </CardContent>
-                    </CardActionArea>
                     </Card>
                     ))
                     ) : null

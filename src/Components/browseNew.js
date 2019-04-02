@@ -36,7 +36,6 @@ export default class newSong extends React.Component{
                      albums ?( 
                         albums.albums.items.map(album=>(
                         <Card className="d-inline-block" style={{width: "20rem", height: "32rem", backgroundColor:"orange"}}>
-                        <CardActionArea>
                             <p><img src= {album.images[1].url} alt ={album.name}/></p>
                             <CardContent>
                                 <Typography>
@@ -50,7 +49,6 @@ export default class newSong extends React.Component{
                                     open={this.state.open} handleClose={this.handleClose} item={album}/>
                                 </Typography>
                             </CardContent>
-                        </CardActionArea>
                         </Card>
                         ))
                     ):null
