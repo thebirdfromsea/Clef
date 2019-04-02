@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Title from './title';
+import BrowseNew from './browseNew'
 
 export default class WhatsNew extends Component{
     constructor() {
@@ -8,10 +9,13 @@ export default class WhatsNew extends Component{
 
     render() {
         return (
+            <div className = "App">
+            
             <div>
             <Title />
-            <h2 >
-                    What's New/></h2>
+                
+                </div>
+                <BrowseNew/>
                 </div>
             );
     }
