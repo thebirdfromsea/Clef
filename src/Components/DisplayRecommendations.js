@@ -6,7 +6,7 @@ import { BrowseRecommendations } from 'react-spotify-api'
 import PlaylistAddRounded from '@material-ui/icons/PlaylistAddRounded'
 import FeatureModal from './FeatureModal'
 import PieChart from '@material-ui/icons/PieChart';
-
+import PlaylistMenu from './PlaylistMenu'
 
 export default class DisplayRecommendations extends Component {
     constructor(props) {
@@ -15,8 +15,6 @@ export default class DisplayRecommendations extends Component {
         this.state = {
             openModal: false,
         }
-
-        
     }
 
     componentDidUpdate(prevProps) {
@@ -36,7 +34,7 @@ export default class DisplayRecommendations extends Component {
     }
     openModal = () => {
     this.setState({ openModal: true });
-}
+    }
 
 
 
@@ -63,9 +61,7 @@ export default class DisplayRecommendations extends Component {
                                               <IconButton onClick={this.handleClick.bind(this, track.id)}>
                                                   <PlayArrow />
                                               </IconButton>
-                                              <IconButton>
-                                                <PlaylistAddRounded/>
-                                              </IconButton>
+                                              <PlaylistMenu accessToken={this.props.accessToken} />
                                               <IconButton onClick={this.openModal}>
                                                 <PieChart />
                                               </IconButton>

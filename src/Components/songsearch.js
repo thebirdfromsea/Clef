@@ -102,20 +102,11 @@ export default class Songsearch extends Component {
                    <div> 
                    <div className="d-table"> 
                         <div className="d-table-row"> 
-                           {this.state.refresher? ( 
                             <div className="d-table-cell">
-                                 <Typography variant="h3">Recommended songs </Typography>
-                                 {
-                                                    data.artists.items.map(artist => (
-                                                        <DisplayRecommendations refresh={(value) => {
-                                                            this.setState({ refresher: false })
-                                                        }}
-                                                            item={artist} playtrack={this.props.PlayTrack} energy={this.props.energy}
-                                                            danceability={this.props.danceability}
-                                                            instrumentalness={this.props.instrumentalness}
-                                                            speechiness={this.props.speechiness}/>))
-                                 }
-                            </div>):<h2>Refeshing..</h2>}
+                                <Typography variant="h3">Artists</Typography>
+                                {data.artists.items.map(artist => (
+                                    <DisplayArtist item={artist} playartist={this.props.PlayArtist} />))}
+                            </div>
                             <div className="d-table-cell">
                                 <Typography variant="h2">Albums</Typography>
                     
@@ -126,17 +117,23 @@ export default class Songsearch extends Component {
                         </div>
                         <div className="d-table-row">
                             <div className="d-table-cell">
-                                <Typography variant="h3">Artists</Typography>
-                                
-                                {data.artists.items.map(artist => (
-                                <DisplayArtist item={artist} playartist={this.props.PlayArtist} />))}
+                                <Typography variant="h3">Recommended songs </Typography>
+                                {this.state.refresher ? (<div>
+                                    {data.artists.items.map(artist => (
+                                        <DisplayRecommendations refresh={(value) => {
+                                            this.setState({ refresher: false })}}
+                                            item={artist} playtrack={this.props.PlayTrack} energy={this.props.energy}
+                                            danceability={this.props.danceability}
+                                            instrumentalness={this.props.instrumentalness}
+                                            speechiness={this.props.speechiness} accessToken={this.props.accessToken} />))}</div>
+                                                    ): <h2>Refeshing..</h2>}
                             </div>
                         
                             <div className ="d-table-cell">
                                 <Typography variant="h3">Tracks</Typography>
                                 
                                 {data.tracks.items.map((track) => 
-                                <DisplayTrack item={track} playtrack={this.props.PlayTrack} />)}
+                                <DisplayTrack item={track} playtrack={this.props.PlayTrack} accessToken={this.props.accessToken} />)}
                             </div>
                         </div>
                     </div>

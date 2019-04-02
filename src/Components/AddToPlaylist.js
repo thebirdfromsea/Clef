@@ -5,7 +5,7 @@ export default class AddToPlaylist extends React.Component{
         super(props)
     }
     componentDidMount(){
-        fetch(`https://api.spotify.com/v1/playlists/${this.props.playlistId}/tracks?uris=spotify%3Atrack%3A${this.props.track}`, {
+        fetch(`https://api.spotify.com/v1/playlists/${this.props.playlistId}/tracks?uris=spotify%3Atrack%3A${this.props.trackId}`, {
             headers: {
                 Accept: "application/json",
                 Authorization: `Bearer ${this.props.accessToken}`,
@@ -18,7 +18,7 @@ export default class AddToPlaylist extends React.Component{
     }
 
     render(){
-        return (<h1>We made it</h1>)
+        return (null)
    
 }
         

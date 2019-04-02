@@ -39,6 +39,10 @@ export default class Main extends Component {
             this.setState({ showSlider: true })
         } else {
             this.setState({ showSlider: false })
+            this.setState({ energy: 0.5 });
+            this.setState({ danceability: 0.5 });
+            this.setState({ instrumentalness: 0.5 });
+            this.setState({ speechiness: 0.5 });
         }
     }
 
@@ -84,19 +88,18 @@ export default class Main extends Component {
             <div className="App">
                 <Title />
                 <SliderSwitch toggle={this.toggleSliders} />
-                {this.state.showSlider ? (
-                    <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
-                ) : null}
+                
                 <PlaylistDialog accessToken={this.props.accessToken} />
                 <PlaylistView PlayPlaylist={this.PlayPlaylist} />
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}
                 <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness}
-                    PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum}/>
+                    PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}/>
                 <Slidesshow />
-                {/* <Wiki /> */}
-
+                {this.state.showSlider ? (
+                    <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
+                ) : null}
                 <Ap />
             </div>
         );

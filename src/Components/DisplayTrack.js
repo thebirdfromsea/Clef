@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import PieChart from '@material-ui/icons/PieChart';
 import FeatureModal from './FeatureModal';
-import PlaylistAddRounded from '@material-ui/icons/PlaylistAddRounded'
+import PlaylistMenu from './PlaylistMenu'
 
 
 export default class DisplayTrack extends Component {
@@ -44,9 +44,7 @@ export default class DisplayTrack extends Component {
                     <IconButton onClick={this.handleClick}>
                         <PlayArrow />
                     </IconButton>
-                    <IconButton>
-                        <PlaylistAddRounded />
-                    </IconButton>
+                    <PlaylistMenu accessToken={this.props.accessToken} trackID={this.props.item.id} />
 					<IconButton onClick={this.handleOpen}>
                         <PieChart />
                     </IconButton>
