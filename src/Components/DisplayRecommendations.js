@@ -61,7 +61,7 @@ export default class DisplayRecommendations extends Component {
                                               <IconButton onClick={this.handleClick.bind(this, track.id)}>
                                                   <PlayArrow />
                                               </IconButton>
-                                        <PlaylistMenu accessToken={this.props.accessToken} trackID={track.id}/>
+                                              <PlaylistMenu accessToken={this.props.accessToken} trackID={track.id}/>
                                               <IconButton onClick={this.openModal}>
                                                 <PieChart />
                                               </IconButton>

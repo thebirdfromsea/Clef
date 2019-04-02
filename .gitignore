@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-/server/AccessToken.bat
+powershellStartup.ps1
+/.vs
+./.DS_Store
 
 # testing
 /coverage
