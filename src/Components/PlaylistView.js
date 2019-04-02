@@ -72,7 +72,7 @@ class PlaylistView extends React.Component {
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" color="inherit" className={classes.flex}>
-                Sound
+                Your Playlists
               </Typography>
             </Toolbar>
           </AppBar>
