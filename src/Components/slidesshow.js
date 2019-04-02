@@ -8,7 +8,7 @@ const style={
   top: 0,
   left:0,
   height: "215px",
-  width: "1300px",
+  width: "100%",
 
 }
 const CarouselPage = () => {
