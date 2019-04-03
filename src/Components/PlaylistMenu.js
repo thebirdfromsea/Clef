@@ -15,6 +15,7 @@ class PlaylistMenu extends React.Component {
          this.state = {
               anchorEl: null,
               addSong: false,
+              selectedPlaylist: ''
         };
         this.addToPlaylist = this.addToPlaylist.bind(this);
     }
@@ -26,9 +27,10 @@ class PlaylistMenu extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
-    addToPlaylist() {
+    addToPlaylist(playlist) {
         this.setState({ addSong: true });
         this.setState({ anchorEl: null });
+        this.setState({ selectedPlaylist: playlist }); 
     }
 
   render() {
@@ -58,9 +60,9 @@ class PlaylistMenu extends React.Component {
             {(playlists, loading, error) =>
                 playlists ? (
                     playlists.items.map(playlist => (
-                          <MenuItem key={playlist.id} onClick={this.addToPlaylist}>
+                          <MenuItem key={playlist.id} onClick={()=> this.addToPlaylist(playlist.id)}>
                                 <Typography variant="caption">{playlist.name}</Typography>
-                                    {this.state.addSong ? (
+                                    {this.state.addSong && this.state.selectedPlaylist == playlist.id ? (
                                         <AddToPlaylist accessToken={this.props.accessToken} playlistId={playlist.id} trackId={this.props.trackID} />):null
                                     }
                            </MenuItem>
