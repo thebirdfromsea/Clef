@@ -36,7 +36,7 @@ const CarouselPage = () => {
           </MDBCarouselItem>
           <MDBCarouselItem itemId="3">
             <MDBView>
-              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1agtUB186RIUol8y3NpgLHljKnQTt8Vzu" alt="Third slide" />
+              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1StmijkXBO25RNrZ6fF7ghpvZNBzg-s5z" alt="Third slide" />
               <MDBMask overlay="black-slight" />
             </MDBView>
             <MDBCarouselCaption>
