@@ -14,7 +14,6 @@ import SpotifyPlayerClef from './PlayBackWidget';
 export default class Main extends Component {
     constructor() {
         super();
-        this.toggleSliders = this.toggleSliders.bind(this);
         this.setSpeechiness = this.setSpeechiness.bind(this);
         this.setInstrumentalness = this.setInstrumentalness.bind(this);
         this.setEnergy = this.setEnergy.bind(this);
@@ -24,25 +23,13 @@ export default class Main extends Component {
         this.PlayTrack = this.PlayTrack.bind(this);
         this.PlayPlaylist = this.PlayPlaylist.bind(this);
         this.state = {
-            showSlider: false,
+       
             displayPlayer: false,
             playerURI: '',
             energy: 0.5,
             danceability: 0.5,
             instrumentalness: 0.5,
             speechiness: 0.25
-        }
-    }
-
-    toggleSliders = () => {
-        if (this.state.showSlider === false) {
-            this.setState({ showSlider: true })
-        } else {
-            this.setState({ showSlider: false })
-            this.setState({ energy: 0.5 });
-            this.setState({ danceability: 0.5 });
-            this.setState({ instrumentalness: 0.5 });
-            this.setState({ speechiness: 0.5 });
         }
     }
 
@@ -87,8 +74,10 @@ export default class Main extends Component {
         return (
             <div className="App">
                 <Title />
-                <SliderSwitch toggle={this.toggleSliders} />
-                
+    
+            
+                <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
+               
                 <PlaylistDialog accessToken={this.props.accessToken} />
                 <PlaylistView PlayPlaylist={this.PlayPlaylist} />
                 {this.state.displayPlayer ? (
@@ -97,9 +86,7 @@ export default class Main extends Component {
                 <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness}
                     PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}/>
                 <Slidesshow />
-                {this.state.showSlider ? (
-                    <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
-                ) : null}
+               
                 <Ap />
             </div>
         );
