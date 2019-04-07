@@ -18,7 +18,8 @@ const CarouselPage = () => {
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">
             <MDBView>
-              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=16o2Uo2j7HAKw74dzwrwiW48HZCdwOC8y"  alt="First slide"/>
+              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1vqczlYYgnq-79ZT-e8cYFTTgGIx6kBnR"  alt="First slide"/>
+              {/* 16o2Uo2j7HAKw74dzwrwiW48HZCdwOC8y */}
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
@@ -26,15 +27,16 @@ const CarouselPage = () => {
           </MDBCarouselItem>
           <MDBCarouselItem itemId="2">
             <MDBView>
-              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1ep-KPOhobnZJT_WdjP4GHUG5ZdXekkH3" alt="Second slide" />
+              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1ac92gSUW60d2naGgzTiqL3_3QedM_MCG" alt="Second slide" />
               <MDBMask overlay="black-light" />
+              {/* 1ep-KPOhobnZJT_WdjP4GHUG5ZdXekkH3 */}
             </MDBView>
             <MDBCarouselCaption>
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="3">
             <MDBView>
-              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1EzSOVLpoyNbgjEjAmThZXeR88RLJDfp0" alt="Third slide" />
+              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1StmijkXBO25RNrZ6fF7ghpvZNBzg-s5z" alt="Third slide" />
               <MDBMask overlay="black-slight" />
             </MDBView>
             <MDBCarouselCaption>
@@ -42,7 +44,7 @@ const CarouselPage = () => {
           </MDBCarouselItem>
           <MDBCarouselItem itemId="4">
             <MDBView>
-              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1IbcH0F1zqJljFicD1fVQRL-Nl6qi6cX7" alt="Mattonit's item" />
+              <img className="d-block w-100" src="http://drive.google.com/uc?export=view&id=1W0jlVMnOADUu05YLZZKMjKW5713QFVp9" alt="Mattonit's item" />
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
