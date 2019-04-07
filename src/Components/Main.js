@@ -73,9 +73,7 @@ export default class Main extends Component {
     render() {
         return (
             <div className="App">
-                <Title />
-    
-            
+                <Title /> 
                 <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
                
                 <PlaylistDialog accessToken={this.props.accessToken} />

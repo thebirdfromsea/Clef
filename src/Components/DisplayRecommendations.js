@@ -44,14 +44,13 @@ export default class DisplayRecommendations extends Component {
         return (
             <div>
                 <BrowseRecommendations options={{
+                    limit: 5,
                     seed_artists: this.props.item.id,
-                    seed_tracks: this.props.item.id, 
-                    min_popularity: 0,
                     target_energy: this.props.energy,
                     target_danceability: this.props.danceability,
                     target_instrumentalness: this.props.instrumentalness,
                     target_speechiness: this.props.speechiness,
-                    limit: 5,}}>
+                    }}>
                             {
                         (recommendations, loading, error) => (
                                 recommendations ? (
