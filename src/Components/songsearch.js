@@ -107,29 +107,49 @@ export default class Songsearch extends Component {
                                 {data.artists.items.map(artist => (
                                     <DisplayArtist item={artist} playartist={this.props.PlayArtist} />))}
                             </div>
-                            <div className="d-table-cell">
-                                <Typography variant="h2">Albums</Typography>
-                    
-                            
-                                {data.albums.items.map(album => (
-                               <DisplayAlbum item={album} playalbum={this.props.PlayAlbum}/>))}
-                            </div>  
-                        </div>
-                        <div className="d-table-row">
+                           
                             <div className="d-table-cell">
                                 <Typography variant="h3">Recommended songs </Typography>
                                 {this.state.refresher ? (<div>
-                                    {data.artists.items.map(artist => (
+                                    
+                                    
+                                    {
+                                        data.artists.items.map(artist => (
                                         <DisplayRecommendations refresh={(value) => {
                                             this.setState({ refresher: false })}}
                                             item={artist} playtrack={this.props.PlayTrack} energy={this.props.energy}
                                             danceability={this.props.danceability}
                                             instrumentalness={this.props.instrumentalness}
-                                            speechiness={this.props.speechiness} accessToken={this.props.accessToken} />))}</div>
-                                                    ): <h2>Refeshing..</h2>}
+                                            speechiness={this.props.speechiness} accessToken={this.props.accessToken} />))
+                                        
+                                        }
+
+                                        {data.tracks.items.map(track => (
+                                            <DisplayRecommendations refresh={(value) => {
+                                                this.setState({ refresher: false })}}
+                                                item={track} playtrack={this.props.PlayTrack} energy={this.props.energy}
+                                                danceability={this.props.danceability}
+                                                instrumentalness={this.props.instrumentalness}
+                                                speechiness={this.props.speechiness} accessToken={this.props.accessToken} />))
+                                                    
+                                        }
+                                           </div>
+                                            ): <h2>Refeshing..</h2>
+    
+                                        
+                                }
                             </div>
-                        
+                        </div>
+                        <div className="d-table-row">
+                            
+                        <div className="d-table-cell">
+                                <Typography variant="h2">Albums</Typography>                           
+                                {data.albums.items.map(album => (
+                               <DisplayAlbum item={album} playalbum={this.props.PlayAlbum}/>))}
+                               
+                            </div>                 
                             <div className ="d-table-cell">
+                            
                                 <Typography variant="h3">Tracks</Typography>
                                 
                                 {data.tracks.items.map((track) => 

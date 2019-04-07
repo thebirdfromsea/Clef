@@ -45,6 +45,7 @@ export default class DisplayRecommendations extends Component {
             <div>
                 <BrowseRecommendations options={{
                     seed_artists: this.props.item.id,
+                    seed_tracks: this.props.item.id, 
                     min_popularity: 0,
                     target_energy: this.props.energy,
                     target_danceability: this.props.danceability,
