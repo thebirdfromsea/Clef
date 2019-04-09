@@ -8,8 +8,17 @@ import DisplayTrack from './DisplayTrack';
 import DisplayTrackFeatures from './DisplayTrackFeatures';
 import DisplayRecommendations from './DisplayRecommendations';
 import CreatePlaylistWithUser from './CreatePlaylistWithUser';
+import Switch from '@material-ui/core/Switch';
 
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import { withStyles } from '@material-ui/core/styles';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 
 export default class Songsearch extends Component {
@@ -31,7 +40,8 @@ export default class Songsearch extends Component {
                 offset: 0 ,
                 include_external: ' '
             },
-			URI : [ ]
+            URI : [ ],
+            searchFilter: 'Artist'
       };
      
 
@@ -48,6 +58,10 @@ export default class Songsearch extends Component {
     CreatePlaylist(){
         this.setState({needsPlaylist : true})
     }
+
+    handleChange =  event => {
+        this.setState({ searchFilter: event.target.value });
+      };
 
  
     render() {
@@ -72,7 +86,22 @@ export default class Songsearch extends Component {
                     
                 }}
              />
-                    
+
+
+         <FormControl component="fieldset" >
+                    <FormLabel component="legend">Find Recommendations Based On</FormLabel>
+                    <RadioGroup
+                        aria-label="Find Recommendations Based On: "
+                        name="Search Filter"
+                      
+                        value= {this.state.searchFilter}
+                        onChange={this.handleChange}
+                    >
+                        <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
+                        <FormControlLabel value="Track" control={<Radio />} label="Track" />
+                        
+                    </RadioGroup>
+        </FormControl>
             </div>
          ) : 
 
@@ -109,11 +138,29 @@ export default class Songsearch extends Component {
                                     <DisplayArtist item={artist} playartist={this.props.PlayArtist} />))}
                             </div>
                            
-                            <div className="d-table-cell">
+                            <div className="d-table-cell" style={{
+                                        height: 50
+                            }} >
                                 <Typography variant="h3">Recommended songs </Typography>
-                                {this.state.refresher ? (<div>
+                                {this.state.refresher ? (
                                     
-                                    {data.artists.items.map(artist => (
+                                    this.state.searchFilter == 'Track' ? (
+                                        data.tracks.items.map((track) =>
+                                        
+                                        <DisplayRecommendations refresh={(value) => {
+                                            this.setState({ refresher: false })}}
+                                            item={track} playtrack={this.props.PlayTrack} energy={this.props.energy}
+                                            danceability={this.props.danceability}
+                                            instrumentalness={this.props.instrumentalness}
+                                            speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
+                                        
+                                        )
+                                        
+                                     ) : 
+                                   
+                                        this.state.searchFilter == 'Artist' ? (
+                                        data.artists.items.map(artist => (
+                                       
                                         <div>
                                         
                                         <DisplayRecommendations refresh={(value) => {
@@ -123,8 +170,29 @@ export default class Songsearch extends Component {
                                             instrumentalness={this.props.instrumentalness}
                                             speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
                                         </div>
-                                            ))}</div>
-                                                    ): <h2>Refeshing..</h2>}
+                                            ))
+                                      
+                                        ): 
+
+                                        
+                                        this.state.searchFilter == 'Album' ? (
+                                            data.albums.items.map(album => (
+                                            <div>
+                                            <DisplayRecommendations refresh={(value) => {
+                                                this.setState({ refresher: false })}}
+                                                item={album.tracks} playtrack={this.props.PlayTrack} energy={this.props.energy}
+                                                danceability={this.props.danceability}
+                                                instrumentalness={this.props.instrumentalness}
+                                                speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
+                                            </div>
+                                             ))
+                                          
+                                            ): <h1> None Found </h1>
+                                                    
+                                        ): <h2>Refeshing..</h2>}
+                                
+
+                                        
                             </div>
                         </div>
                         <div className="d-table-row">
@@ -139,7 +207,11 @@ export default class Songsearch extends Component {
                                 <Typography variant="h3">Tracks</Typography>
                                 
                                 {data.tracks.items.map((track) => 
-                                <DisplayTrack item={track} playtrack={this.props.PlayTrack} accessToken={this.props.accessToken} />)}
+                                <div>
+                                 
+                                <DisplayTrack item={track} playtrack={this.props.PlayTrack} accessToken={this.props.accessToken} />
+                                </div>
+                                )}
                             </div>
                         </div>
                     </div>
