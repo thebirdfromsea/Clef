@@ -25,7 +25,14 @@ const styles = {
         maxHeight: 531,
         overflow: 'auto',
         maxWidth: 698,
-        
+        width: 698,
+    },
+    table: {
+        display: 'd-table',
+        width: 1396,
+        margin: '0 auto',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 };
 
@@ -136,7 +143,7 @@ class Songsearch extends Component {
                 
                  data ? (
                    <div> 
-                   <div className="d-table"> 
+                   <div className={classes.table}> 
                         <div className="d-table-row"> 
                             <div className="d-table-cell">
                                 <Typography variant="h3">Artists</Typography>
