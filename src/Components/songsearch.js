@@ -149,9 +149,3 @@ export default class Songsearch extends Component {
          
     }
  }
-
-					/*<div>
-                    {data.tracks.items.map((track) =>
-                           <DisplayTrackFeatures track={track}/>
-                    )}
-                    </div> */

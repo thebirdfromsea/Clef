@@ -79,10 +79,16 @@ export default class Main extends Component {
         return (
             <div className="App">
                 <Title /> 
+                
                 <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
-               
-                <PlaylistDialog accessToken={this.props.accessToken} />
-                <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer}/>
+                <Grid container spacing={24} direction={"row"} alignItems={"center"} justify={"center"}>
+                    <Grid item lg={1.7}>
+                        <PlaylistDialog accessToken={this.props.accessToken} />
+                    </Grid>
+                    <Grid item lg={1.7}>
+                        <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer} />
+                    </Grid>
+               </Grid>
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}
