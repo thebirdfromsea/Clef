@@ -99,7 +99,7 @@ export default class Songsearch extends Component {
                     >
                         <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
                         <FormControlLabel value="Track" control={<Radio />} label="Track" />
-                        
+        
                     </RadioGroup>
         </FormControl>
             </div>
@@ -172,20 +172,10 @@ export default class Songsearch extends Component {
                                         </div>
                                             ))
                                       
-                                        ): 
+                        
 
                                         
-                                        this.state.searchFilter == 'Album' ? (
-                                            data.albums.items.map(album => (
-                                            <div>
-                                            <DisplayRecommendations refresh={(value) => {
-                                                this.setState({ refresher: false })}}
-                                                item={album.tracks} playtrack={this.props.PlayTrack} energy={this.props.energy}
-                                                danceability={this.props.danceability}
-                                                instrumentalness={this.props.instrumentalness}
-                                                speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
-                                            </div>
-                                             ))
+                                                
                                           
                                             ): <h1> None Found </h1>
                                                     

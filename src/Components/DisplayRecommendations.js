@@ -45,6 +45,7 @@ export default class DisplayRecommendations extends Component {
 
         return (
             <div>
+              
                 <div>
                 <h3>Based on {this.props.item.name}</h3>
                 </div>
