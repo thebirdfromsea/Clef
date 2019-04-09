@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EnergySlider from './energySlider';
 import DanceabilitySlider from './DanceabilitySlider';
-import InstrumentalnessSlider from './InstrumentalnessSlider';
+import ValenceSlider from './ValenceSlider';
 import SpeechinessSlider from './SpeechinessSlider';
 
 
@@ -36,7 +36,7 @@ export default class Sliders extends Component {
                         </div>
                         <div className="d-table-row">
                             <div className="d-table-cell">
-                                <InstrumentalnessSlider inputenergy={this.props.setInstrumental} />
+                                <ValenceSlider inputenergy={this.props.setValence} />
                             </div>
                             <div className="d-table-cell">
                                 <SpeechinessSlider inputenergy={this.props.setSpeechiness} />

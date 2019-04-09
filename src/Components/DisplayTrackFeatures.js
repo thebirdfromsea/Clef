@@ -26,7 +26,7 @@ export default class DisplayTrackFeatures extends Component {
                 name: 'Danceability', number: 0
             },
             {
-                name: 'Instrumentalness', number: 0
+                name: 'Valence', number: 0
             },
             {
                 name: 'Energy', number: 0
@@ -56,7 +56,7 @@ export default class DisplayTrackFeatures extends Component {
 
                                 (
                                     featuresGraphData[0] = { name: 'Danceability', number: features.danceability },
-                                    featuresGraphData[1] = { name: 'Instrumentalness', number: features.instrumentalness },
+                                    featuresGraphData[1] = { name: 'Valence', number: features.valence },
                                     featuresGraphData[2] = { name: 'Energy', number: features.energy },
                                     featuresGraphData[3] = { name: 'Speechiness', number : features.speechiness},
                                     <div>

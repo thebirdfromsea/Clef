@@ -56,7 +56,7 @@ export default class DisplayRecommendations extends Component {
                     seed_artists: this.props.item.id,
                     target_energy: this.props.energy,
                     target_danceability: this.props.danceability,
-                    target_instrumentalness: this.props.instrumentalness,
+                    target_valence: this.props.valence,
                     target_speechiness: this.props.speechiness,
                     }}>
 

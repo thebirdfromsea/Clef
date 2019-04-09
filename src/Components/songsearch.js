@@ -166,7 +166,7 @@ class Songsearch extends Component {
                                             this.setState({ refresher: false })}}
                                             item={track} playtrack={this.props.PlayTrack} energy={this.props.energy}
                                             danceability={this.props.danceability}
-                                            instrumentalness={this.props.instrumentalness}
+                                            valence={this.props.valence}
                                             speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
                                         
                                         )
@@ -182,7 +182,7 @@ class Songsearch extends Component {
                                             this.setState({ refresher: false })}}
                                             item={artist} playtrack={this.props.PlayTrack} energy={this.props.energy}
                                             danceability={this.props.danceability}
-                                            instrumentalness={this.props.instrumentalness}
+                                            valence={this.props.valence}
                                             speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
                                         </div>
                                             ))
