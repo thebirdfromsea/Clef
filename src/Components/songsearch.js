@@ -9,7 +9,7 @@ import DisplayTrackFeatures from './DisplayTrackFeatures';
 import DisplayRecommendations from './DisplayRecommendations';
 import CreatePlaylistWithUser from './CreatePlaylistWithUser';
 import Switch from '@material-ui/core/Switch';
-
+import PropTypes from 'prop-types';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
@@ -20,8 +20,16 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+const styles = {
+    tableCellStyle: {
+        maxHeight: 531,
+        overflow: 'auto',
+        maxWidth: 698,
+        
+    },
+};
 
-export default class Songsearch extends Component {
+class Songsearch extends Component {
     
     
     constructor(props)
@@ -65,6 +73,7 @@ export default class Songsearch extends Component {
 
  
     render() {
+        const { classes } = this.props;
         return (
          
             
@@ -80,14 +89,12 @@ export default class Songsearch extends Component {
              <SearchBar
                 onChange={(value)=> this.setState({value: value})}
                 onRequestSearch={()=> this.setState({display:'loadDisplay'})}
-                style={{
-                    margin: '0 auto',
-                    maxWidth: 600,
-                    
-                }}
-             />
-
-
+                        style={{
+                            margin: '0 auto',
+                            maxWidth: 600,
+                        }}/>
+ 
+ 
          <FormControl component="fieldset" >
                     <FormLabel component="legend">Find Recommendations Based On</FormLabel>
                     <RadioGroup
@@ -133,15 +140,16 @@ export default class Songsearch extends Component {
                         <div className="d-table-row"> 
                             <div className="d-table-cell">
                                 <Typography variant="h3">Artists</Typography>
-                                {data.artists.items.map(artist => (
+                                <div className={classes.tableCellStyle}> 
+                                   {data.artists.items.map(artist => (
                                     
                                     <DisplayArtist item={artist} playartist={this.props.PlayArtist} />))}
+                                </div>
                             </div>
                            
-                            <div className="d-table-cell" style={{
-                                        height: 50
-                            }} >
+                            <div className="d-table-cell"  >
                                 <Typography variant="h3">Recommended songs </Typography>
+                                <div className={classes.tableCellStyle}> 
                                 {this.state.refresher ? (
                                     
                                     this.state.searchFilter == 'Track' ? (
@@ -182,26 +190,25 @@ export default class Songsearch extends Component {
                                         ): <h2>Refeshing..</h2>}
                                 
 
-                                        
+                                </div>
                             </div>
                         </div>
                         <div className="d-table-row">
                             
                         <div className="d-table-cell">
                                 <Typography variant="h2">Albums</Typography>                           
-                                {data.albums.items.map(album => (
-                               <DisplayAlbum item={album} playalbum={this.props.PlayAlbum}/>))}
+                                <div className={classes.tableCellStyle}> 
+                                        {data.albums.items.map(album => (
+                                        <DisplayAlbum item={album} playalbum={this.props.PlayAlbum}/>))}
+                                </div>
                             </div>                 
                             <div className ="d-table-cell">
                             
                                 <Typography variant="h3">Tracks</Typography>
-                                
-                                {data.tracks.items.map((track) => 
-                                <div>
-                                 
-                                <DisplayTrack item={track} playtrack={this.props.PlayTrack} accessToken={this.props.accessToken} />
+                                <div className={classes.tableCellStyle}>
+                                        {data.tracks.items.map((track) => 
+                                        <DisplayTrack item={track} playtrack={this.props.PlayTrack} accessToken={this.props.accessToken} />)}
                                 </div>
-                                )}
                             </div>
                         </div>
                     </div>
@@ -216,4 +223,10 @@ export default class Songsearch extends Component {
         ); 
          
     }
- }
+}
+
+Songsearch.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Songsearch);

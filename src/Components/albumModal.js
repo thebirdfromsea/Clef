@@ -3,9 +3,7 @@ import { Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import DisplayAlbumTracks from './DisplayAlbumTracks'
-import IconButton from '@material-ui/core/IconButton';
-import PlayArrow from '@material-ui/icons/PlayArrow';
+import DisplayAlbumTracks from './DisplayAlbumTracks';
 
 const styles = theme => ({
     paper:{
