@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import Title from './title';
 import Songsearch from './songsearch';
-// import Wiki from './wiki';
 import Slidesshow from './slidesshow'; 
 import  Ap from './par' ; 
-import Grid from '@material-ui/core/Grid';
 import PlaylistDialog from './PlaylistDialog';
-import SliderSwitch from './SliderSwitch';
 import Sliders from './Sliders';
 import PlaylistView from './PlaylistView';
 import SpotifyPlayerClef from './PlayBackWidget';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
-export default class Main extends Component {
+
+const styles = {
+    tableCell: {
+        display: 'd-table-cell',
+        width: 745,
+    },
+};
+
+class Main extends Component {
     constructor() {
         super();
         this.setSpeechiness = this.setSpeechiness.bind(this);
@@ -76,23 +83,28 @@ export default class Main extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
             <div className="App">
                 <Title /> 
-                
-                <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
-
-                <Grid container spacing={24} direction={"row"} alignItems={"center"} justify={"center"}>
-                    <Grid item lg={1.7}>
-                        <PlaylistDialog accessToken={this.props.accessToken} />
-                    </Grid>
-                    <Grid item lg={1.7}>
-                        <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer} />
-                    </Grid>
-                 
-                
-               </Grid>
-               <br></br>
+                <div className='d-table'>
+                    <div className='d-table-row'>
+                        <div className={classes.tableCell}>
+                            <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
+                        </div>
+                        <div className='d-table-cell'>
+                            <div className='d-table-row' style={{height: 100}}></div>
+                            <div className='d-table-row'>
+                            <div className='d-inline-flex' style={{padding: 10}}>
+                                <PlaylistDialog accessToken={this.props.accessToken} />
+                            </div>
+                            <div className='d-inline-flex'>
+                                <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer} />
+                            </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}
@@ -105,3 +117,9 @@ export default class Main extends Component {
         );
     }
 }
+
+Main.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Main);
