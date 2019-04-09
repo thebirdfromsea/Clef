@@ -39,7 +39,8 @@ class PlaylistView extends React.Component {
   };
 
   handleClickOpen = () => {
-    this.setState({ open: true });
+      this.setState({ open: true });
+      this.props.closePlayer();
   };
 
   handleClose = () => {

@@ -22,6 +22,7 @@ export default class Main extends Component {
         this.PlayAlbum = this.PlayAlbum.bind(this);
         this.PlayTrack = this.PlayTrack.bind(this);
         this.PlayPlaylist = this.PlayPlaylist.bind(this);
+        this.ClosePlayer = this.ClosePlayer.bind(this);
         this.state = {
        
             displayPlayer: false,
@@ -66,6 +67,10 @@ export default class Main extends Component {
         this.setState({ playerURI: "/playlist/" + item })
         this.setState({ displayPlayer: true })
     }
+    ClosePlayer() {
+        this.setState({ displayPlayer: false });
+    }
+
     componentDidMount() {
 
     }
@@ -77,7 +82,7 @@ export default class Main extends Component {
                 <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
                
                 <PlaylistDialog accessToken={this.props.accessToken} />
-                <PlaylistView PlayPlaylist={this.PlayPlaylist} />
+                <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer}/>
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}

@@ -20,7 +20,7 @@ export default class DisplayArtistTracks extends Component {
                 
 
                 <h2>Tracks in this Album:</h2>
-                <AlbumTracks id={this.props.album.id}>
+                <AlbumTracks id={this.props.album}>
                     {(tracks, loading, error) => (
                         tracks ? (
                             tracks.items.map(tracks => (

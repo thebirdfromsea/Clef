@@ -31,11 +31,11 @@ export default class newSong extends React.Component{
             <h1>
                 What's New:
             </h1>
-            <BrowseNew options = {{country: 'US', limit: 12, offset: 2}}>
+            <BrowseNew options = {{country: 'US', limit: 12, offset: 0}}>
                 {(albums, loading, error) => (
                      albums ?( 
                         albums.albums.items.map(album=>(
-                        <Card className="d-inline-block" style={{width: "20rem", height: "32rem", backgroundColor:"orange"}}>
+                        <Card className="d-inline-block" style={{width: "20rem", height: "28rem", backgroundColor:"orange"}}>
                             <p><img src= {album.images[1].url} alt ={album.name}/></p>
                             <CardContent>
                                 <Typography>
@@ -46,7 +46,7 @@ export default class newSong extends React.Component{
                                         Tracks
                                     </Button>
                                     <AlbumModal
-                                    open={this.state.open} handleClose={this.handleClose} item={album}/>
+                                    open={this.state.open} handleClose={this.handleClose} item={album.id}/>
                                 </Typography>
                             </CardContent>
                         </Card>
