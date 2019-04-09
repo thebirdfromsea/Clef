@@ -105,19 +105,25 @@ export default class Songsearch extends Component {
                             <div className="d-table-cell">
                                 <Typography variant="h3">Artists</Typography>
                                 {data.artists.items.map(artist => (
+                                    
                                     <DisplayArtist item={artist} playartist={this.props.PlayArtist} />))}
                             </div>
                            
                             <div className="d-table-cell">
                                 <Typography variant="h3">Recommended songs </Typography>
                                 {this.state.refresher ? (<div>
+                                    
                                     {data.artists.items.map(artist => (
+                                        <div>
+                                        
                                         <DisplayRecommendations refresh={(value) => {
                                             this.setState({ refresher: false })}}
                                             item={artist} playtrack={this.props.PlayTrack} energy={this.props.energy}
                                             danceability={this.props.danceability}
                                             instrumentalness={this.props.instrumentalness}
-                                            speechiness={this.props.speechiness} accessToken={this.props.accessToken} />))}</div>
+                                            speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
+                                        </div>
+                                            ))}</div>
                                                     ): <h2>Refeshing..</h2>}
                             </div>
                         </div>

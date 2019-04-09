@@ -81,6 +81,7 @@ export default class Main extends Component {
                 <Title /> 
                 
                 <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
+
                 <Grid container spacing={24} direction={"row"} alignItems={"center"} justify={"center"}>
                     <Grid item lg={1.7}>
                         <PlaylistDialog accessToken={this.props.accessToken} />
@@ -88,7 +89,10 @@ export default class Main extends Component {
                     <Grid item lg={1.7}>
                         <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer} />
                     </Grid>
+                 
+                
                </Grid>
+               <br></br>
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}

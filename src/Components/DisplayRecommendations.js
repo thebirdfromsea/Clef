@@ -7,6 +7,8 @@ import PlaylistAddRounded from '@material-ui/icons/PlaylistAddRounded'
 import FeatureModal from './FeatureModal'
 import PieChart from '@material-ui/icons/PieChart';
 import PlaylistMenu from './PlaylistMenu'
+import Typography from 'material-ui/styles/typography';
+import DisplayTrack from './DisplayTrack' ;
 
 export default class DisplayRecommendations extends Component {
     constructor(props) {
@@ -43,6 +45,10 @@ export default class DisplayRecommendations extends Component {
 
         return (
             <div>
+                <div>
+                <h3>Based on {this.props.item.name}</h3>
+                </div>
+                  
                 <BrowseRecommendations options={{
                     limit: 5,
                     seed_artists: this.props.item.id,
@@ -51,25 +57,23 @@ export default class DisplayRecommendations extends Component {
                     target_instrumentalness: this.props.instrumentalness,
                     target_speechiness: this.props.speechiness,
                     }}>
+
                             {
                         (recommendations, loading, error) => (
+                                error ? (
+                                    <h1> error</h1>
+                                ):
+
                                 recommendations ? (
+                                    
                                     recommendations.tracks.map(track => (
-                                          <ListItem divider key={track.id}>
-                                              <img src={track.album.images[0] ? track.album.images[2].url : null} />
-                                              {track.name}
-                                              <IconButton onClick={this.handleClick.bind(this, track.id)}>
-                                                  <PlayArrow />
-                                              </IconButton>
-                                              <PlaylistMenu accessToken={this.props.accessToken} trackID={track.id}/>
-                                              <IconButton onClick={this.openModal}>
-                                                <PieChart />
-                                              </IconButton>
-                                              <FeatureModal open={this.state.openModal} handleClose={this.closeModal} analysis={track} />
-                                               
-                                          </ListItem>
+                            
+                                        <DisplayTrack item={track} playtrack={this.props.PlayTrack} accessToken={this.props.accessToken} />
+                                       
                                       ))
-                                  ) : <ListItem divider> None available</ListItem>
+                                  ) : null 
+
+                                 
                             )
                         }</BrowseRecommendations>
             </div>
