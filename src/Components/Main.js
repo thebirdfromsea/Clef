@@ -22,7 +22,7 @@ class Main extends Component {
     constructor() {
         super();
         this.setSpeechiness = this.setSpeechiness.bind(this);
-        this.setInstrumentalness = this.setInstrumentalness.bind(this);
+        this.setValence = this.setValence.bind(this);
         this.setEnergy = this.setEnergy.bind(this);
         this.setDanceability = this.setDanceability.bind(this);
         this.PlayArtist = this.PlayArtist.bind(this);
@@ -36,7 +36,7 @@ class Main extends Component {
             playerURI: '',
             energy: 0.5,
             danceability: 0.5,
-            instrumentalness: 0.5,
+            valence: 0.5,
             speechiness: 0.25
         }
     }
@@ -49,8 +49,8 @@ class Main extends Component {
         this.setState({ energy: value });
     }
 
-    setInstrumentalness = (value) => {
-        this.setState({ instrumentalness: value });
+    setValence = (value) => {
+        this.setState({ valence: value });
     }
 
     setSpeechiness = (value) => {
@@ -90,7 +90,7 @@ class Main extends Component {
                 <div className='d-table'>
                     <div className='d-table-row'>
                         <div className={classes.tableCell}>
-                            <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setInstrumental={this.setInstrumentalness} setSpeechiness={this.setSpeechiness} />
+                            <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setValence={this.setValence} setSpeechiness={this.setSpeechiness} />
                         </div>
                         <div className='d-table-cell'>
                             <div className='d-table-row' style={{height: 100}}></div>
@@ -108,7 +108,7 @@ class Main extends Component {
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}
-                <Songsearch energy={this.state.energy} danceability={this.state.danceability} instrumentalness={this.state.instrumentalness} speechiness={this.state.speechiness}
+                <Songsearch energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
                     PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}/>
                 <Slidesshow />
                

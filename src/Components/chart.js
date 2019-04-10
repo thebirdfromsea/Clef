@@ -9,7 +9,7 @@ export default class Chart extends Component {
   render() {
     return (
       <BarChart
-        width={500}
+        width={700}
         height={300}
         data={this.props.data}
         margin={{

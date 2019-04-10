@@ -23,14 +23,17 @@ export default class DisplayTrackFeatures extends Component {
         const analysisGraphData3 = []
         const featuresGraphData = [
             {
-                name: 'Acousticness', number: 0
+                name: 'Danceability', number: 0
             },
             {
-                name: 'Danceability', number: 0
+                name: 'Valence', number: 0
             },
             {
                 name: 'Energy', number: 0
             },
+            {
+                name: 'Speechiness', number: 0
+            }
 
         ]  
 
@@ -52,9 +55,10 @@ export default class DisplayTrackFeatures extends Component {
                             features ?
 
                                 (
-                                    featuresGraphData[0] = { name: 'Acousticness', number: features.acousticness },
-                                    featuresGraphData[1] = { name: 'Danceability', number: features.danceability },
+                                    featuresGraphData[0] = { name: 'Danceability', number: features.danceability },
+                                    featuresGraphData[1] = { name: 'Valence', number: features.valence },
                                     featuresGraphData[2] = { name: 'Energy', number: features.energy },
+                                    featuresGraphData[3] = { name: 'Speechiness', number : features.speechiness},
                                     <div>
                                         <center><Chart data={featuresGraphData} /></center>
                                     </div>
@@ -68,37 +72,3 @@ export default class DisplayTrackFeatures extends Component {
     }
 }
 
-												/*<h3> Duration : {analysis.track.duration / 60.00} minutes</h3>
-                                                <h3> Tempo : {analysis.track.tempo} </h3>
-                                                <h3> Start : {analysis.bars[0].start} </h3>
-                                                <h3> Start of bar 2: {analysis.bars[1].start}</h3>
-                                                <h3> Bars: {analysis.bars.length}</h3>
-                                                <h3> Beats : {analysis.beats.length}</h3>
-                                                <h3> Beats per Bar : {analysis.beats.length / analysis.bars.length}</h3>
-                                                <h3> Sections : {analysis.sections.length}</h3>
-                                                <h3> Segments : {analysis.segments.length} </h3>
-                                                <h3> Tatums :    {analysis.tatums.length} </h3> 
-												
-												<TrackAnalysis id={this.props.track.id}>
-
-                        {
-                            (analysis, loading, error) => (
-                                error ? (null) :
-                                    loading ? (<h1>Loading...</h1>) :
-                                        analysis ? (
-                                            fillGraphData(analysis.track.duration, analysis.bars.length, analysis.bars, analysisGraphData)
-                                            ,
-                                            fillGraphData(analysis.track.duration, analysis.beats.length, analysis.beats, analysisGraphData2),
-
-                                            fillGraphData(analysis.track.duration, analysis.tatums.length, analysis.tatums, analysisGraphData3)
-                                            ,
-
-                                            <div>
-                                                <ScatterPlot data={analysisGraphData} data2={analysisGraphData2} data3={analysisGraphData3} ticks={ticks} />
-                                                <div>
-
-                                                </div>
-                                            </div>
-                                        ) : null
-                            )}
-                    </TrackAnalysis> */
