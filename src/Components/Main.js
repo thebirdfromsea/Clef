@@ -21,6 +21,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 const styles = {
     tableCell: {
         display: 'd-table-cell',
+        width: 740,
     },
 };
 
@@ -104,19 +105,8 @@ class Main extends Component {
                 ) : null}
                 <div className='d-table'>
                     <div className='d-table-row'>
-                        <div className='d-table-cell'>
-                            <FormControl component="fieldset" >
-                                <h4>    Find recommendations based on :     </h4>
-                                <RadioGroup
-                                    aria-label="Find Recommendations Based On: "
-                                    name="Search Filter"
-
-                                    value={this.state.searchFilter}
-                                    onChange={this.handleChange}>
-                                    <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
-                                    <FormControlLabel value="Track" control={<Radio />} label="Track" />
-                                </RadioGroup>
-                            </FormControl>
+                        <div className={classes.tableCell}>
+                            <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setValence={this.setValence} setSpeechiness={this.setSpeechiness} />
                         </div>
                         <div className='d-table-cell' style={{width: 625}}>
                             <div className='d-table-row' style={{height: 100}}></div>
@@ -131,7 +121,18 @@ class Main extends Component {
                         </div>
                         <div className='d-table-cell'>
                             <div className='d-table-row'>
-                                <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setValence={this.setValence} setSpeechiness={this.setSpeechiness} />
+                                <FormControl component="fieldset" >
+                                    <h4>    Find recommendations based on :     </h4>
+                                    <RadioGroup
+                                        aria-label="Find Recommendations Based On: "
+                                        name="Search Filter"
+
+                                        value={this.state.searchFilter}
+                                        onChange={this.handleChange}>
+                                        <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
+                                        <FormControlLabel value="Track" control={<Radio />} label="Track" />
+                                    </RadioGroup>
+                                </FormControl>
                             </div>
                         </div>
                     </div>
