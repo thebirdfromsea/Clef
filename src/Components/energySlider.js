@@ -14,7 +14,6 @@ const styles = {
 };
 
 
-
 class EnergySlider extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +25,6 @@ class EnergySlider extends React.Component {
 
     handleChange = (event, value) => {
         this.setState({ value });
-      //  this.props.change(value);
 
     };
 
@@ -42,15 +40,14 @@ class EnergySlider extends React.Component {
     return (
       <div className={classes.root}>
         <Typography id="label">Energy</Typography>
-        <Slider
+            <Slider
                 classes={{ container: classes.slider }}
                 value={value}
                 aria-labelledby="label"
                 onChange={this.handleChange}
                 onDragEnd={this.handleDragEnd}
                 min={0}
-                max={1}
-        />
+                max={1}/>
       </div>
     );
   }

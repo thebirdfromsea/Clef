@@ -5,8 +5,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import AlbumModal from './albumModal'
-
+import AlbumModal from './albumModal';
+import DisplayNewReleases from './DisplayNewReleases';
 
 
 export default class newSong extends React.Component{
@@ -35,21 +35,7 @@ export default class newSong extends React.Component{
                 {(albums, loading, error) => (
                      albums ?( 
                         albums.albums.items.map(album=>(
-                        <Card className="d-inline-block" style={{width: "20rem", height: "28rem", backgroundColor:"orange"}}>
-                            <p><img src= {album.images[1].url} alt ={album.name}/></p>
-                            <CardContent>
-                                <Typography>
-                                <h3 key={album.id}>{album.name}</h3>
-                                </Typography>
-                                <Typography >
-                                    <Button variant="outlined" color="inherit" onClick={this.handleOpen}>
-                                        Tracks
-                                    </Button>
-                                    <AlbumModal
-                                    open={this.state.open} handleClose={this.handleClose} item={album.id}/>
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                            <DisplayNewReleases album={album} />
                         ))
                     ):null
                 )}
