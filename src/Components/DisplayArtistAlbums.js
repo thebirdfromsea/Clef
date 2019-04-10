@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { ArtistAlbums } from 'react-spotify-api';
 import ListItem from '@material-ui/core/ListItem';
 import { Typography } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import PlayArrow from '@material-ui/icons/PlayArrow';
+
 
 
 export default class DisplayArtistAlbums extends Component {
@@ -32,9 +31,7 @@ export default class DisplayArtistAlbums extends Component {
                                     <Typography >
                                         <h3 key ={album.id}>{album.name}</h3>
                                     </Typography>
-                                    <IconButton onClick={this.handleClick}>
-                                        <PlayArrow />
-                                    </IconButton>
+                                 
                                 </ListItem>
                              ))
                          ) : null
