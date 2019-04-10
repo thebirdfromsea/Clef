@@ -6,6 +6,8 @@ import PlaylistAddRounded from '@material-ui/icons/PlaylistAddRounded';
 import Typography from '@material-ui/core/Typography';
 import { UserPlaylists } from 'react-spotify-api';
 import AddToPlaylist from './AddToPlaylist';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 const ITEM_HEIGHT = 48;
 
@@ -39,12 +41,14 @@ class PlaylistMenu extends React.Component {
 
     return (
       <div>
+        <Tooltip title = 'Add to playlist'>
         <IconButton aria-label="More"
           aria-owns={open ? 'long-menu' : undefined}
           aria-haspopup="true"
           onClick={this.handleClick}>
             <PlaylistAddRounded />
         </IconButton>
+        </Tooltip>
         <Menu
           id="long-menu"
           anchorEl={anchorEl}

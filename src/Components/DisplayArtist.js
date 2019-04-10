@@ -3,6 +3,7 @@ import ListItem from '@material-ui/core/ListItem';
 import { Typography }  from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrow from '@material-ui/icons/PlayArrow';
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default class DisplayArtist extends Component {
 	constructor(props){
@@ -26,9 +27,11 @@ export default class DisplayArtist extends Component {
                     <Typography variant="h5">
                         {this.props.item.name}
                     </Typography>
+                    <Tooltip title = 'Play Artist Top Tracks'>
                     <IconButton onClick={this.handleClick}>
                         <PlayArrow />
                     </IconButton>
+                    </Tooltip>
                 </ListItem>
 
 

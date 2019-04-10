@@ -6,7 +6,7 @@ import PlayArrow from '@material-ui/icons/PlayArrow';
 import PieChart from '@material-ui/icons/PieChart';
 import FeatureModal from './FeatureModal';
 import PlaylistMenu from './PlaylistMenu'
-
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default class DisplayTrack extends Component {
     constructor(props) {
@@ -41,13 +41,21 @@ export default class DisplayTrack extends Component {
                     <Typography variant="h5">
                         {this.props.item.name}
                     </Typography>
+                    <Tooltip title = 'Play Track'>
                     <IconButton onClick={this.handleClick}>
                         <PlayArrow />
                     </IconButton>
+                    </Tooltip>
+                    
+                    
                     <PlaylistMenu accessToken={this.props.accessToken} trackID={this.props.item.id} />
-					<IconButton onClick={this.handleOpen}>
+                    
+                    <Tooltip title = 'View analysis'>
+                    <IconButton onClick={this.handleOpen}>
                         <PieChart />
                     </IconButton>
+                    </Tooltip>
+					
 					 <FeatureModal open={this.state.open} handleClose={this.handleClose} analysis={this.props.item}/>
                 </ListItem>
 
