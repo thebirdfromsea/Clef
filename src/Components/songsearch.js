@@ -60,13 +60,6 @@ class Songsearch extends Component {
     }
 
 
-
-
-    CreatePlaylist(){
-        this.setState({needsPlaylist : true})
-    }
-
-
     render() {
         const { classes } = this.props;
         return (
@@ -110,6 +103,7 @@ class Songsearch extends Component {
             }
             }
         />
+        <br></br>
          <Search query= {this.state.value} album artist track options= {this.state.searchProps}>
 
             {
