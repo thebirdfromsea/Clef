@@ -10,15 +10,8 @@ import DisplayRecommendations from './DisplayRecommendations';
 import CreatePlaylistWithUser from './CreatePlaylistWithUser';
 import Switch from '@material-ui/core/Switch';
 import PropTypes from 'prop-types';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-
 import { withStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+
 
 const styles = {
     tableCellStyle: {
@@ -56,7 +49,6 @@ class Songsearch extends Component {
                 include_external: ' '
             },
             URI : [ ],
-            searchFilter: 'Artist'
       };
      
 
@@ -74,11 +66,7 @@ class Songsearch extends Component {
         this.setState({needsPlaylist : true})
     }
 
-    handleChange =  event => {
-        this.setState({ searchFilter: event.target.value });
-      };
-
- 
+    
     render() {
         const { classes } = this.props;
         return (
@@ -93,6 +81,8 @@ class Songsearch extends Component {
                  {this.state.needsPlaylist ? (
                      <CreatePlaylistWithUser accessToken = {this.props.accessToken}/>
                         ) : null}
+            
+            
              <SearchBar
                 onChange={(value)=> this.setState({value: value})}
                 onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -102,20 +92,7 @@ class Songsearch extends Component {
                         }}/>
  
  
-         <FormControl component="fieldset" >
-                    <FormLabel component="legend">Find Recommendations Based On</FormLabel>
-                    <RadioGroup
-                        aria-label="Find Recommendations Based On: "
-                        name="Search Filter"
-                      
-                        value= {this.state.searchFilter}
-                        onChange={this.handleChange}
-                    >
-                        <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
-                        <FormControlLabel value="Track" control={<Radio />} label="Track" />
         
-                    </RadioGroup>
-        </FormControl>
             </div>
          ) : 
 
@@ -159,7 +136,7 @@ class Songsearch extends Component {
                                 <div className={classes.tableCellStyle}> 
                                 {this.state.refresher ? (
                                     
-                                    this.state.searchFilter == 'Track' ? (
+                                    this.props.searchFilter == 'Track' ? (
                                         data.tracks.items.map((track) =>
                                         
                                         <DisplayRecommendations refresh={(value) => {
@@ -173,7 +150,7 @@ class Songsearch extends Component {
                                         
                                      ) : 
                                    
-                                        this.state.searchFilter == 'Artist' ? (
+                                        this.props.searchFilter == 'Artist' ? (
                                         data.artists.items.map(artist => (
                                        
                                         <div>

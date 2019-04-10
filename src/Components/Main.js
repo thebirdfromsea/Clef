@@ -10,6 +10,12 @@ import SpotifyPlayerClef from './PlayBackWidget';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const styles = {
     tableCell: {
@@ -37,10 +43,16 @@ class Main extends Component {
             energy: 0.5,
             danceability: 0.5,
             valence: 0.5,
-            speechiness: 0.25
+            speechiness: 0.25, 
+            searchFilter: 'Artist'
         }
     }
 
+    handleChange =  event => {
+        this.setState({ searchFilter: event.target.value });
+      };
+
+ 
     setDanceability = (value) => {
         this.setState({ danceability: value });
     }
@@ -89,9 +101,26 @@ class Main extends Component {
                 <Title /> 
                 <div className='d-table'>
                     <div className='d-table-row'>
-                        <div className={classes.tableCell}>
+                        <div >
+                        <div className ='d-table-cell'>  
+                         <FormControl component="fieldset" >
+                            <h4>    Find recommendations based on :     </h4>
+                            <RadioGroup
+                                aria-label="Find Recommendations Based On: "
+                                name="Search Filter"
+                            
+                                value= {this.state.searchFilter}
+                                onChange={this.handleChange}
+                            >
+                            <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
+                            <FormControlLabel value="Track" control={<Radio />} label="Track" />
+        
+                    </RadioGroup>
+                </FormControl></div>
                             <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setValence={this.setValence} setSpeechiness={this.setSpeechiness} />
+                         
                         </div>
+                     
                         <div className='d-table-cell'>
                             <div className='d-table-row' style={{height: 100}}></div>
                             <div className='d-table-row'>
@@ -103,13 +132,16 @@ class Main extends Component {
                             </div>
                                 </div>
                         </div>
+                        
                     </div>
                 </div>
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}
-                <Songsearch energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
+                
+                <Songsearch searchFilter = {this.state.searchFilter} energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
                     PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}/>
+                     
                 <Slidesshow />
                
                 <Ap />
