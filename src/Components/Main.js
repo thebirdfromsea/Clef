@@ -16,6 +16,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import { FormGroup } from '@material-ui/core';
 
 
 const styles = {
@@ -108,6 +109,7 @@ class Main extends Component {
                         <div className={classes.tableCell}>
                             <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setValence={this.setValence} setSpeechiness={this.setSpeechiness} />
                         </div>
+                       
                         <div className='d-table-cell' style={{width: 625}}>
                             <div className='d-table-row' style={{height: 100}}></div>
                             <div className='d-table-row'>
@@ -121,26 +123,29 @@ class Main extends Component {
                         </div>
                         <div className='d-table-cell'>
                             <div className='d-table-row'>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br></br>
+                <FormGroup align = 'center' >
                                 <FormControl component="fieldset" >
-                                    <h4>    Find recommendations based on :     </h4>
-                                    <RadioGroup
+                                    
+                                 <RadioGroup
                                         aria-label="Find Recommendations Based On: "
                                         name="Search Filter"
-
+                                        row
                                         value={this.state.searchFilter}
                                         onChange={this.handleChange}>
                                         <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
                                         <FormControlLabel value="Track" control={<Radio />} label="Track" />
                                     </RadioGroup>
                                 </FormControl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+                </FormGroup>
                 <Songsearch searchFilter = {this.state.searchFilter} energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
                     PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}/>
-                     
+                 
                 <Slidesshow />
                
                 <Ap />

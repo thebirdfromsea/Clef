@@ -8,10 +8,8 @@ import DisplayTrack from './DisplayTrack';
 import DisplayTrackFeatures from './DisplayTrackFeatures';
 import DisplayRecommendations from './DisplayRecommendations';
 import CreatePlaylistWithUser from './CreatePlaylistWithUser';
-import Switch from '@material-ui/core/Switch';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-
 
 const styles = {
     tableCellStyle: {
@@ -67,8 +65,6 @@ class Songsearch extends Component {
 
             this.state.display == 'defaultDisplay' ? (
 
-
-
             <div>
 
                  {this.state.needsPlaylist ? (
@@ -82,7 +78,11 @@ class Songsearch extends Component {
                         style={{
                             margin: '0 auto',
                             maxWidth: 600,
-                        }}/>
+                        }}
+
+                        placeholder= {"Search by " + this.props.searchFilter}
+                />
+               
 
          <br></br>
 
@@ -102,6 +102,7 @@ class Songsearch extends Component {
                 maxWidth: 600
             }
             }
+            placeholder= {"Search by " + this.props.searchFilter}
         />
         <br></br>
          <Search query= {this.state.value} album artist track options= {this.state.searchProps}>
