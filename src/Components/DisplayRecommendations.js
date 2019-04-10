@@ -70,7 +70,7 @@ export default class DisplayRecommendations extends Component {
                                     
                                     recommendations.tracks.map(track => (
                             
-                                        <DisplayTrack item={track} playtrack={this.props.PlayTrack} accessToken={this.props.accessToken} />
+                                        <DisplayTrack item={track} playtrack={this.props.playtrack} accessToken={this.props.accessToken} />
                                        
                                       ))
                                   ) : null 
