@@ -87,6 +87,9 @@ class Main extends Component {
         return (
             <div className="App">
                 <Title /> 
+                {this.state.displayPlayer ? (
+                    <SpotifyPlayerClef uri={this.state.playerURI} />
+                ) : null}
                 <div className='d-table'>
                     <div className='d-table-row'>
                         <div className={classes.tableCell}>
@@ -105,9 +108,7 @@ class Main extends Component {
                         </div>
                     </div>
                 </div>
-                {this.state.displayPlayer ? (
-                    <SpotifyPlayerClef uri={this.state.playerURI} />
-                ) : null}
+
                 <Songsearch energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
                     PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}/>
                 <Slidesshow />
