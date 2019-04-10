@@ -21,7 +21,7 @@ export default class Chart extends Component {
         <YAxis />
         <Tooltip />
      
-        <Bar dataKey="number" fill="#8884d8" />
+        <Bar dataKey="number" fill="orange" />
       </BarChart>
     );
   }

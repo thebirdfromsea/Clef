@@ -40,12 +40,9 @@ export default class DisplayTrackFeatures extends Component {
         return (     
             <div>
                 <div>
-                    <h2 key={this.props.track.id}>
-
-                        <a href={this.props.track.external_urls.spotify}>
-                            {this.props.track.name}
-                        </a>
-                    </h2>
+                    <h1 key={this.props.track.id}>
+                           <b> {this.props.track.name} </b>
+                    </h1>
                     
                 </div>
                 <div>
