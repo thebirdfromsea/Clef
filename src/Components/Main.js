@@ -15,8 +15,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import { FormGroup } from '@material-ui/core';
+import SearchBar from 'material-ui-search-bar';
 
 
 const styles = {
@@ -46,7 +46,9 @@ class Main extends Component {
             danceability: 0.5,
             valence: 0.5,
             speechiness: 0.25, 
-            searchFilter: 'Artist'
+            searchFilter: 'Artist',
+            display: 'defaultDisplay' , 
+            value: ''
         }
     }
 
@@ -143,8 +145,21 @@ class Main extends Component {
                                     </RadioGroup>
                                 </FormControl>
                 </FormGroup>
+                <SearchBar
+                    onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
+                    onRequestSearch={()=> this.setState({display:'loadDisplay'})}
+                    style={{
+                        margin: '0 auto',
+                        maxWidth: 600
+                    }
+                    }
+                    placeholder= {"Search by " + this.state.searchFilter}
+                />
                 <Songsearch searchFilter = {this.state.searchFilter} energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
-                    PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}/>
+                    PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}
+                    display = {this.state.display}
+                    value   = {this.state.value}
+                />
                  
                 <Slidesshow />
                

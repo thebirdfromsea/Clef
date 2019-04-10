@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Tooltip from '@material-ui/core/Tooltip';
 
+
 export default class DisplayArtist extends Component {
 	constructor(props){
         super(props);
@@ -33,7 +34,6 @@ export default class DisplayArtist extends Component {
                     </IconButton>
                     </Tooltip>
                 </ListItem>
-
 
 
             </div>
