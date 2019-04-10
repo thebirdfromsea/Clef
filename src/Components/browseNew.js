@@ -12,19 +12,8 @@ import DisplayNewReleases from './DisplayNewReleases';
 export default class newSong extends React.Component{
     constructor(props){
         super(props)
-        this.state = {
-            open: false
-        }
-        this.handleClose = this.handleClose.bind(this);
-    }
-    handleClose = () => {
-        this.setState({ open: false });
-      };
-    
-      handleOpen = () => {
-        this.setState({ open: true });
-      };
 
+    }
     render(){
     return(
         <div>
