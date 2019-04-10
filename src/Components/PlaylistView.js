@@ -17,6 +17,9 @@ import { orange } from '@material-ui/core/colors';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { UserPlaylists } from 'react-spotify-api';
 import PlayArrow from '@material-ui/icons/PlayArrow';
+import Folder from '@material-ui/icons/Folder'; 
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 const orangeTheme = createMuiTheme({ palette: { primary: orange } });
 
@@ -57,9 +60,12 @@ class PlaylistView extends React.Component {
     return (
         <div>
         <MuiThemeProvider theme={orangeTheme}>
-            <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-            Your Playlists
-            </Button>
+        <Tooltip title = 'View Your Playlists'>
+        <IconButton  color="primary" onClick={this.handleClickOpen}>
+                  <Folder/>
+        </IconButton>
+        </Tooltip>
+          
         </MuiThemeProvider>
         <Dialog
           fullScreen

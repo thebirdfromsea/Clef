@@ -17,6 +17,7 @@ const titleformat = {
     marginBottom: "0px",
     padding: "0px",
 
+  
 }
 const hr = {
     borderColor: "orange",
@@ -49,9 +50,7 @@ export default class Title extends Component {
 
                     {/* </slidesshow> */}
                   <Typography component="h1" variant="h2" style={titleformat} gutterBottom>
-                  <img src={"https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg"} alt="Clef Symbol" style={clefimage} />
                   Clef
-                  <img src={"https://upload.wikimedia.org/wikipedia/commons/e/e8/G-clef.svg"} alt="Clef Symbol" style={clefimage} />
                   
                   </Typography>
                   <MuiThemeProvider theme={orangeTheme}>

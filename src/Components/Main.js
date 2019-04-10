@@ -111,15 +111,16 @@ class Main extends Component {
                         <div className={classes.tableCell}>
                             <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setValence={this.setValence} setSpeechiness={this.setSpeechiness} />
                         </div>
-                       
-                        <div className='d-table-cell' style={{width: 625}}>
-                            <div className='d-table-row' style={{height: 100}}></div>
-                            <div className='d-table-row'>
+                        <div className='d-table-cell' style={{width: 750}} align = 'right'>
+                            <div className='d-table-row' style={{height: 100}}>
                             <div className='d-inline-flex' style={{padding: 10}}>
-                                <PlaylistDialog accessToken={this.props.accessToken} />
-                        </div>
-                            <div className='d-inline-flex'>
-                                <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer} />
+                                    <PlaylistDialog accessToken={this.props.accessToken} />
+                                </div>
+                                <div className='d-inline-flex'>
+                                    <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer} />
+                            </div>
+                            <div className='d-table-row'>
+                              
                             </div>
                                 </div>
                         </div>

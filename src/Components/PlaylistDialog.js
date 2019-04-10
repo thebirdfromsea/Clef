@@ -11,6 +11,9 @@ import { orange } from '@material-ui/core/colors';
 import Snackbar from '@material-ui/core/Snackbar';
 import CreatePlaylist from './CreatePlaylist';
 import CreatePlaylistWithUser from './CreatePlaylistWithUser';
+import CreateButton from '@material-ui/icons/Create';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const orangeTheme = createMuiTheme({ palette: { primary: orange } })
 
@@ -59,9 +62,12 @@ export default class FormDialog extends React.Component {
         return (
             <div>
                 <MuiThemeProvider theme={orangeTheme}>
-                    <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-                    Create Playlist
-                </Button></MuiThemeProvider>
+                <Tooltip title = 'Create Playlist'>
+                    <IconButton  color="primary" onClick={this.handleClickOpen}>
+                         <CreateButton/>
+                    </IconButton>
+                </Tooltip>
+               </MuiThemeProvider>
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
