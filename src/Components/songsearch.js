@@ -30,8 +30,8 @@ const styles = {
 };
 
 class Songsearch extends Component {
-    
-    
+
+
     constructor(props)
     {
         super(props)
@@ -50,7 +50,7 @@ class Songsearch extends Component {
             },
             URI : [ ],
       };
-     
+
 
     }
 
@@ -66,23 +66,23 @@ class Songsearch extends Component {
         this.setState({needsPlaylist : true})
     }
 
-    
+
     render() {
         const { classes } = this.props;
         return (
-         
-            
+
+
             this.state.display == 'defaultDisplay' ? (
 
-               
-            
-            <div> 
+
+
+            <div>
 
                  {this.state.needsPlaylist ? (
                      <CreatePlaylistWithUser accessToken = {this.props.accessToken}/>
                         ) : null}
-            
-            
+
+
              <SearchBar
                 onChange={(value)=> this.setState({value: value})}
                 onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -90,17 +90,17 @@ class Songsearch extends Component {
                             margin: '0 auto',
                             maxWidth: 600,
                         }}/>
- 
- 
-        
+
+         <br></br>
+
             </div>
-         ) : 
+         ) :
 
          (
-        <div> 
-	
-                        
-        
+        <div>
+
+
+
         <SearchBar
             onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
             onRequestSearch={()=> this.setState({display:'loadDisplay'})}
@@ -111,50 +111,50 @@ class Songsearch extends Component {
             }
         />
          <Search query= {this.state.value} album artist track options= {this.state.searchProps}>
-            
+
             {
                 (data, loading, error) =>
 
-                error?( null ):  
+                error?( null ):
                 loading?(<h1>Loading...</h1>) :
-                
+
                  data ? (
-                   <div> 
-                   <div className={classes.table}> 
-                        <div className="d-table-row"> 
+                   <div>
+                   <div className={classes.table}>
+                        <div className="d-table-row">
                             <div className="d-table-cell">
                                 <Typography variant="h3">Artists</Typography>
-                                <div className={classes.tableCellStyle}> 
+                                <div className={classes.tableCellStyle}>
                                    {data.artists.items.map(artist => (
-                                    
+
                                     <DisplayArtist item={artist} playartist={this.props.PlayArtist} />))}
                                 </div>
                             </div>
-                           
+
                             <div className="d-table-cell"  >
                                 <Typography variant="h3">Recommended songs </Typography>
-                                <div className={classes.tableCellStyle}> 
+                                <div className={classes.tableCellStyle}>
                                 {this.state.refresher ? (
-                                    
+
                                     this.props.searchFilter == 'Track' ? (
                                         data.tracks.items.map((track) =>
-                                        
+
                                         <DisplayRecommendations refresh={(value) => {
                                             this.setState({ refresher: false })}}
                                             item={track} playtrack={this.props.PlayTrack} energy={this.props.energy}
                                             danceability={this.props.danceability}
                                             valence={this.props.valence}
                                             speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
-                                        
+
                                         )
-                                        
-                                     ) : 
-                                   
+
+                                     ) :
+
                                         this.props.searchFilter == 'Artist' ? (
                                         data.artists.items.map(artist => (
-                                       
+
                                         <div>
-                                        
+
                                         <DisplayRecommendations refresh={(value) => {
                                             this.setState({ refresher: false })}}
                                             item={artist} playtrack={this.props.PlayTrack} energy={this.props.energy}
@@ -163,49 +163,49 @@ class Songsearch extends Component {
                                             speechiness={this.props.speechiness} accessToken={this.props.accessToken} />
                                         </div>
                                             ))
-                                      
-                        
 
-                                        
-                                                
-                                          
+
+
+
+
+
                                             ): <h1> None Found </h1>
-                                                    
+
                                         ): <h2>Refeshing..</h2>}
-                                
+
 
                                 </div>
                             </div>
                         </div>
                         <div className="d-table-row">
-                            
+
                         <div className="d-table-cell">
-                                <Typography variant="h2">Albums</Typography>                           
-                                <div className={classes.tableCellStyle}> 
+                                <Typography variant="h2">Albums</Typography>
+                                <div className={classes.tableCellStyle}>
                                         {data.albums.items.map(album => (
                                         <DisplayAlbum item={album} playalbum={this.props.PlayAlbum}/>))}
                                 </div>
-                            </div>                 
+                            </div>
                             <div className ="d-table-cell">
-                            
+
                                 <Typography variant="h3">Tracks</Typography>
                                 <div className={classes.tableCellStyle}>
-                                        {data.tracks.items.map((track) => 
+                                        {data.tracks.items.map((track) =>
                                         <DisplayTrack item={track} playtrack={this.props.PlayTrack} accessToken={this.props.accessToken} />)}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     </div>) : null
-                            
+
             }
-            </Search> 
+            </Search>
             </div>)
-         
-            
-        ); 
-         
+
+
+        );
+
     }
 }
 

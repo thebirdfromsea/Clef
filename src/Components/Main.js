@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Title from './title';
 import Songsearch from './songsearch';
-import Slidesshow from './slidesshow'; 
-import  Ap from './par' ; 
+import Slidesshow from './slidesshow';
+import  Ap from './par' ;
 import PlaylistDialog from './PlaylistDialog';
 import Sliders from './Sliders';
 import PlaylistView from './PlaylistView';
@@ -37,13 +37,13 @@ class Main extends Component {
         this.PlayPlaylist = this.PlayPlaylist.bind(this);
         this.ClosePlayer = this.ClosePlayer.bind(this);
         this.state = {
-       
+
             displayPlayer: false,
             playerURI: '',
             energy: 0.5,
             danceability: 0.5,
             valence: 0.5,
-            speechiness: 0.25, 
+            speechiness: 0.25,
             searchFilter: 'Artist'
         }
     }
@@ -52,7 +52,7 @@ class Main extends Component {
         this.setState({ searchFilter: event.target.value });
       };
 
- 
+
     setDanceability = (value) => {
         this.setState({ danceability: value });
     }
@@ -98,29 +98,32 @@ class Main extends Component {
         const { classes } = this.props;
         return (
             <div className="App">
-                <Title /> 
+                <Title />
+                {this.state.displayPlayer ? (
+                    <SpotifyPlayerClef uri={this.state.playerURI} />
+                ) : null}
                 <div className='d-table'>
                     <div className='d-table-row'>
                         <div >
-                        <div className ='d-table-cell'>  
+                        <div className ='d-table-cell'>
                          <FormControl component="fieldset" >
                             <h4>    Find recommendations based on :     </h4>
                             <RadioGroup
                                 aria-label="Find Recommendations Based On: "
                                 name="Search Filter"
-                            
+
                                 value= {this.state.searchFilter}
                                 onChange={this.handleChange}
                             >
                             <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
                             <FormControlLabel value="Track" control={<Radio />} label="Track" />
-        
+
                     </RadioGroup>
                 </FormControl></div>
                             <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setValence={this.setValence} setSpeechiness={this.setSpeechiness} />
-                         
+
                         </div>
-                     
+
                         <div className='d-table-cell'>
                             <div className='d-table-row' style={{height: 100}}></div>
                             <div className='d-table-row'>
@@ -132,18 +135,18 @@ class Main extends Component {
                             </div>
                                 </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}
-                
+
                 <Songsearch searchFilter = {this.state.searchFilter} energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
                     PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}/>
-                     
+
                 <Slidesshow />
-               
+
                 <Ap />
             </div>
         );
