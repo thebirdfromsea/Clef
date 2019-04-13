@@ -14,7 +14,7 @@ class App extends Component {
     }
     componentDidMount() {
         if (!this.props.value)
-            window.location = "http://localhost:8888/login";
+            window.location = "https://cleflogin.herokuapp.com/login" || "http://localhost:8888/login";
     }
     render() {
         return (
