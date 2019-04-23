@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import React, { Component } from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import { Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';

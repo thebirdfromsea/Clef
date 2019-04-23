@@ -46,8 +46,7 @@ export default class Title extends Component {
 
     render() {
         return (
-            {/* Displays the top of the page including the slideshow, title, and buttons */ }
-            < div >
+            // Displays the top of the page including the slideshow, title, and buttons 
             <div>
                 <div>
                     <Slidesshow />
@@ -58,7 +57,8 @@ export default class Title extends Component {
                         <Typography variant="h6" align="center" color="primary" paragraph>
                             The Musical Web App
                         </Typography>
-                    </MuiThemeProvider>
+                </MuiThemeProvider>
+                </div>
                     <div>
                         <Grid container spacing={16} justify="center">
                             <Grid item>
@@ -83,10 +83,7 @@ export default class Title extends Component {
                         </Grid>
                         <hr style={hr} />
                     </div>
-                </div>
-            </div>
-            </div >  
-                    );
+                </div >);
     }
 }
 
