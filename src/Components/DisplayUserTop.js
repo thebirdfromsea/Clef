@@ -22,27 +22,25 @@ export default class DisplayNewReleases extends Component {
     };
 
     render() {
-
-
         return (
             <Card className="d-inline-block" style={{width: "20rem", height: "32rem", backgroundColor: "orange"}}>
-                         <p><img src={this.props.artist.images[1].url} alt = {this.props.artist.name}/></p>
-                         <CardContent>
-                             <Typography>
-                             <h4 key = {this.props.artist.id}>{this.props.artist.name}</h4>
-                             <p>Genres : {this.props.artist.genres[0]}, {this.props.artist.genres[1]}</p>
-                             </Typography>
-                             <Typography component="p">
-                             Popularity Rating: {this.props.artist.popularity}
-                             </Typography>
-                               
-                             <Button variant="outlined" color="inherit" onClick={this.handleOpen}>
-                                        Albums
-                            </Button>
-                            
-                            <ArtistAlbumModal open={this.state.open} handleClose={this.handleClose} item={this.props.artist}/>
-                        </CardContent>
-                    </Card>
+                <p><img src={this.props.artist.images[1].url} alt = {this.props.artist.name}/></p>
+                <CardContent>
+                    <Typography>
+                        <h4 key = {this.props.artist.id}>{this.props.artist.name}</h4>
+                        <p>Genres : {this.props.artist.genres[0]}, {this.props.artist.genres[1]}</p>
+                    </Typography>
+                    <Typography component="p">
+                        Popularity Rating: {this.props.artist.popularity}
+                    </Typography>
+                     <Button variant="outlined" color="inherit" onClick={this.handleOpen}>
+                             Albums
+                    </Button>
+                    <ArtistAlbumModal open={this.state.open} handleClose={this.handleClose} item={this.props.artist}/>
+                </CardContent>
+            </Card>
+            //This sets up what is going to be on each card for the user top artist page including the genre,
+            // popularity rating and the button to display the albums using material UI
         );
     }
 }

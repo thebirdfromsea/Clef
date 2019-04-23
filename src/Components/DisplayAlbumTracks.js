@@ -10,15 +10,10 @@ export default class DisplayArtistTracks extends Component {
         
     }
 
-    
-
     render() {
         return(
-
         <div>
             <div>
-                
-
                 <h2>Tracks in this Album:</h2>
                 <AlbumTracks id={this.props.album}>
                     {(tracks, loading, error) => (
@@ -31,12 +26,8 @@ export default class DisplayArtistTracks extends Component {
                         ) : null
                      )}
                 </AlbumTracks>
-                
-
             </div>
         </div>
-
-    
-    
+        //This retrieves tracks from the new albums releases from the spotify API using Material UI
         )}
  }

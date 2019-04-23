@@ -59,7 +59,6 @@ export default class DisplayRecommendations extends Component {
                     target_valence: this.props.valence,
                     target_speechiness: this.props.speechiness,
                     }}>
-
                             {
                         (recommendations, loading, error) => (
                                 error ? (
@@ -74,8 +73,7 @@ export default class DisplayRecommendations extends Component {
                                        
                                       ))
                                   ) : null 
-
-                                 
+                
                             )
                         }</BrowseRecommendations>
             </div>

@@ -21,12 +21,7 @@ export default class DisplayNewReleases extends Component {
         this.setState({ open: true });
     };
 
-    
-
-
     render() {
-
-
         return (
             <Card className="d-inline-block" style={{ width: "20rem", height: "28rem", backgroundColor: "orange" }}>
                 <p><img src={this.props.album.images[1].url} alt={this.props.album.name} /></p>
@@ -37,12 +32,13 @@ export default class DisplayNewReleases extends Component {
                     <Typography >
                         <Button variant="outlined" color="inherit" onClick={this.handleOpen}>
                             Tracks
-                                    </Button>
-                        <AlbumModal
-                            open={this.state.open} handleClose={this.handleClose} item={this.props.album.id} />
+                        </Button>
+                        <AlbumModal open={this.state.open} handleClose={this.handleClose} item={this.props.album.id} />
                     </Typography>
                 </CardContent>
             </Card>
+           //This sets up what is going to be on each card for the what's new page including album cover photo
+           //track button using material UI
         );
     }
 }

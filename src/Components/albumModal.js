@@ -52,15 +52,15 @@ class albumModal extends Component {
             <div style={getModalStyle()} className={classes.paper}>
               <Typography variant="h6" id="modal-title">
               <DisplayAlbumTracks album = {this.props.item}/>
-
               </Typography>
               <Typography variant="subtitle1" id="simple-modal-description">
                 Click outside box to exit...
               </Typography>
-
             </div>
           </Modal>
         </div>
+        //This is the window that pops up to display the tracks from the new releases albums from the Spotify API using 
+        //Material UI
       );
     }
   

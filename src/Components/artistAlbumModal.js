@@ -51,7 +51,7 @@ class artistAlbumModal extends Component {
           >
             <div style={getModalStyle()} className={classes.paper}>
               <Typography variant="h6" id="modal-title">
-      <DisplayArtistAlbums artist = {this.props.item}/>
+              <DisplayArtistAlbums artist = {this.props.item}/>
               </Typography>
               <Typography variant="subtitle1" id="simple-modal-description">
                 Click outside box to exit...
@@ -60,6 +60,7 @@ class artistAlbumModal extends Component {
             </div>
           </Modal>
         </div>
+        //this is the window that pops up displaying the albums from the users top artists 
       );
     }
   

@@ -28,7 +28,6 @@ export default class newSong extends React.Component{
                         ))
                     ):null
                 )}
-                
             </BrowseNew>
         </div>
         );
