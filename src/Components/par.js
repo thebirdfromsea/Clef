@@ -1,6 +1,7 @@
 import Particles from 'react-particles-js';
 import React, {Component} from 'react';
 
+// Format how many and what size particles and how they should be positioned
 const style={
 	position: "fixed",
 	top: 0,
@@ -9,6 +10,7 @@ const style={
 	height: "100%",
 	zIndex: -1,
 }
+
 const particleFormat = {
     particles: {
         number: {
@@ -25,16 +27,13 @@ const particleFormat = {
                 mode: "repulse"
             }
         }
-}
+    }
 }
 
 export default class Particle extends Component{
-
-
-
     render(){
         return (
-
+            // Displays the particles on the page with the formatting
             <Particles style={style}
     params={{ particleFormat }} />
 	);
