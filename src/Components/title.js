@@ -57,33 +57,33 @@ export default class Title extends Component {
                         <Typography variant="h6" align="center" color="primary" paragraph>
                             The Musical Web App
                         </Typography>
-                </MuiThemeProvider>
+                    </MuiThemeProvider>
                 </div>
-                    <div>
-                        <Grid container spacing={16} justify="center">
-                            <Grid item>
-                                <MuiThemeProvider theme={orangeTheme}>
-                                    <Button variant="contained" color="primary" component={Link} to="/">
-                                        Home
+                <div>
+                    <Grid container spacing={16} justify="center">
+                        <Grid item>
+                            <MuiThemeProvider theme={orangeTheme}>
+                                <Button variant="contained" color="primary" component={Link} to="/">
+                                    Home
                                 </Button>
-                                </MuiThemeProvider>
-                            </Grid>
-                            <Grid item>
-                                <MuiThemeProvider theme={orangeTheme}>
-                                    <Button variant="contained" color="primary" component={Link} to="/WhatsNew">
-                                        What's New?
-                                    </Button>
-                                </MuiThemeProvider>
-                            </Grid>
-                            <Grid item>
-                                <MuiThemeProvider theme={orangeTheme}>
-                                    <Button variant="contained" color="primary" component={Link} to="/main"> Search for song recommendations </Button>
-                                </MuiThemeProvider>
-                            </Grid>
+                            </MuiThemeProvider>
                         </Grid>
-                        <hr style={hr} />
-                    </div>
-                </div >);
+                        <Grid item>
+                            <MuiThemeProvider theme={orangeTheme}>
+                                <Button variant="contained" color="primary" component={Link} to="/WhatsNew">
+                                    What's New?
+                                    </Button>
+                            </MuiThemeProvider>
+                        </Grid>
+                        <Grid item>
+                            <MuiThemeProvider theme={orangeTheme}>
+                                <Button variant="contained" color="primary" component={Link} to="/main"> Search for song recommendations </Button>
+                            </MuiThemeProvider>
+                        </Grid>
+                    </Grid>
+                    <hr style={hr} />
+                </div>
+            </div >);
     }
 }
 
