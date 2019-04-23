@@ -28,16 +28,21 @@ export default class Sliders extends Component {
                     <div className="d-table">
                         <div className="d-table-row">
                             <div className="d-table-cell">
-                                <DanceabilitySlider inputenergy={this.props.setDance} />
+                                <DanceabilitySlider  inputenergy={this.props.setDance} />
                             </div>
+                            <br></br>
                             <div className="d-table-cell">
                                 <EnergySlider inputenergy={this.props.setEnergy} />
                             </div>
+                            <br></br>
+
                         </div>
                         <div className="d-table-row">
                             <div className="d-table-cell">
                                 <ValenceSlider inputenergy={this.props.setValence} />
                             </div>
+                            <br></br>
+
                             <div className="d-table-cell">
                                 <SpeechinessSlider inputenergy={this.props.setSpeechiness} />
                             </div>

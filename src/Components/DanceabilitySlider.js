@@ -43,7 +43,9 @@ class DanceabilitySlider extends React.Component {
       <div className={classes.root}>
         <Typography id="label">Danceability</Typography>
         <Slider
-                classes={{ container: classes.slider }}
+                  
+                classes={{container: classes.slider }
+                          }
                 value={value}
                 aria-labelledby="label"
                 onChange={this.handleChange}

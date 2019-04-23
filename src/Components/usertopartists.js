@@ -11,37 +11,46 @@ import Button from '@material-ui/core/Button';
 import ArtistAlbumModal from './artistAlbumModal';
 import DisplayUserTop from './DisplayUserTop';
 
-
+/*
+ * Class that retrieves a user's top artists using the UserTop component from react-spotify-api
+ * and calls DisplayUserTop in order to display them.
+ *
+ */
 export default class Utop extends React.Component{
+
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             open: false
-        }
+        };
         this.handleClose = this.handleClose.bind(this);
     }
+
+    // sets state of modal to closed when modal is exited
     handleClose = () => {
         this.setState({ open: false });
       };
     
-      handleOpen = () => {
+    // sets state of modal to open when modal to display albums is selected 
+    handleOpen = () => {
         this.setState({ open: true });
       };
-    render(){
-    return (
-        <div>
-        <h1>Your Top Artists:</h1>
 
-        <UserTop type = "artists">
-        {(artists, loading, error) =>
-                 artists ? (
-                     artists.items.map(artist => (
-                     <DisplayUserTop artist ={artist}/>
-                    ))
-                    ) : null
-                    }
-        </UserTop>
-        </div>
+    render(){
+        return (
+            <div>
+                <h1>Your Top Artists:</h1>
+                <UserTop type = "artists">
+                {
+                    (artists, loading, error) =>
+                        artists ? (
+                            artists.items.map(artist => (
+                                <DisplayUserTop artist ={artist}/>
+                            ))
+                        ) : null
+                }
+                </UserTop>
+            </div>
         );
     }
 }        

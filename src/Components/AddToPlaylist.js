@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-    
+
+/*
+    Class that takes playlistId, trackId, and accessToken props, and uses them in a JSON POST request
+    in order to add a song to a Spotify Playlist
+*/
 export default class AddToPlaylist extends React.Component{
     constructor(props){
         super(props)
@@ -18,8 +22,9 @@ export default class AddToPlaylist extends React.Component{
     }
 
     render(){
+        // render method was required so that Component works but nothing needs to be displayed 
         return (null)
    
-}
+    }
         
 }

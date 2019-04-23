@@ -8,28 +8,35 @@ import FeatureModal from './FeatureModal';
 import PlaylistMenu from './PlaylistMenu'
 import Tooltip from '@material-ui/core/Tooltip';
 
+/*
+    Creates an individual list item that displays an track's
+    artwork and name, along with buttons to play the track, display track features, and add track to playlist. 
+
+    Takes item as a prop, which refers to the track being passed into this component.
+*/
 export default class DisplayTrack extends Component {
     constructor(props) {
         super(props);
         this.state = {
-		open: false
-
-        }
+            open: false
+        };
 		this.handleClose = this.handleClose.bind(this);
     }
 
+    // Sets state of modal to closed when modal is exited
 	handleClose = () => {
-    this.setState({ open: false });
-  };
+        this.setState({ open: false });
+    };
 
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
+    // Sets state of modal to open when modal is selected 
+    handleOpen = () => {
+        this.setState({ open: true });
+    };
+    
+    // Plays track given when button is clicked 
     handleClick = (event) => {
         this.props.playtrack(this.props.item.id)
     };
-
 
     render() {
 

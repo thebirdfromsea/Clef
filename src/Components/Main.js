@@ -141,8 +141,8 @@ class Main extends Component {
                                         row
                                         value={this.state.searchFilter}
                                         onChange={this.handleChange}>
-                                        <FormControlLabel value="Artist" control={<Radio />} label="Artist" />
-                                        <FormControlLabel value="Track" control={<Radio />} label="Track" />
+                                        <FormControlLabel value="Artist" control={<Radio color = 'primary' />} label="Artist" />
+                                        <FormControlLabel value="Track" control={<Radio color = 'primary' />} label="Track" />
                                     </RadioGroup>
                                 </FormControl>
                 </FormGroup>

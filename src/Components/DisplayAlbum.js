@@ -5,6 +5,13 @@ import IconButton from '@material-ui/core/IconButton';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Tooltip from '@material-ui/core/Tooltip';
 
+/*
+    Creates an individual list item that displays an album's
+    artwork and name, along with a button to play the album. 
+
+    Takes item as a prop, which refers to the album being passed into this component.
+*/
+
 export default class DisplayAlbum extends Component {
     constructor(props) {
         super(props);
@@ -13,6 +20,8 @@ export default class DisplayAlbum extends Component {
         }
     }
 
+    //handles the play button located in album list item , plays album when activated
+    
     handleClick = (event) => {
         this.props.playalbum(this.props.item.id)
     };
