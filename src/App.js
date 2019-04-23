@@ -12,12 +12,14 @@ class App extends Component {
     constructor() {
         super();
     }
+    //this looks for if you have an access token and will redirect you to the login if you do not
     componentDidMount() {
         if (!this.props.value)
             window.location = "https://cleflogin.herokuapp.com/login" || "http://localhost:8888/login";
     }
     render() {
         return (
+            //sets up the router for the different 'pages' of our website
             <div >
             <Par />
             <Router>

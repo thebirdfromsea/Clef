@@ -7,60 +7,60 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
 const styles = theme => ({
-  colorSwitchBase: {
-    color: orange[300],
-    '&$colorChecked': {
-      color: orange[600],
-      '& + $colorBar': {
-        backgroundColor: orange[500],
-      },
+    colorSwitchBase: {
+        color: orange[300],
+        '&$colorChecked': {
+            color: orange[600],
+            '& + $colorBar': {
+                backgroundColor: orange[500],
+            },
+        },
     },
-  },
-  colorBar: {},
-  colorChecked: {},
+    colorBar: {},
+    colorChecked: {},
 });
 
 class SliderSwitch extends React.Component {
     constructor(props) {
         super(props);
     }
-  state = {
-    checkedA: false,
-    checkedB: true,
-  };
+    state = {
+        checkedA: false,
+        checkedB: true,
+    };
 
-  handleChange = name => event => {
-      this.setState({ [name]: event.target.checked });
-      this.props.toggle();
-  };
+    handleChange = name => event => {
+        this.setState({ [name]: event.target.checked });
+        this.props.toggle();
+    };
 
-  render() {
-    const { classes } = this.props;
+    render() {
+        const { classes } = this.props;
 
-    return (
-      <FormGroup row>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={this.state.checkedA}
-              onChange={this.handleChange('checkedA')}
-              value="checkedA"
-              classes={{
-                switchBase: classes.colorSwitchBase,
-                checked: classes.colorChecked,
-                bar: classes.colorBar,
-              }}
-            />
-          }
-          label="Mixer"
-        />
-    </FormGroup>
-    );
-  }
+        return (
+            <FormGroup row>
+                <FormControlLabel
+                    control={
+                        <Switch
+                            checked={this.state.checkedA}
+                            onChange={this.handleChange('checkedA')}
+                            value="checkedA"
+                            classes={{
+                                switchBase: classes.colorSwitchBase,
+                                checked: classes.colorChecked,
+                                bar: classes.colorBar,
+                            }}
+                        />
+                    }
+                    label="Mixer"
+                />
+            </FormGroup>
+        );
+    }
 }
 
 SliderSwitch.propTypes = {
-  classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(SliderSwitch);

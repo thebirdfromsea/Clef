@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import Title from './title';
 import Songsearch from './songsearch';
-import Slidesshow from './slidesshow'; 
-import  Ap from './par' ; 
+import Slidesshow from './slidesshow';
+import Ap from './par';
 import PlaylistDialog from './PlaylistDialog';
 import Sliders from './Sliders';
 import PlaylistView from './PlaylistView';
 import SpotifyPlayerClef from './PlayBackWidget';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
@@ -29,6 +27,7 @@ const styles = {
 class Main extends Component {
     constructor() {
         super();
+        //used these binds to make sure these functions' this was bound to context of this class
         this.setSpeechiness = this.setSpeechiness.bind(this);
         this.setValence = this.setValence.bind(this);
         this.setEnergy = this.setEnergy.bind(this);
@@ -39,24 +38,24 @@ class Main extends Component {
         this.PlayPlaylist = this.PlayPlaylist.bind(this);
         this.ClosePlayer = this.ClosePlayer.bind(this);
         this.state = {
-       
+
             displayPlayer: false,
             playerURI: '',
             energy: 0.5,
             danceability: 0.5,
             valence: 0.5,
-            speechiness: 0.25, 
+            speechiness: 0.25,
             searchFilter: 'Artist',
-            display: 'defaultDisplay' , 
+            display: 'defaultDisplay',
             value: ''
         }
     }
-
-    handleChange =  event => {
+    //handles a lot of interaction between child components. including slider bars seeding reccommended songs
+    handleChange = event => {
         this.setState({ searchFilter: event.target.value });
-      };
+    };
 
- 
+
     setDanceability = (value) => {
         this.setState({ danceability: value });
     }
@@ -94,15 +93,12 @@ class Main extends Component {
         this.setState({ displayPlayer: false });
     }
 
-    componentDidMount() {
-
-    }
 
     render() {
         const { classes } = this.props;
         return (
             <div className="App">
-                <Title /> 
+                <Title />
                 {this.state.displayPlayer ? (
                     <SpotifyPlayerClef uri={this.state.playerURI} />
                 ) : null}
@@ -111,65 +107,65 @@ class Main extends Component {
                         <div className={classes.tableCell}>
                             <Sliders setDance={this.setDanceability} setEnergy={this.setEnergy} setValence={this.setValence} setSpeechiness={this.setSpeechiness} />
                         </div>
-                        <div className='d-table-cell' style={{width: 750}} align = 'right'>
-                            <div className='d-table-row' style={{height: 100}}>
-                            <div className='d-inline-flex' style={{padding: 10}}>
+                        <div className='d-table-cell' style={{ width: 750 }} align='right'>
+                            <div className='d-table-row' style={{ height: 100 }}>
+                                <div className='d-inline-flex' style={{ padding: 10 }}>
                                     <PlaylistDialog accessToken={this.props.accessToken} />
                                 </div>
                                 <div className='d-inline-flex'>
                                     <PlaylistView PlayPlaylist={this.PlayPlaylist} closePlayer={this.ClosePlayer} />
-                            </div>
-                            <div className='d-table-row'>
-                              
-                            </div>
                                 </div>
+                                <div className='d-table-row'>
+
+                                </div>
+                            </div>
                         </div>
                         <div className='d-table-cell'>
                             <div className='d-table-row'>
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <br></br>
-                <FormGroup align = 'center' >
-                                <FormControl component="fieldset" >
-                                    
-                                 <RadioGroup
-                                        aria-label="Find Recommendations Based On: "
-                                        name="Search Filter"
-                                        row
-                                        value={this.state.searchFilter}
-                                        onChange={this.handleChange}>
-                                        <FormControlLabel value="Artist" control={<Radio color = 'primary' />} label="Artist" />
-                                        <FormControlLabel value="Track" control={<Radio color = 'primary' />} label="Track" />
-                                    </RadioGroup>
-                                </FormControl>
+                <FormGroup align='center' >
+                    <FormControl component="fieldset" >
+
+                        <RadioGroup
+                            aria-label="Find Recommendations Based On: "
+                            name="Search Filter"
+                            row
+                            value={this.state.searchFilter}
+                            onChange={this.handleChange}>
+                            <FormControlLabel value="Artist" control={<Radio color='primary' />} label="Artist" />
+                            <FormControlLabel value="Track" control={<Radio color='primary' />} label="Track" />
+                        </RadioGroup>
+                    </FormControl>
                 </FormGroup>
                 <SearchBar
-                    onChange={(value)=> this.setState({value: value , display: 'defaultDisplay'})}
-                    onRequestSearch={()=> this.setState({display:'loadDisplay'})}
+                    onChange={(value) => this.setState({ value: value, display: 'defaultDisplay' })}
+                    onRequestSearch={() => this.setState({ display: 'loadDisplay' })}
                     style={{
                         margin: '0 auto',
                         maxWidth: 600
                     }
                     }
-                    placeholder= {"Search by " + this.state.searchFilter}
+                    placeholder={"Search by " + this.state.searchFilter}
                 />
-                <Songsearch searchFilter = {this.state.searchFilter} energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
+                <Songsearch searchFilter={this.state.searchFilter} energy={this.state.energy} danceability={this.state.danceability} valence={this.state.valence} speechiness={this.state.speechiness}
                     PlayTrack={this.PlayTrack} PlayArtist={this.PlayArtist} PlayAlbum={this.PlayAlbum} accessToken={this.props.accessToken}
-                    display = {this.state.display}
-                    value   = {this.state.value}
+                    display={this.state.display}
+                    value={this.state.value}
                 />
-                 
+
                 <Slidesshow />
-               
+
                 <Ap />
             </div>
         );
     }
 }
-
+//needed for PropTypes
 Main.propTypes = {
     classes: PropTypes.object.isRequired,
 };

@@ -16,7 +16,7 @@ import { TrackFeatures } from 'react-spotify-api'
 export default class DisplayTrackFeatures extends Component {
     constructor(props) {
         super(props);
-        
+
     }
 
     /*
@@ -27,15 +27,15 @@ export default class DisplayTrackFeatures extends Component {
 
     render() {
         const ticks = [5, 10, 15, 20, 25, 30]
-        const featuresGraphData = []  
+        const featuresGraphData = []
 
-        return (     
+        return (
             <div>
                 <div>
                     <h1 key={this.props.track.id}>
-                           <b> {this.props.track.name} </b>
+                        <b> {this.props.track.name} </b>
                     </h1>
-                    
+
                 </div>
                 <div>
                     <h2>Track Features:</h2>
@@ -47,7 +47,7 @@ export default class DisplayTrackFeatures extends Component {
                                     featuresGraphData[0] = { name: 'Danceability', number: features.danceability },
                                     featuresGraphData[1] = { name: 'Valence', number: features.valence },
                                     featuresGraphData[2] = { name: 'Energy', number: features.energy },
-                                    featuresGraphData[3] = { name: 'Speechiness', number : features.speechiness},
+                                    featuresGraphData[3] = { name: 'Speechiness', number: features.speechiness },
                                     <div>
                                         <center><Chart data={featuresGraphData} /></center>
                                     </div>

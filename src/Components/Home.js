@@ -13,12 +13,12 @@ export default class Home extends Component {
         return (
             // Displays the home page with the title, header, and user's top artists
             <div className="App">
-            <div>
-                <Title />
-                <Header accessToken = {this.props.accessToken}/>
+                <div>
+                    <Title />
+                    <Header accessToken={this.props.accessToken} />
+                </div>
+                <Usertopartists />
             </div>
-                <Usertopartists/>
-            </div>
-            );
+        );
     }
 }

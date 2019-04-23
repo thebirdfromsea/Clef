@@ -5,12 +5,12 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/lab/Slider';
 
 const styles = {
-  root: {
-    width: 300,
-  },
-  slider: {
-    padding: '22px 0px',
-  },
+    root: {
+        width: 300,
+    },
+    slider: {
+        padding: '22px 0px',
+    },
 };
 
 
@@ -21,45 +21,44 @@ class DanceabilitySlider extends React.Component {
         this.state = {
             value: .5
         }
-        
+
     }
 
     handleChange = (event, value) => {
         this.setState({ value });
-      
+
 
     };
 
     handleDragEnd = (event) => {
         this.props.inputenergy(this.state.value)
-        
-    };
-      
 
-  render() {
-    const { classes } = this.props;
-      const { value } = this.state;
-    return (
-      <div className={classes.root}>
-        <Typography id="label">Danceability</Typography>
-        <Slider
-                  
-                classes={{container: classes.slider }
-                          }
-                value={value}
-                aria-labelledby="label"
-                onChange={this.handleChange}
-                onDragEnd={this.handleDragEnd}
-                min={0}
-                max={1}
-        />
-      </div>
-    );
-  }
+    };
+
+
+    render() {
+        const { classes } = this.props;
+        const { value } = this.state;
+        return (
+            <div className={classes.root}>
+                <Typography id="label">Danceability</Typography>
+                <Slider
+
+                    classes={{ container: classes.slider }
+                    }
+                    value={value}
+                    aria-labelledby="label"
+                    onChange={this.handleChange}
+                    onDragEnd={this.handleDragEnd}
+                    min={0}
+                    max={1}/>
+            </div>
+        );
+    }
 }
 
 DanceabilitySlider.propTypes = {
-  classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(DanceabilitySlider);

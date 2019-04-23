@@ -37,8 +37,8 @@ export default class DisplayNewReleases extends Component {
                     </Typography>
                 </CardContent>
             </Card>
-           //This sets up what is going to be on each card for the what's new page including album cover photo
-           //track button using material UI
+            //This sets up what is going to be on each card for the what's new page including album cover photo
+            //track button using material UI
         );
     }
 }

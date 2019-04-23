@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { UserTop } from 'react-spotify-api'
-import { ArtistRelated } from 'react-spotify-api'; 
+import { ArtistRelated } from 'react-spotify-api';
 import { TrackAnalysis } from 'react-spotify-api'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -16,9 +16,9 @@ import DisplayUserTop from './DisplayUserTop';
  * and calls DisplayUserTop in order to display them.
  *
  */
-export default class Utop extends React.Component{
+export default class Utop extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             open: false
@@ -29,31 +29,31 @@ export default class Utop extends React.Component{
     // sets state of modal to closed when modal is exited
     handleClose = () => {
         this.setState({ open: false });
-      };
-    
+    };
+
     // sets state of modal to open when modal to display albums is selected 
     handleOpen = () => {
         this.setState({ open: true });
-      };
+    };
 
-    render(){
+    render() {
         return (
             <div>
                 <h1>Your Top Artists:</h1>
-                <UserTop type = "artists">
-                {
-                    (artists, loading, error) =>
-                        artists ? (
-                            artists.items.map(artist => (
-                                <DisplayUserTop artist ={artist}/>
-                            ))
-                        ) : null
-                }
+                <UserTop type="artists">
+                    {
+                        (artists, loading, error) =>
+                            artists ? (
+                                artists.items.map(artist => (
+                                    <DisplayUserTop artist={artist} />
+                                ))
+                            ) : null
+                    }
                 </UserTop>
             </div>
         );
     }
-}        
+}
 
 
 

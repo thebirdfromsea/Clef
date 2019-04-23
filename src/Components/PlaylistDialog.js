@@ -54,20 +54,20 @@ export default class FormDialog extends React.Component {
     handleCloseNoCreate = () => {
         this.setState({ open: false });
     };
-        
 
-    
+
+
 
     render() {
         return (
             <div>
                 <MuiThemeProvider theme={orangeTheme}>
-                <Tooltip title = 'Create Playlist'>
-                    <IconButton  color="primary" onClick={this.handleClickOpen}>
-                         <CreateButton/>
-                    </IconButton>
-                </Tooltip>
-               </MuiThemeProvider>
+                    <Tooltip title='Create Playlist'>
+                        <IconButton color="primary" onClick={this.handleClickOpen}>
+                            <CreateButton />
+                        </IconButton>
+                    </Tooltip>
+                </MuiThemeProvider>
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
@@ -85,7 +85,7 @@ export default class FormDialog extends React.Component {
                             label="Playlist Name"
                             onChange={this.handleNameChange('name')}
                             fullWidth
-                            
+
                         />
                         <TextField
                             autoFocus
@@ -105,7 +105,7 @@ export default class FormDialog extends React.Component {
                         </Button>
                         <Button onClick={this.handleClose} color="primary">Create</Button>
                         {this.state.createPlaylist ? (
-                            <CreatePlaylistWithUser accessToken={this.props.accessToken} name={this.state.name} desc={this.state.desc}/>
+                            <CreatePlaylistWithUser accessToken={this.props.accessToken} name={this.state.name} desc={this.state.desc} />
                         ) : null}
                     </DialogActions>
                 </Dialog>
@@ -113,7 +113,7 @@ export default class FormDialog extends React.Component {
                     autoHideDuration={1500}
                     open={this.state.openSnack}
                     onClose={this.handleSnackClose}
-                    
+
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}

@@ -49,8 +49,7 @@ class InstrumentalnessSlider extends React.Component {
                     onChange={this.handleChange}
                     onDragEnd={this.handleDragEnd}
                     min={0}
-                    max={1}
-                />
+                    max={1} />
             </div>
         );
     }

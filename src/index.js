@@ -10,13 +10,14 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 
+//takes accesstoken from URL
 let parsed = queryString.parse(window.location.search);
 let accessToken = parsed.access_token;
 
 
 
 ReactDOM.render(
-    
+    //wraps access token around entire app so it will be used when calling api
     <SpotifyApiContext.Provider value={accessToken}>
          <App value = {accessToken}/>
     </SpotifyApiContext.Provider>, document.getElementById('root'), );

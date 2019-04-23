@@ -8,7 +8,7 @@ import FeatureModal from './FeatureModal'
 import PieChart from '@material-ui/icons/PieChart';
 import PlaylistMenu from './PlaylistMenu'
 import Typography from 'material-ui/styles/typography';
-import DisplayTrack from './DisplayTrack' ;
+import DisplayTrack from './DisplayTrack';
 
 export default class DisplayRecommendations extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ export default class DisplayRecommendations extends Component {
             openModal: false,
         }
     }
-
+    //this looks to see if you change the seeded values with slider and if so changes refresher to false causing it to be changed back to true in song search - refreshing the list
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps)
             this.handleRefresh();
@@ -28,14 +28,14 @@ export default class DisplayRecommendations extends Component {
         this.props.refresh(false);
     }
 
-    handleClick(item){
+    handleClick(item) {
         this.props.playtrack(item)
     };
     closeModal = () => {
         this.setState({ openModal: false });
     }
     openModal = () => {
-    this.setState({ openModal: true });
+        this.setState({ openModal: true });
     }
 
 
@@ -45,41 +45,41 @@ export default class DisplayRecommendations extends Component {
 
         return (
             <div>
-              
+
                 <div>
-                <h3>Based on <b>{this.props.item.name}</b></h3>
+                    <h3>Based on <b>{this.props.item.name}</b></h3>
                 </div>
-                  
+
                 <BrowseRecommendations options={{
                     limit: 5,
-                    seed_tracks: this.props.item.id , 
+                    seed_tracks: this.props.item.id,
                     seed_artists: this.props.item.id,
                     target_energy: this.props.energy,
                     target_danceability: this.props.danceability,
                     target_valence: this.props.valence,
                     target_speechiness: this.props.speechiness,
-                    }}>
-                            {
+                }}>
+                    {
                         (recommendations, loading, error) => (
-                                error ? (
-                                    <h1> error</h1>
-                                ):
+                            error ? (
+                                <h1> error</h1>
+                            ) :
 
                                 recommendations ? (
-                                    
+
                                     recommendations.tracks.map(track => (
-                            
+
                                         <DisplayTrack item={track} playtrack={this.props.playtrack} accessToken={this.props.accessToken} />
-                                       
-                                      ))
-                                  ) : null 
-                
-                            )
-                        }</BrowseRecommendations>
+
+                                    ))
+                                ) : null
+
+                        )
+                    }</BrowseRecommendations>
             </div>
-                                   
-                    
-            
+
+
+
         );
     }
 }

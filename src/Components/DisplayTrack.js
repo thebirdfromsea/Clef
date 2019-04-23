@@ -20,11 +20,11 @@ export default class DisplayTrack extends Component {
         this.state = {
             open: false
         };
-		this.handleClose = this.handleClose.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     // Sets state of modal to closed when modal is exited
-	handleClose = () => {
+    handleClose = () => {
         this.setState({ open: false });
     };
 
@@ -32,7 +32,7 @@ export default class DisplayTrack extends Component {
     handleOpen = () => {
         this.setState({ open: true });
     };
-    
+
     // Plays track given when button is clicked 
     handleClick = (event) => {
         this.props.playtrack(this.props.item.id)
@@ -48,22 +48,22 @@ export default class DisplayTrack extends Component {
                     <Typography variant="h5">
                         {this.props.item.name}
                     </Typography>
-                    <Tooltip title = 'Play Track'>
-                    <IconButton onClick={this.handleClick}>
-                        <PlayArrow />
-                    </IconButton>
+                    <Tooltip title='Play Track'>
+                        <IconButton onClick={this.handleClick}>
+                            <PlayArrow />
+                        </IconButton>
                     </Tooltip>
-                    
-                    
+
+
                     <PlaylistMenu accessToken={this.props.accessToken} trackID={this.props.item.id} />
-                    
-                    <Tooltip title = 'View analysis'>
-                    <IconButton onClick={this.handleOpen}>
-                        <PieChart />
-                    </IconButton>
+
+                    <Tooltip title='View analysis'>
+                        <IconButton onClick={this.handleOpen}>
+                            <PieChart />
+                        </IconButton>
                     </Tooltip>
-					
-					 <FeatureModal open={this.state.open} handleClose={this.handleClose} analysis={this.props.item}/>
+
+                    <FeatureModal open={this.state.open} handleClose={this.handleClose} analysis={this.props.item} />
                 </ListItem>
 
             </div>
