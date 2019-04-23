@@ -1,3 +1,4 @@
+// Not used since we decided not to add Scatter Chart for each song.
 import React, { Component } from 'react';
 import {
     ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, LabelList,

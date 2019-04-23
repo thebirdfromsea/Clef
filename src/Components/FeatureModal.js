@@ -1,3 +1,7 @@
+/*
+This file is called when the user clicks on the "PieGraph" button located on each Track list item. This file opens a themed Modal
+and calls "DisplayTrackFeatures" to show a track's audio features on the Modal.
+*/
 import React, { Component } from 'react';
 import { Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
