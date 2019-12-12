@@ -1,3 +1,6 @@
+Clef is a muscial web application. It was built by using React and bootstrap. The users are be able to discover and listen to music from Spotify by logining into their account. Each song has the charactrsistics, including danceability, instrumentalsness and speechiness. The users can change the recommendation preferences based on these key features of songs. 
+
+The following descriptions are about how to set up the environment. 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
