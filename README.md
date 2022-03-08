@@ -1,4 +1,4 @@
-Clef gives users the power to adjust the parameters of Spotify's recommendation algorithms in order to find music that they may not have found otherwise. On top of this, Clef provides users with the ability to create playlists with their new song choices, an overview of their personal listening history, and a list of the newest tracks available. All of this was accomplished using ReactJS in coordination with the Spotify API.
+This is a project for Object Orient Design class. Clef gives users the power to adjust the parameters of Spotify's recommendation algorithms in order to find music that they may not have found otherwise. On top of this, Clef provides users with the ability to create playlists with their new song choices, an overview of their personal listening history, and a list of the newest tracks available. All of this was accomplished using ReactJS in coordination with the Spotify API.
 
 The fully deployed website can be found here (a Spotify account is required): https://clefrecommendations.herokuapp.com/
 
